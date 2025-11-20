@@ -116,6 +116,19 @@ nav a:hover {
     margin-top: var(--spacing-lg);
 }
 
+.hero-illustration {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.hero-illustration img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    opacity: 0.9;
+}
+
+
 /* Buttons */
 .btn {
     display: inline-block;
