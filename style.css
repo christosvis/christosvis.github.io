@@ -378,6 +378,7 @@ footer {
 .portfolio-content a:hover {
     color: var(--accent-color);
 }
+
 /* Blog Post Styles */
 .blog-post {
     max-width: 800px;
@@ -418,7 +419,8 @@ footer {
     color: var(--secondary-text);
 }
 
-.blog-post .post-content ul, .blog-post .post-content ol {
+.blog-post .post-content ul,
+.blog-post .post-content ol {
     margin-bottom: var(--spacing-md);
     padding-left: var(--spacing-lg);
     color: var(--secondary-text);
@@ -466,4 +468,41 @@ footer {
 
 .back-link:hover {
     color: var(--text-color);
+}
+
+/* Code Blocks */
+.blog-post .post-content pre {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.blog-post .post-content code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+    font-size: 0.9em;
+    background-color: var(--card-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
+
+.blog-post .post-content pre code {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    font-size: 0.9rem;
+}
+
+[data-theme="dark"] .blog-post .post-content pre {
+    background-color: #1a1a1a;
+}
+
+[data-theme="dark"] .blog-post .post-content code {
+    background-color: #1a1a1a;
 }
