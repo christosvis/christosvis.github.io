@@ -241,7 +241,7 @@ section h2 {
 /* Contact */
 .contact-links {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
 }
 
 .contact-links a {
