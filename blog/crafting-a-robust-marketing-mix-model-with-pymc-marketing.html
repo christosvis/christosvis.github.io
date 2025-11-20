@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crafting a Robust Marketing Mix Model with PyMC-Marketing - Christos Visvardis</title>
+    <meta name="description" content="
+Unlocking Insights with Bayesian Modeling
+In the dynamic realm of marketing, understanding and optimizing the allocation of your marketing budget is ...">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">Christos Visvardis</a>
+            <nav>
+                <ul>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../blog.html" class="active">Blog</a></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/cvis/" target="_blank" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/christosvis" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+                                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12.3 22h-.1a10.313 10.313 0 0 1-10.2-10.2a10.288 10.288 0 0 1 10.2-10.2c.2 0 .4 0 .6.1a9.843 9.843 0 0 0-8.5 12.2a9.867 9.867 0 0 0 8.6 8c-.2.1-.4.1-.6.1z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <article class="blog-post">
+                <h1>Crafting a Robust Marketing Mix Model with PyMC-Marketing</h1>
+                <div class="post-meta">December 17, 2023</div>
+                <div class="post-content">
+                    <p><strong>Unlocking Insights with Bayesian Modeling</strong></p>
+<p>In the dynamic realm of marketing, understanding and optimizing the allocation of your marketing budget is crucial. <a href="https://www.pymc-marketing.io/en/stable/" target="_blank" rel="noreferrer noopener">PyMC-Marketing</a>, a powerful Bayesian modeling framework, offers a sophisticated approach to crafting a Marketing Mix Model (MMM) that not only adapts to the ever-changing marketing landscape but also provides deeper insights into the efficacy of different marketing channels.</p>
+<h2 class="wp-block-heading">Why Choose PyMC-Marketing?</h2>
+<p>PyMC-Marketing stands out due to its Bayesian framework, offering flexibility and depth in understanding marketing dynamics. Unlike traditional models, it allows for incorporating prior knowledge and beliefs into the analysis, leading to more nuanced and robust predictions. This approach is particularly beneficial in a marketing context where past data and expert knowledge are vital in shaping future strategies.</p>
+<h2 class="wp-block-heading">Steps to Build Your MMM with PyMC-Marketing</h2>
+<h3 class="wp-block-heading">1. <strong>Preparing Your Data</strong></h3>
+<p>Begin with collecting and organizing your marketing data. This should include:</p>
+<ul>
+<li>Sales data (your target variable).</li>
+<li>Media spend across various channels (e.g., TV, online).</li>
+<li>Control variables that might affect sales (like holidays or economic trends).</li>
+</ul>
+<h3 class="wp-block-heading">2. <strong>Setting Up Your Environment</strong></h3>
+<p>Ensure you have PyMC-Marketing installed. If not, set it up using:</p>
+<pre class="wp-block-code"><code>conda create -c conda-forge -n marketing_env pymc-marketing
+conda activate marketing_env</code></pre>
+<h3 class="wp-block-heading">3. <strong>Model Specification with DelayedSaturatedMMM</strong></h3>
+<p>PyMC-Marketing provides the <code>DelayedSaturatedMMM</code> class, which simplifies the process by handling scaling of data and providing diagnostics and reporting plots. Here's how to specify your model:</p>
+<ul>
+<li>Define your channel contributions using appropriate distributions, such as a HalfNormal distribution for positive contributions. Use your domain knowledge to set the <code>sigma</code> parameter, which controls the variance.</li>
+</ul>
+<pre class="wp-block-code"><code>from pymc_marketing.mmm import DelayedSaturatedMMM
+# Define your model
+mmm = DelayedSaturatedMMM(
+    date_column="your_date_column",
+    channel_columns=&#91;"channel1", "channel2"],
+    control_columns=&#91;"control1", "control2"],
+    adstock_max_lag=8,
+    yearly_seasonality=2,
+)</code></pre>
+<ul>
+<li>Customize your priors if needed, to reflect your specific assumptions or past knowledge.</li>
+</ul>
+<h3 class="wp-block-heading">Compute Spend Share (Optional)</h3>
+<p>If you are using spend share as part of your prior, compute it from your data. For example:</p>
+<pre class="wp-block-code"><code>total_spend_per_channel = data&#91;&#91;"channel1", "channel2"]].sum(axis=0)
+spend_share = total_spend_per_channel / total_spend_per_channel.sum()</code></pre>
+<h3 class="wp-block-heading">Specify Custom Priors</h3>
+<p>Now, specify your custom priors. This involves creating a dictionary that matches the structure required by the DelayedSaturatedMMM class.</p>
+<p><strong>Start with Default Model Configuration</strong>: Get the default model configuration and use it as a base </p>
+<pre class="wp-block-code has-raft-fg-color has-raft-bg-background-color has-text-color has-background has-link-color"><code><span style="background-color: initial; font-family: inherit; font-size: inherit; color: var(--wp--preset--color--raft-fg);">default_model_config = mmm.default_model_config</span></code></pre>
+<p><strong>Define Your Custom Priors</strong>: Create a dictionary with your custom priors. Here’s an example where we customize the <code>beta_channel</code> prior using a LogNormal distribution and adjust its <code>mu</code> and <code>sigma</code> parameters based on your spend share or other criteria.</p>
+<pre class="wp-block-code"><code>import numpy as np
+# Example of customizing the beta_channel prior
+custom_beta_channel_prior = {
+    'beta_channel': {
+        'dist': 'LogNormal',
+        "kwargs": {
+            "mu": np.array(&#91;2, 1]),  # Example values, adjust based on your data
+            "sigma": np.array(&#91;2.1775326, 1.14026088])  # Example values, adjust based on your data or spend share
+        }
+    }
+}
+</code></pre>
+<p><strong>Merge Custom Priors with Default Configuration</strong>: Combine your custom priors with the default configuration.</p>
+<pre class="wp-block-code"><code><code>my_model_config = {**default_model_config, **custom_beta_channel_prior}</code></code></pre>
+<h3 class="wp-block-heading">Apply Custom Configuration to Model</h3>
+<p>Finally, apply your custom configuration to the model.</p>
+<pre class="wp-block-code"><code>mmm = DelayedSaturatedMMM(
+    model_config=my_model_config,
+    # other configurations as before...
+)</code></pre>
+<h3 class="wp-block-heading">4. <strong>Fitting the Model</strong></h3>
+<p>Now, fit the model using your data.</p>
+<pre class="wp-block-code"><code><code>X = data.drop('sales', axis=1) y = data&#91;'sales'] mmm.fit(X, y)</code></code></pre>
+<h3 class="wp-block-heading">5. <strong>Analyzing the Results</strong></h3>
+<p>Post-fitting, delve into the results:</p>
+<ul>
+<li>Use <code>mmm.plot_components_contributions()</code> to visualize contributions from different channels.</li>
+</ul>
+<figure class="wp-block-image aligncenter size-large"><img src="https://visvardis.com/wp-content/uploads/2023/12/image-1024x602.png" alt="" class="wp-image-741"/><figcaption class="wp-element-caption">An example channel contribution plot</figcaption></figure>
+<ul>
+<li>Check the model diagnostics and ensure your model's robustness.</li>
+</ul>
+<h3 class="wp-block-heading">6. <strong>Posterior Predictive Checks</strong></h3>
+<p>Perform posterior predictive checks to ensure your model's predictions align well with the actual data.</p>
+<pre class="wp-block-code"><code>with mmm.model:<br>posterior_predictive = pm.sample_posterior_predictive(mmm.trace)</code></pre>
+<p>For a visual comparison, you can plot the actual sales data against the predicted sales.</p>
+<pre class="wp-block-code"><code>mmm.plot_posterior_predictive(original_scale=True);</code></pre>
+<figure class="wp-block-image aligncenter size-large"><img src="https://visvardis.com/wp-content/uploads/2023/12/image-1-1024x602.png" alt="" class="wp-image-742"/><figcaption class="wp-element-caption">Compare the model against the actual data.</figcaption></figure>
+<h4 class="wp-block-heading">Statistical Comparison</h4>
+<p>You can also calculate summary statistics like RMSE (Root Mean Squared Error) to quantitatively assess the model's performance:</p>
+<pre class="wp-block-code"><code>from sklearn.metrics import mean_squared_error
+rmse = np.sqrt(mean_squared_error(y, predicted_sales))
+print(f"Root Mean Squared Error: {rmse}")</code></pre>
+<h3 class="wp-block-heading">7. <strong>Integrating Insights into Your Strategy</strong></h3>
+<p>Leverage the insights gained from your MMM to optimize your marketing budget allocation, ensuring that your spend is directed towards the most effective channels.</p>
+<h2 class="wp-block-heading">The Power of Understanding Long-term Effects</h2>
+<p>One of the unique advantages of PyMC-Marketing is its ability to model the long-term impact of advertising. This is crucial for developing effective marketing strategies that go beyond short-term gains.</p>
+<h2 class="wp-block-heading">Wrapping Up</h2>
+<p>PyMC-Marketing offers a cutting-edge approach to MMM, providing deeper insights and more flexible modeling capabilities. By integrating this tool into your marketing analytics arsenal, you can make more informed decisions, optimize your marketing spend, and ultimately drive better business outcomes.</p>
+                </div>
+                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Christos Visvardis. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

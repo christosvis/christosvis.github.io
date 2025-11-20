@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating a Marketing Mix Model with Meta Robyn: A Step-by-Step Guide - Christos Visvardis</title>
+    <meta name="description" content="
+In the dynamic landscape of digital marketing, staying ahead requires not only creativity but also a data-driven approach. One powerful tool in the m...">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">Christos Visvardis</a>
+            <nav>
+                <ul>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../blog.html" class="active">Blog</a></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/cvis/" target="_blank" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/christosvis" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+                                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12.3 22h-.1a10.313 10.313 0 0 1-10.2-10.2a10.288 10.288 0 0 1 10.2-10.2c.2 0 .4 0 .6.1a9.843 9.843 0 0 0-8.5 12.2a9.867 9.867 0 0 0 8.6 8c-.2.1-.4.1-.6.1z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <article class="blog-post">
+                <h1>Creating a Marketing Mix Model with Meta Robyn: A Step-by-Step Guide</h1>
+                <div class="post-meta">November 12, 2023</div>
+                <div class="post-content">
+                    <p>In the dynamic landscape of digital marketing, staying ahead requires not only creativity but also a data-driven approach. One powerful tool in the marketer's arsenal is the <a href="https://facebookexperimental.github.io/Robyn/" target="_blank" rel="noreferrer noopener">Robyn package</a>, a versatile R library designed to optimize marketing mix models. Let's break down how you can leverage Robyn to enhance your marketing strategies.</p>
+<h3 class="wp-block-heading">Setting Up the Robyn Environment</h3>
+<p>Before diving into the data, the first step is setting up the environment. This involves installing and loading the Robyn package, ensuring you have the latest version, and configuring the environment, specifying whether to create local files.</p>
+<pre class="wp-block-code"><code># Install and load Robyn package
+install.packages("Robyn")
+library(Robyn)
+# Check and update package version
+update.packages("Robyn")</code></pre>
+<h3 class="wp-block-heading">Loading Data for Analysis</h3>
+<p>With the environment ready, the next crucial step is loading the data. This can involve checking a simulated dataset or loading your own. Additionally, you can check for holidays using Prophet.</p>
+<pre class="wp-block-code"><code># Load data (simulated or your own dataset)
+data("dt_simulated_weekly")
+# Check holidays using Prophet
+data("dt_prophet_holidays")</code></pre>
+<h3 class="wp-block-heading">Model Specification and Calibration</h3>
+<p>Now comes the heart of the process—defining the input variables for the model, specifying hyperparameters for adstock and saturation, and optionally calibrating the model using experimental input.</p>
+<pre class="wp-block-code"><code># Define input variables
+InputCollect &lt;- robyn_inputs(
+  dt_input = dt_simulated_weekly,
+  dt_holidays = dt_prophet_holidays,
+  date_var = "DATE", # date format must be "2020-01-01"
+  dep_var = "revenue", # there should be only one dependent variable
+  dep_var_type = "revenue", # "revenue" (ROI) or "conversion" (CPA)
+  prophet_vars = c("trend", "season", "holiday"), # "trend","season", "weekday" &amp; "holiday"
+  prophet_country = "DE", # input country code. Check: dt_prophet_holidays
+  context_vars = c("competitor_sales_B", "events"), # e.g. competitors, discount, unemployment etc
+  paid_media_spends = c("tv_S", "ooh_S", "print_S", "facebook_S", "search_S"), # mandatory input
+  paid_media_vars = c("tv_S", "ooh_S", "print_S", "facebook_I", "search_clicks_P"), # mandatory.
+  # paid_media_vars must have same order as paid_media_spends. Use media exposure metrics like
+  # impressions, GRP etc. If not applicable, use spend instead.
+  organic_vars = "newsletter", # marketing activity without media spend
+  # factor_vars = c("events"), # force variables in context_vars or organic_vars to be categorical
+  window_start = "2016-01-01",
+  window_end = "2018-12-31",
+  adstock = "geometric" # geometric, weibull_cdf or weibull_pdf.
+)
+# Specify hyperparameters for adstock and saturation
+# Example hyperparameters ranges for Geometric adstock
+hyperparameters &lt;- list(
+  facebook_S_alphas = c(0.5, 3),
+  facebook_S_gammas = c(0.3, 1),
+  facebook_S_thetas = c(0, 0.3),
+  print_S_alphas = c(0.5, 3),
+  print_S_gammas = c(0.3, 1),
+  print_S_thetas = c(0.1, 0.4),
+  tv_S_alphas = c(0.5, 3),
+  tv_S_gammas = c(0.3, 1),
+  tv_S_thetas = c(0.3, 0.8),
+  search_S_alphas = c(0.5, 3),
+  search_S_gammas = c(0.3, 1),
+  search_S_thetas = c(0, 0.3),
+  ooh_S_alphas = c(0.5, 3),
+  ooh_S_gammas = c(0.3, 1),
+  ooh_S_thetas = c(0.1, 0.4),
+  newsletter_alphas = c(0.5, 3),
+  newsletter_gammas = c(0.3, 1),
+  newsletter_thetas = c(0.1, 0.4),
+  train_size = c(0.5, 0.8)
+)
+InputCollect &lt;- robyn_inputs(InputCollect = InputCollect, hyperparameters = hyperparameters)
+# Optionally calibrate the model using experimental input
+calibration_input &lt;- data.frame(
+#   # channel name must in paid_media_vars
+   channel = c("facebook_S",  "tv_S", "facebook_S+search_S", "newsletter"),
+   # liftStartDate must be within input data range
+   liftStartDate = as.Date(c("2018-05-01", "2018-04-03", "2018-07-01", "2017-12-01")),
+   # liftEndDate must be within input data range
+   liftEndDate = as.Date(c("2018-06-10", "2018-06-03", "2018-07-20", "2017-12-31")),
+   # Provided value must be tested on same campaign level in model and same metric as dep_var_type
+   liftAbs = c(400000, 300000, 700000, 200),
+   # Spend within experiment: should match within a 10% error your spend on date range for each channel from dt_input
+   spend = c(421000, 7100, 350000, 0),
+   # Confidence: if frequentist experiment, you may use 1 - pvalue
+   confidence = c(0.85, 0.8, 0.99, 0.95),
+   # KPI measured: must match your dep_var
+   metric = c("revenue", "revenue", "revenue", "revenue"),
+   # Either "immediate" or "total". For experimental inputs like Facebook Lift, "immediate" is recommended.
+   calibration_scope = c("immediate", "immediate", "immediate", "immediate")
+ )
+ InputCollect &lt;- robyn_inputs(InputCollect = InputCollect, calibration_input = calibration_input)</code></pre>
+<h3 class="wp-block-heading">Building the Initial Model</h3>
+<p>Once the model is specified, it's time to run it with multiple trials and iterations. Check convergence plots and time-series validation plots to ensure the model's accuracy. Export the results and plots for further analysis.</p>
+<pre class="wp-block-code"><code># Run Robyn model with multiple trials and iterations
+OutputModels &lt;- robyn_run(
+  InputCollect = InputCollect, # feed in all model specification
+  cores = NULL, # NULL defaults to (max available - 1)
+  iterations = 2000, # 2000 recommended for the dummy dataset with no calibration
+  trials = 5, # 5 recommended for the dummy dataset
+  ts_validation = TRUE, # 3-way-split time series for NRMSE validation.
+  add_penalty_factor = FALSE # Experimental feature. Use with caution.
+)
+# Check convergence plots and time-series validation plots
+OutputModels$convergence$moo_distrb_plot
+OutputModels$convergence$moo_cloud_plot
+# Export model results and plots
+OutputCollect &lt;- robyn_outputs(
+  InputCollect, OutputModels,
+  pareto_fronts = "auto", # automatically pick how many pareto-fronts to fill min_candidates (100)
+  # min_candidates = 100, # top pareto models for clustering. Default to 100
+  # calibration_constraint = 0.1, # range c(0.01, 0.1) &amp; default at 0.1
+  csv_out = "pareto", # "pareto", "all", or NULL (for none)
+  clusters = TRUE, # Set to TRUE to cluster similar models by ROAS. See ?robyn_clusters
+  export = create_files, # this will create files locally
+  plot_folder = robyn_directory, # path for plots exports and files creation
+  plot_pareto = create_files # Set to FALSE to deactivate plotting and saving model one-pagers
+)</code></pre>
+<h3 class="wp-block-heading">Selecting and Saving a Model</h3>
+<p>Comparing models is crucial to finding the one that aligns with business reality. Export the selected model as a JSON file for easy access and optional plotting and checking using a one-pager.</p>
+<pre class="wp-block-code"><code># Compare models and select based on business reality
+print(OutputCollect)
+select_model &lt;- "1_122_7" # Pick one of the models from OutputCollect to proceed
+# Export selected model as a JSON file
+ExportedModel &lt;- robyn_write(InputCollect, OutputCollect, select_model, export = create_files)
+print(ExportedModel)
+# Optionally plot and check the one-pager for the selected model
+myOnePager &lt;- robyn_onepagers(InputCollect, OutputCollect, select_model, export = FALSE)</code></pre>
+<figure class="wp-block-image aligncenter size-large"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-7-916x1024.png" alt="" class="wp-image-715"/><figcaption class="wp-element-caption">A Meta Robyn one-pager example</figcaption></figure>
+<h3 class="wp-block-heading">Budget Allocation and Model Refresh</h3>
+<p>Utilize the selected model to allocate budget based on different scenarios, maximizing response or targeting efficiency. Refresh the model as needed based on new data or added variables.</p>
+<pre class="wp-block-code"><code># Allocate budget based on different scenarios
+# Example 1: max_response default setting: maximize response for latest month
+AllocatorCollect1 &lt;- robyn_allocator(
+  InputCollect = InputCollect,
+  OutputCollect = OutputCollect,
+  select_model = select_model,
+  # date_range = NULL, # Default last month as initial period
+  # total_budget = NULL, # When NULL, default is total spend in date_range
+  channel_constr_low = 0.7,
+  channel_constr_up = c(1.2, 1.5, 1.5, 1.5, 1.5),
+  # channel_constr_multiplier = 3,
+  scenario = "max_response",
+  export = create_files
+)
+# Print &amp; plot allocator's output
+print(AllocatorCollect1)
+plot(AllocatorCollect1)
+# Refresh the model based on new data or added variables
+# Provide JSON file with your InputCollect and ExportedModel specifications
+# It can be any model, initial or a refresh model
+json_file &lt;- "~/Desktop/Robyn_202211211853_init/RobynModel-1_100_6.json"
+RobynRefresh &lt;- robyn_refresh(
+  json_file = json_file,
+  dt_input = dt_simulated_weekly,
+  dt_holidays = dt_prophet_holidays,
+  refresh_steps = 13,
+  refresh_iters = 1000, # 1k is an estimation
+  refresh_trials = 1
+)</code></pre>
+<h3 class="wp-block-heading">Analyzing Marginal Returns</h3>
+<p>Finally, analyze marginal returns for a specified metric, such as spending on a specific channel. This step provides valuable insights into the effectiveness of your marketing efforts.</p>
+<pre class="wp-block-code"><code># Analyze marginal returns for a specified metric
+## Recreate original saturation curve
+Response &lt;- robyn_response(
+  InputCollect = InputCollect,
+  OutputCollect = OutputCollect,
+  select_model = select_model,
+  metric_name = "facebook_S"
+)
+Response$plot
+## Get the "next 100 dollar" marginal response on Spend1
+Spend1 &lt;- 20000
+Response1 &lt;- robyn_response(
+  InputCollect = InputCollect,
+  OutputCollect = OutputCollect,
+  select_model = select_model,
+  metric_name = "facebook_S",
+  metric_value = Spend1, # total budget for date_range
+  date_range = "last_1" # last two periods
+)
+Response1$plot</code></pre>
+<p>In conclusion, the Robyn package offers a comprehensive framework for optimizing marketing strategies. By following these steps, marketers can enhance their decision-making processes, allocate budgets effectively, and continually refine their approach based on real-time data. Stay ahead in the digital marketing game with Robyn's powerful capabilities.</p>
+                </div>
+                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Christos Visvardis. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

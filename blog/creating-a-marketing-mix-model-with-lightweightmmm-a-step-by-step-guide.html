@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating a Marketing Mix Model with LightweightMMM: A Step-by-Step Guide - Christos Visvardis</title>
+    <meta name="description" content="
+Marketing Mix Models (MMM) are powerful tools for understanding the impact of various marketing channels on business outcomes. In this guide, we'll w...">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">Christos Visvardis</a>
+            <nav>
+                <ul>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../blog.html" class="active">Blog</a></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/cvis/" target="_blank" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/christosvis" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+                                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12.3 22h-.1a10.313 10.313 0 0 1-10.2-10.2a10.288 10.288 0 0 1 10.2-10.2c.2 0 .4 0 .6.1a9.843 9.843 0 0 0-8.5 12.2a9.867 9.867 0 0 0 8.6 8c-.2.1-.4.1-.6.1z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <article class="blog-post">
+                <h1>Creating a Marketing Mix Model with LightweightMMM: A Step-by-Step Guide</h1>
+                <div class="post-meta">November 12, 2023</div>
+                <div class="post-content">
+                    <p>Marketing Mix Models (MMM) are powerful tools for understanding the impact of various marketing channels on business outcomes. In this guide, we'll walk through the process of creating a Marketing Mix Model using <a href="https://github.com/google/lightweight_mmm">LightweightMMM</a>, a Python library developed by Google. This guide assumes you have a basic understanding of marketing analytics and Python.</p>
+<h2 class="wp-block-heading">Step 1: Installation and Importing Libraries</h2>
+<p>To get started, install the LightweightMMM library:</p>
+<p>Next, import the necessary libraries:</p>
+<pre class="wp-block-code"><code>!pip install --upgrade git+https://github.com/google/lightweight_mmm.git</code></pre>
+<pre class="wp-block-code"><code>import jax.numpy as jnp
+from lightweight_mmm import lightweight_mmm, optimize_media, plot, preprocessing, utils</code></pre>
+<h2 class="wp-block-heading">Step 2: Organizing Data for Modeling</h2>
+<p>Generate or import your data for modeling. In this example, we simulate dummy data:</p>
+<pre class="wp-block-code"><code>SEED = 105
+data_size = 104 + 13
+n_media_channels = 3
+n_extra_features = 1
+media_data, extra_features, target, costs = utils.simulate_dummy_data(
+    data_size=data_size,
+    n_media_channels=n_media_channels,
+    n_extra_features=n_extra_features)</code></pre>
+<p>Split the dataset into training and testing sets:</p>
+<pre class="wp-block-code"><code>split_point = data_size - 13
+media_data_train = media_data&#91;:split_point, ...]
+media_data_test = media_data&#91;split_point:, ...]
+extra_features_train = extra_features&#91;:split_point, ...]
+extra_features_test = extra_features&#91;split_point:, ...]
+target_train = target&#91;:split_point]</code></pre>
+<h2 class="wp-block-heading">Step 3: Scaling the Data</h2>
+<p>Scaling is crucial for modeling. Use the <code>CustomScaler</code> class provided by LightweightMMM:</p>
+<pre class="wp-block-code"><code>media_scaler = preprocessing.CustomScaler(divide_operation=jnp.mean)
+extra_features_scaler = preprocessing.CustomScaler(divide_operation=jnp.mean)
+target_scaler = preprocessing.CustomScaler(divide_operation=jnp.mean)
+cost_scaler = preprocessing.CustomScaler(divide_operation=jnp.mean, multiply_by=0.15)
+media_data_train = media_scaler.fit_transform(media_data_train)
+extra_features_train = extra_features_scaler.fit_transform(extra_features_train)
+target_train = target_scaler.fit_transform(target_train)
+costs = cost_scaler.fit_transform(costs)</code></pre>
+<h2 class="wp-block-heading">Step 4: Training the Model</h2>
+<p>Choose a model type (e.g., "carryover") and train the model:</p>
+<pre class="wp-block-code"><code>mmm = lightweight_mmm.LightweightMMM(model_name="carryover")
+number_warmup = 1000
+number_samples = 1000
+mmm.fit(
+    media=media_data_train,
+    media_prior=costs,
+    target=target_train,
+    extra_features=extra_features_train,
+    number_warmup=number_warmup,
+    number_samples=number_samples,
+    seed=SEED
+)</code></pre>
+<p>Print a summary of the trace:</p>
+<pre class="wp-block-code"><code>mmm.print_summary()</code></pre>
+<p>Visualize posterior distributions of media effects:</p>
+<pre class="wp-block-code"><code>plot.plot_media_channel_posteriors(media_mix_model=mmm)</code></pre>
+<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-1.png" alt="" class="wp-image-705"/><figcaption class="wp-element-caption">Posterior distributions of the media effects</figcaption></figure>
+<h2 class="wp-block-heading">Step 5: Model Evaluation and Prediction</h2>
+<p>Check the model's fit to the training data:</p>
+<pre class="wp-block-code"><code>plot.plot_model_fit(mmm, target_scaler=target_scaler)</code></pre>
+<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-2.png" alt="" class="wp-image-706"/><figcaption class="wp-element-caption">Our model's fit to the training data</figcaption></figure>
+<p>Make predictions on unseen data:</p>
+<pre class="wp-block-code"><code>new_predictions = mmm.predict(
+    media=media_scaler.transform(media_data_test),
+    extra_features=extra_features_scaler.transform(extra_features_test),
+    seed=SEED
+)</code></pre>
+<pre class="wp-block-code"><code>plot.plot_out_of_sample_model_fit(out_of_sample_predictions=new_predictions,
+                                 out_of_sample_target=target_scaler.transform(target&#91;split_point:]))</code></pre>
+<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-3.png" alt="" class="wp-image-707"/><figcaption class="wp-element-caption">Model predictions on unseen data</figcaption></figure>
+<h2 class="wp-block-heading">Step 6: Media Insights</h2>
+<p>Extract media contribution and ROI estimates:</p>
+<pre class="wp-block-code"><code>media_contribution, roi_hat = mmm.get_posterior_metrics(target_scaler=target_scaler, cost_scaler=cost_scaler)</code></pre>
+<p>Visualize media contributions over time:</p>
+<pre class="wp-block-code"><code>plot.plot_media_baseline_contribution_area_plot(media_mix_model=mmm, target_scaler=target_scaler, fig_size=(30,10))</code></pre>
+<figure class="wp-block-image size-large"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-4-1024x370.png" alt="" class="wp-image-708"/><figcaption class="wp-element-caption">Estimated media &amp; baseline contribution over time</figcaption></figure>
+<p>Visualize media contributions with credibility intervals:</p>
+<pre class="wp-block-code"><code>plot.plot_bars_media_metrics(metric=media_contribution, metric_name="Media Contribution Percentage")
+plot.plot_bars_media_metrics(metric=roi_hat, metric_name="ROI hat")</code></pre>
+<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-5.png" alt="" class="wp-image-709"/><figcaption class="wp-element-caption">Estimated media contributions with their respective credibility intervals</figcaption></figure>
+<h2 class="wp-block-heading">Step 7: Optimization</h2>
+<p>Optimize budget allocation based on the model:</p>
+<pre class="wp-block-code"><code>n_time_periods = 10
+budget = jnp.sum(jnp.dot(prices, media_data.mean(axis=0))) * n_time_periods
+solution, kpi_without_optim, previous_media_allocation = optimize_media.find_optimal_budgets(
+    n_time_periods=n_time_periods,
+    media_mix_model=mmm,
+    extra_features=extra_features_scaler.transform(extra_features_test)&#91;:n_time_periods],
+    budget=budget,
+    prices=prices,
+    media_scaler=media_scaler,
+    target_scaler=target_scaler,
+    seed=SEED
+)</code></pre>
+<p>Check budget constraint and visualize results:</p>
+<pre class="wp-block-code"><code>plot.plot_pre_post_budget_allocation_comparison(
+    media_mix_model=mmm,
+    kpi_with_optim=solution&#91;'fun'],
+    kpi_without_optim=kpi_without_optim,
+    optimal_buget_allocation=optimal_buget_allocation,
+    previous_budget_allocation=previous_budget_allocation,
+    figure_size=(10,10)
+)</code></pre>
+<figure class="wp-block-image size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-6.png" alt="" class="wp-image-710"/><figcaption class="wp-element-caption">Pre/post optimization budget allocation comparison for each channel and pre/post optimization predicted target variable comparison</figcaption></figure>
+<h2 class="wp-block-heading">Step 8: Saving and Loading the Model</h2>
+<p>Save the trained model to disk:</p>
+<pre class="wp-block-code"><code>file_path = "media_mix_model.pkl"
+utils.save_model(media_mix_model=mmm, file_path=file_path)</code></pre>
+<p>Load the saved model:</p>
+<pre class="wp-block-code"><code>loaded_mmm = utils.load_model(file_path=file_path)
+loaded_mmm.trace&#91;"coef_media"].shape  # Example of accessing any of the model values.</code></pre>
+<p>Congratulations! You've successfully created a Marketing Mix Model using LightweightMMM. Feel free to customize and iterate on this framework based on your specific business needs.</p>
+                </div>
+                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Christos Visvardis. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
