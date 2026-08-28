@@ -16,7 +16,7 @@
             <a href="index.html" class="logo">Christos Visvardis</a>
             <nav>
                 <ul>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li>
                         <a href="https://www.linkedin.com/in/cvis/" target="_blank" aria-label="LinkedIn">
@@ -36,269 +36,111 @@
                             </svg>
                         </a>
                     </li>
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-                        <!-- Sun Icon -->
-                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                            style="display:none;">
-                            <path
-                                d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
-                        </svg>
-                        <!-- Moon Icon -->
-                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M12.3 22h-.1a10.313 10.313 0 0 1-10.2-10.2a10.288 10.288 0 0 1 10.2-10.2c.2 0 .4 0 .6.1a9.843 9.843 0 0 0-8.5 12.2a9.867 9.867 0 0 0 8.6 8c-.2.1-.4.1-.6.1z" />
-                        </svg>
-                    </button>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                            <!-- Sun Icon -->
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                style="display:none;">
+                                <path
+                                    d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+                            </svg>
+                            <!-- Moon Icon -->
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.3 22h-.1a10.313 10.313 0 0 1-10.2-10.2a10.288 10.288 0 0 1 10.2-10.2c.2 0 .4 0 .6.1a9.843 9.843 0 0 0-8.5 12.2a9.867 9.867 0 0 0 8.6 8c-.2.1-.4.1-.6.1z" />
+                            </svg>
+                        </button>
                     </li>
                 </ul>
             </nav>
         </header>
 
-        <main class="portfolio-content">
-            <h1 style="margin-bottom: 2rem;">Portfolio</h1>
-
-            <h2 class="wp-block-heading">Budget Optimizer</h2>
-
-            <p class="">How should I allocate my budget between paid channels?</p>
-
-            <p class=""><a href="https://budget-optimizer-app.streamlit.app/" target="_blank"
-                    rel="noreferrer noopener">Try out the app I made to allocate budget optimally</a> based on cost
-                curves for marketing channels. </p>
-
-            <figure class="wp-block-image size-large"><img src="assets/portfolio/budget-optimizer-1.png" alt=""
-                    class="wp-image-761" />
-                <figcaption class="wp-element-caption">The app takes the cost curves of different channels and optimizes
-                    the budget allocation based on them.</figcaption>
-            </figure>
-
-            <figure class="wp-block-image size-large"><img src="assets/portfolio/budget-optimizer-2.png" alt=""
-                    class="wp-image-760" />
-                <figcaption class="wp-element-caption">This is an example budget allocation based on the optimizer.
-                </figcaption>
-            </figure>
-
-            <figure class="wp-block-image size-large"><img src="assets/portfolio/budget-optimizer-3.png" alt=""
-                    class="wp-image-762" />
-                <figcaption class="wp-element-caption">The chart also shows the optimal spend/conversions combination on
-                    each cost curve, denoted by a red dot on the chart above.</figcaption>
-            </figure>
-
-            <h2 class="wp-block-heading">Causal Inference Test/Analysis</h2>
-
-            <p class="">How do I measure the incrementality of a TV campaign? How do I measure incrementality if I can't
-                run a proper experiment? <a href="https://christosvis.shinyapps.io/shinyappcausalimpact/"
-                    target="_blank" rel="noreferrer noopener">Check the Causal Impact app here</a></p>
-
-            <figure class="wp-block-image size-large"><img src="assets/portfolio/causal-impact.png" alt=""
-                    class="wp-image-749" />
-                <figcaption class="wp-element-caption">App I made to run Causal Impact analyses for tests. <a
-                        href="https://christosvis.shinyapps.io/shinyappcausalimpact/" target="_blank"
-                        rel="noreferrer noopener">Check the Causal Impact app here</a></figcaption>
-            </figure>
-
-            <h2 class="wp-block-heading">GeoLift Test</h2>
-
-            <p class="">Can I measure the incrementality of a channel or campaign by splitting the test and control
-                group by geographical area? </p>
-
-
-            <p class="">Check out the Apps I have made for <a
-                    href="https://christosvis.shinyapps.io/GeoLiftPowerAnalysis/" target="_blank"
-                    rel="noreferrer noopener">GeoLift Power Analysi</a>s (i.e. which markets should I select for my
-                test, for how long and with what budget?) and <a
-                    href="https://christosvis.shinyapps.io/GeoLiftPostAnalysisApp/" target="_blank"
-                    rel="noreferrer noopener">Geolift Post-Test Analysis</a> (i.e what was the incrementality of the
-                test vs the control group).</p>
-
-            <figure class="wp-block-image aligncenter size-large"><img src="assets/portfolio/geolift-power.png" alt=""
-                    class="wp-image-756" />
-                <figcaption class="wp-element-caption"><a href="https://christosvis.shinyapps.io/GeoLiftPowerAnalysis/"
-                        target="_blank" rel="noreferrer noopener">GeoLift Power Analysis app</a> to select test markets,
-                    test duration and budget.</figcaption>
-            </figure>
-
-            <figure class="wp-block-image aligncenter size-large"><img src="assets/portfolio/geolift-test.png" alt=""
-                    class="wp-image-757" />
-                <figcaption class="wp-element-caption"><a
-                        href="https://christosvis.shinyapps.io/GeoLiftPostAnalysisApp/" target="_blank"
-                        rel="noreferrer noopener">GeoLift Post-Test Analysis app</a> to understand if your test was
-                    incremental or not.</figcaption>
-            </figure>
-
-
-
-            <h2 class="wp-block-heading">Forecast App</h2>
-
-            <p class=""><a href="https://prophet-app.streamlit.app/" target="_blank" rel="noreferrer noopener">Use the
-                    app below</a> to forecast your conversions or other metrics that are important to your business. The
-                app is based on <a href="https://facebook.github.io/prophet/" target="_blank"
-                    rel="noreferrer noopener">Meta Prophet</a> and uses trend, holidays and seasonality to forecast the
-                metric.</p>
-
-            <figure class="wp-block-image size-large"><img src="assets/portfolio/prophet-1.png" alt=""
-                    class="wp-image-764" />
-                <figcaption class="wp-element-caption">You can upload your data or use generated data to try out the
-                    app.</figcaption>
-            </figure>
-
-            <figure class="wp-block-image size-large"><img src="assets/portfolio/prophet-2.png" alt=""
-                    class="wp-image-765" />
-                <figcaption class="wp-element-caption">You can select the forecast components like seasonality and
-                    holidays.</figcaption>
-            </figure>
-
-            <figure class="wp-block-image size-large"><img src="assets/portfolio/prophet-3.png" alt=""
-                    class="wp-image-766" />
-                <figcaption class="wp-element-caption">The app will provide the forecast for a given period.
-                </figcaption>
-            </figure>
-
-            <figure class="wp-block-image size-large"><img src="assets/portfolio/prophet-4.png" alt=""
-                    class="wp-image-767" />
-                <figcaption class="wp-element-caption">You can also see the components like seasonality, trend and
-                    holidays.</figcaption>
-            </figure>
-
-            <p class=""><a href="https://prophet-app.streamlit.app/" target="_blank" rel="noreferrer noopener">Try out
-                    the Forecast app here. </a></p>
-
-
-
-
-
-            <h1 class="wp-block-heading">Attribution and Marketing Mix Modeling</h1>
-
-            <h2 class="wp-block-heading">Marketing Mix Model</h2>
-
-            <p class="">What is the incremental contribution of each channel? How can we improve our attribution given
-                the limitations of iOS14? <a
-                    href="https://datastudio.google.com/u/0/reporting/2265dbda-ab04-4f82-872c-a467cdeedc4d/page/Aeh7D"
-                    target="_blank" rel="noreferrer noopener">Check an MMM dashboard + budget optimizer based on a
-                    Google Meridian model here</a></p>
-
-            <figure class="wp-block-image size-full"><img src="assets/portfolio/meridian-1.png" alt="" />
-                <figcaption class="wp-element-caption">An MMM dashboard generated used Google Meridian complete with
-                    budget optimizer and scenario planning. <a
-                        href="https://datastudio.google.com/u/0/reporting/2265dbda-ab04-4f82-872c-a467cdeedc4d/page/Aeh7D"
-                        target="_blank" rel="noreferrer noopener">Check it out here</a></figcaption>
-            </figure>
-
-            <figure class="wp-block-image size-full"><img src="assets/portfolio/robyn.png" alt=""
-                    class="wp-image-555" />
-                <figcaption class="wp-element-caption">An MMM example using Meta's Robyn to understand each channel's
-                    contribution, their cost curves, and the ideal budget allocation. <a
-                        href="https://github.com/christosvis/RobynMMM/blob/main/Robyn-MMM-Example.R" target="_blank"
-                        rel="noreferrer noopener">Check out my code on GitHub</a></figcaption>
-            </figure>
-
-            <h2 class="wp-block-heading">Attribution Models</h2>
-
-            <p class="">How can we improve our attribution with different attribution models?</p>
-
-            <figure class="wp-block-image aligncenter size-full"><img src="assets/portfolio/channelattribution.png"
-                    alt="Attribution models" class="wp-image-700" />
-                <figcaption class="wp-element-caption"><a
-                        href="https://github.com/christosvis/channelattribution/blob/main/ChannelAttribution.R"
-                        target="_blank" rel="noreferrer noopener">Comparison of Attribution models: First Touch, Last
-                        Touch, Linear and Data-Driven with Markov Chains</a></figcaption>
-            </figure>
-
-            <p class=""><strong>Resources:</strong></p>
-
-            <ul class="wp-block-list">
-                <li class=""><a href="https://github.com/christosvis/RobynMMM/blob/main/Robyn-MMM-Example.R"
-                        target="_blank" rel="noreferrer noopener">An MMM using Meta Robyn (GitHub)</a></li>
-                <li class=""><a
-                        href="https://github.com/christosvis/LightweightMMM/blob/main/GoogleLightweightMMM_demo.ipynb"
-                        target="_blank" rel="noreferrer noopener">An MMM using Google's Lightweight MMM (GitHub)</a>
-                </li>
-                <li class=""><a
-                        href="https://visvardis.com/how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study/"
-                        target="_blank" rel="noreferrer noopener">Case Study: How I created a custom attribution model
-                        for NA-KD and improved their ROI (8X incremental return on ad spend for new customers, 5X
-                        incremental return on ad spend for all customers)</a></li>
-                <li class=""><a href="https://visvardis.com/how-to-create-your-own-attribution-model/" target="_blank"
-                        rel="noreferrer noopener">Guide: How to create your own data-driven custom attribution model</a>
-                </li>
-                <li class=""><a href="https://github.com/christosvis/channelattribution/blob/main/ChannelAttribution.R"
-                        target="_blank" rel="noreferrer noopener">Creating different attribution models with Conversion
-                        Path data (GitHub)</a></li>
-            </ul>
-
-            <h1 class="wp-block-heading">Retention, LTV, Churn, Lead Generation</h1>
-
-            <h2 class="wp-block-heading">LTV, Retention, Churn</h2>
-
-            <h3 class="wp-block-heading">LTV Calculation/Cohort Analysis</h3>
-
-            <p class="">What is the LTV of our customers? </p>
-
-            <figure class="wp-block-image size-full"><img src="assets/portfolio/LTV-simple-app.png" alt="" />
-                <figcaption class="wp-element-caption">Check out the <a href="https://simpleltvapp.streamlit.app/"
-                        target="_blank" rel="noreferrer noopener">LTV App I made</a> so you can easily calculate your
-                    LTV.</figcaption>
-            </figure>
-
-            <figure class="wp-block-image size-full"><img src="assets/portfolio/app-tools.png" alt="" />
-                <figcaption class="wp-element-caption">Check the <a href="https://apptools.streamlit.app/"
-                        target="_blank" rel="noreferrer noopener">App Tools</a> I made that helps you predict the LTV,
-                    Retention and DAU of your app.</figcaption>
-            </figure>
-
-            <h3 class="wp-block-heading">Aha Moment</h3>
-
-            <p class="">What is the <a href="https://userguiding.com/blog/what-is-aha-moment-how-to-find-it/"
-                    target="_blank" rel="noreferrer noopener">Aha Moment</a> of our users?</p>
-
-            <figure class="wp-block-image size-full"><img src="assets/portfolio/aha-moment.png" alt=""
-                    class="wp-image-563" />
-                <figcaption class="wp-element-caption">Aha Moment analysis example</figcaption>
-            </figure>
-
-
-
-            <h2 class="wp-block-heading">Lead Quality and others</h2>
-
-            <h3 class="wp-block-heading">Lead Quality Scoring/Lead Pipeline Analysis</h3>
-
-            <p class="">What is the quality of a lead based on the data we have at the time of the lead generation? How
-                can we help the sales team select the highest quality leads and increase the lead quality?</p>
-
-            <figure class="wp-block-image size-large"><img
-                    src="assets/portfolio/lead-campaign.png" alt=""
-                    class="wp-image-536" />
-                <figcaption class="wp-element-caption">Example Lead Quality Score for each campaign</figcaption>
-            </figure>
-
-            <figure class="wp-block-image size-large"><img
-                    src="assets/portfolio/lead-pipeline-score.png" alt=""
-                    class="wp-image-537" />
-                <figcaption class="wp-element-caption">Example Lead Pipeline Analysis</figcaption>
-            </figure>
-
-            <h3 class="wp-block-heading">Sentiment Analysis</h3>
-
-            <p class="">What is the emotional tone associated to the online reviews of our product?</p>
-
-            <figure class="wp-block-image aligncenter size-full"><img src="assets/portfolio/sentiment-analysis-app.png"
-                    alt="" />
-                <figcaption class="wp-element-caption">Check out the <a
-                        href="https://sentiment-analysis-christos.streamlit.app/" target="_blank"
-                        rel="noreferrer noopener">Sentiment Analysis App</a> I made to analyze sentiments for reviews
-                    etc</figcaption>
-            </figure>
-
-            <h3 class="wp-block-heading">Pricing Analysis</h3>
-
-            <p class="">What is the optimal price for our product?</p>
-
-            <figure class="wp-block-image aligncenter size-full"><img
-                    src="assets/portfolio/price-sensitivity-app.png" alt="" />
-                <figcaption class="wp-element-caption">Check out the <a href="https://price-sensitivity-app.streamlit.app/"
-                        target="_blank" rel="noreferrer noopener">Price Sensitivity Analysis App</a> I made that helps
-                    you find the optimal price for your product</figcaption>
-            </figure>
-            <!-- Extracted Content End -->
+        <main>
+            <section id="portfolio-page">
+                <h1 style="margin-bottom: 2rem;">Portfolio</h1>
+                <div class="portfolio-grid">
+                    <a href="https://budget-optimizer-app.streamlit.app/" class="portfolio-card" target="_blank"
+                        rel="noreferrer noopener">
+                        <h3>Budget Optimizer</h3>
+                        <p>Allocate budget optimally based on cost curves for marketing channels.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/budget-optimizer-1.png" alt="Budget Optimizer">
+                        </div>
+                    </a>
+                    <a href="https://christosvis.shinyapps.io/shinyappcausalimpact/" class="portfolio-card"
+                        target="_blank" rel="noreferrer noopener">
+                        <h3>Causal Impact App</h3>
+                        <p>Measure incrementality when you can't run a proper experiment.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/causal-impact.png" alt="Causal Impact App">
+                        </div>
+                    </a>
+                    <a href="https://christosvis.shinyapps.io/GeoLiftPowerAnalysis/" class="portfolio-card"
+                        target="_blank" rel="noreferrer noopener">
+                        <h3>GeoLift Power Analysis App</h3>
+                        <p>Select test markets, duration, and budget for geo experiments.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/geolift-power.png" alt="GeoLift Power Analysis App">
+                        </div>
+                    </a>
+                    <a href="https://christosvis.shinyapps.io/GeoLiftPostAnalysisApp/" class="portfolio-card"
+                        target="_blank" rel="noreferrer noopener">
+                        <h3>GeoLift Post-Test Analysis App</h3>
+                        <p>Measure incrementality of a geo test versus the control group.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/geolift-test.png" alt="GeoLift Post-Test Analysis App">
+                        </div>
+                    </a>
+                    <a href="https://prophet-app.streamlit.app/" class="portfolio-card" target="_blank"
+                        rel="noreferrer noopener">
+                        <h3>Forecast App</h3>
+                        <p>Forecast conversions and other metrics using trend, seasonality, and holidays.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/prophet-3.png" alt="Forecast App">
+                        </div>
+                    </a>
+                    <a href="https://datastudio.google.com/u/0/reporting/2265dbda-ab04-4f82-872c-a467cdeedc4d/page/Aeh7D"
+                        class="portfolio-card" target="_blank" rel="noreferrer noopener">
+                        <h3>Meridian Marketing Mix Model Dashboard and Optimizer</h3>
+                        <p>Channel contribution, budget optimizer, and scenario planning from Google Meridian.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/meridian-1.png" alt="Meridian Marketing Mix Model Dashboard and Optimizer">
+                        </div>
+                    </a>
+                    <a href="https://simpleltvapp.streamlit.app/" class="portfolio-card" target="_blank"
+                        rel="noreferrer noopener">
+                        <h3>Simple LTV App</h3>
+                        <p>Calculate customer lifetime value from your data.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/LTV-simple-app.png" alt="Simple LTV App">
+                        </div>
+                    </a>
+                    <a href="https://apptools.streamlit.app/" class="portfolio-card" target="_blank"
+                        rel="noreferrer noopener">
+                        <h3>App Tools</h3>
+                        <p>Predict LTV, retention, and DAU for your app.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/app-tools.png" alt="App Tools">
+                        </div>
+                    </a>
+                    <a href="https://sentiment-analysis-christos.streamlit.app/" class="portfolio-card" target="_blank"
+                        rel="noreferrer noopener">
+                        <h3>Sentiment Analysis</h3>
+                        <p>Analyze the emotional tone of product reviews.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/sentiment-analysis-app.png" alt="Sentiment Analysis">
+                        </div>
+                    </a>
+                    <a href="https://price-sensitivity-app.streamlit.app/" class="portfolio-card" target="_blank"
+                        rel="noreferrer noopener">
+                        <h3>Pricing Analysis</h3>
+                        <p>Find the optimal price for your product.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/price-sensitivity-app.png" alt="Pricing Analysis">
+                        </div>
+                    </a>
+                </div>
+            </section>
         </main>
 
         <footer>
