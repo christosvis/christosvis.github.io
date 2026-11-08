@@ -1,0 +1,13 @@
+.decision, .pitfall, .checklist {
+  padding: 0.8em 1em; margin: 1.2em 0; border-left: 4px solid; font-size: 0.95em;
+}
+.decision { border-color: #1F4E79; background: #EEF3F8; }
+.decision::before { content: "The decision this chapter supports. "; font-weight: 700; color: #1F4E79; }
+.pitfall { border-color: #9A5B00; background: #FBF4EA; }
+.pitfall::before { content: "Pitfall. "; font-weight: 700; color: #9A5B00; }
+.checklist { border-color: #2E6B3A; background: #EEF5EF; }
+.checklist::before { content: "Checklist"; display: block; font-weight: 700; color: #2E6B3A; margin-bottom: 0.3em; }
+.decision p:last-child, .pitfall p:last-child, .checklist p:last-child, .checklist ul:last-child { margin-bottom: 0; }
+.book .book-body .page-wrapper .page-inner section.normal table td,
+.book .book-body .page-wrapper .page-inner section.normal table th { padding: 6px 10px; }
+.resources-section a { word-break: break-all; }

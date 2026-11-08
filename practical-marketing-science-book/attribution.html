@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 13 Attribution and its limits | Practical Marketing Science</title>
+  <meta name="description" content="A practical book for marketing science practitioners: experiments, marketing mix models, attribution, customer analytics and the judgment that ties them together." />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 13 Attribution and its limits | Practical Marketing Science" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="A practical book for marketing science practitioners: experiments, marketing mix models, attribution, customer analytics and the judgment that ties them together." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 13 Attribution and its limits | Practical Marketing Science" />
+  
+  <meta name="twitter:description" content="A practical book for marketing science practitioners: experiments, marketing mix models, attribution, customer analytics and the judgment that ties them together." />
+  
+
+<meta name="author" content="Christos Visvardis" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="curves.html"/>
+<link rel="next" href="triangulation.html"/>
+<script src="libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html">Practical Marketing Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-this-book-is-organized"><i class="fa fa-check"></i>How this book is organized</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contents-at-a-glance"><i class="fa fa-check"></i>Contents at a glance</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-and-tools"><i class="fa fa-check"></i>Code and tools</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#a-note-on-sources"><i class="fa fa-check"></i>A note on sources</a></li>
+</ul></li>
+<li class="part"><span><b>I Foundations</b></span></li>
+<li class="chapter" data-level="1" data-path="purpose.html"><a href="purpose.html"><i class="fa fa-check"></i><b>1</b> What marketing science is for</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="purpose.html"><a href="purpose.html#measurement-exists-to-change-decisions"><i class="fa fa-check"></i><b>1.1</b> Measurement exists to change decisions</a></li>
+<li class="chapter" data-level="1.2" data-path="purpose.html"><a href="purpose.html#three-numbers-that-get-confused"><i class="fa fa-check"></i><b>1.2</b> Three numbers that get confused</a></li>
+<li class="chapter" data-level="1.3" data-path="purpose.html"><a href="purpose.html#worked-example-how-attribution-flatters-retargeting"><i class="fa fa-check"></i><b>1.3</b> Worked example: how attribution flatters retargeting</a></li>
+<li class="chapter" data-level="1.4" data-path="purpose.html"><a href="purpose.html#an-evidence-hierarchy"><i class="fa fa-check"></i><b>1.4</b> An evidence hierarchy</a></li>
+<li class="chapter" data-level="1.5" data-path="purpose.html"><a href="purpose.html#triangulation-agreement-and-divergence"><i class="fa fa-check"></i><b>1.5</b> Triangulation: agreement and divergence</a></li>
+<li class="chapter" data-level="1.6" data-path="purpose.html"><a href="purpose.html#running-measurement-as-a-program"><i class="fa fa-check"></i><b>1.6</b> Running measurement as a program</a></li>
+<li class="chapter" data-level="1.7" data-path="purpose.html"><a href="purpose.html#checklist"><i class="fa fa-check"></i><b>1.7</b> Checklist</a></li>
+<li class="chapter" data-level="1.8" data-path="purpose.html"><a href="purpose.html#further-reading"><i class="fa fa-check"></i><b>1.8</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data and signal foundations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#the-measurement-dataset"><i class="fa fa-check"></i><b>2.1</b> The measurement dataset</a></li>
+<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#naming-and-taxonomy"><i class="fa fa-check"></i><b>2.2</b> Naming and taxonomy</a></li>
+<li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html#tracked-versus-system-of-record-outcomes"><i class="fa fa-check"></i><b>2.3</b> Tracked versus system-of-record outcomes</a></li>
+<li class="chapter" data-level="2.4" data-path="data.html"><a href="data.html#signal-loss"><i class="fa fa-check"></i><b>2.4</b> Signal loss</a></li>
+<li class="chapter" data-level="2.5" data-path="data.html"><a href="data.html#the-change-log"><i class="fa fa-check"></i><b>2.5</b> The change log</a></li>
+<li class="chapter" data-level="2.6" data-path="data.html"><a href="data.html#worked-example-a-campaign-that-seems-to-hurt"><i class="fa fa-check"></i><b>2.6</b> Worked example: a campaign that seems to hurt</a></li>
+<li class="chapter" data-level="2.7" data-path="data.html"><a href="data.html#checks-before-any-analysis"><i class="fa fa-check"></i><b>2.7</b> Checks before any analysis</a></li>
+<li class="chapter" data-level="2.8" data-path="data.html"><a href="data.html#what-to-request-for-a-model-or-a-test"><i class="fa fa-check"></i><b>2.8</b> What to request for a model or a test</a></li>
+<li class="chapter" data-level="2.9" data-path="data.html"><a href="data.html#checklist-1"><i class="fa fa-check"></i><b>2.9</b> Checklist</a></li>
+<li class="chapter" data-level="2.10" data-path="data.html"><a href="data.html#further-reading-1"><i class="fa fa-check"></i><b>2.10</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="causal.html"><a href="causal.html"><i class="fa fa-check"></i><b>3</b> Causal thinking for marketers</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="causal.html"><a href="causal.html#every-marketing-question-is-a-counterfactual"><i class="fa fa-check"></i><b>3.1</b> Every marketing question is a counterfactual</a></li>
+<li class="chapter" data-level="3.2" data-path="causal.html"><a href="causal.html#why-marketing-data-is-especially-confounded"><i class="fa fa-check"></i><b>3.2</b> Why marketing data is especially confounded</a></li>
+<li class="chapter" data-level="3.3" data-path="causal.html"><a href="causal.html#drawing-the-problem-causal-graphs"><i class="fa fa-check"></i><b>3.3</b> Drawing the problem: causal graphs</a></li>
+<li class="chapter" data-level="3.4" data-path="causal.html"><a href="causal.html#worked-example-three-regressions-three-answers"><i class="fa fa-check"></i><b>3.4</b> Worked example: three regressions, three answers</a></li>
+<li class="chapter" data-level="3.5" data-path="causal.html"><a href="causal.html#a-ladder-of-identification-strategies"><i class="fa fa-check"></i><b>3.5</b> A ladder of identification strategies</a></li>
+<li class="chapter" data-level="3.6" data-path="causal.html"><a href="causal.html#reporting-an-observational-result-honestly"><i class="fa fa-check"></i><b>3.6</b> Reporting an observational result honestly</a></li>
+<li class="chapter" data-level="3.7" data-path="causal.html"><a href="causal.html#checklist-2"><i class="fa fa-check"></i><b>3.7</b> Checklist</a></li>
+<li class="chapter" data-level="3.8" data-path="causal.html"><a href="causal.html#further-reading-2"><i class="fa fa-check"></i><b>3.8</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>4</b> Bayesian reasoning in practice</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="bayes.html"><a href="bayes.html#why-bayesian-thinking-fits-marketing"><i class="fa fa-check"></i><b>4.1</b> Why Bayesian thinking fits marketing</a></li>
+<li class="chapter" data-level="4.2" data-path="bayes.html"><a href="bayes.html#worked-example-an-ab-test-read-two-ways"><i class="fa fa-check"></i><b>4.2</b> Worked example: an A/B test, read two ways</a></li>
+<li class="chapter" data-level="4.3" data-path="bayes.html"><a href="bayes.html#worked-example-combining-a-model-and-an-experiment"><i class="fa fa-check"></i><b>4.3</b> Worked example: combining a model and an experiment</a></li>
+<li class="chapter" data-level="4.4" data-path="bayes.html"><a href="bayes.html#choosing-priors"><i class="fa fa-check"></i><b>4.4</b> Choosing priors</a></li>
+<li class="chapter" data-level="4.5" data-path="bayes.html"><a href="bayes.html#from-uncertainty-to-decisions"><i class="fa fa-check"></i><b>4.5</b> From uncertainty to decisions</a></li>
+<li class="chapter" data-level="4.6" data-path="bayes.html"><a href="bayes.html#checklist-3"><i class="fa fa-check"></i><b>4.6</b> Checklist</a></li>
+<li class="chapter" data-level="4.7" data-path="bayes.html"><a href="bayes.html#further-reading-3"><i class="fa fa-check"></i><b>4.7</b> Further reading</a></li>
+</ul></li>
+<li class="part"><span><b>II Experiments</b></span></li>
+<li class="chapter" data-level="5" data-path="abtests.html"><a href="abtests.html"><i class="fa fa-check"></i><b>5</b> A/B tests that hold up</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="abtests.html"><a href="abtests.html#design-before-data"><i class="fa fa-check"></i><b>5.1</b> Design before data</a></li>
+<li class="chapter" data-level="5.2" data-path="abtests.html"><a href="abtests.html#power-and-the-minimum-detectable-effect"><i class="fa fa-check"></i><b>5.2</b> Power and the minimum detectable effect</a></li>
+<li class="chapter" data-level="5.3" data-path="abtests.html"><a href="abtests.html#peeking-the-most-common-way-to-ruin-a-test"><i class="fa fa-check"></i><b>5.3</b> Peeking: the most common way to ruin a test</a></li>
+<li class="chapter" data-level="5.4" data-path="abtests.html"><a href="abtests.html#multiple-comparisons"><i class="fa fa-check"></i><b>5.4</b> Multiple comparisons</a></li>
+<li class="chapter" data-level="5.5" data-path="abtests.html"><a href="abtests.html#variance-reduction-with-cuped"><i class="fa fa-check"></i><b>5.5</b> Variance reduction with CUPED</a></li>
+<li class="chapter" data-level="5.6" data-path="abtests.html"><a href="abtests.html#checks-that-catch-broken-tests"><i class="fa fa-check"></i><b>5.6</b> Checks that catch broken tests</a></li>
+<li class="chapter" data-level="5.7" data-path="abtests.html"><a href="abtests.html#tests-before-the-product-exists"><i class="fa fa-check"></i><b>5.7</b> Tests before the product exists</a></li>
+<li class="chapter" data-level="5.8" data-path="abtests.html"><a href="abtests.html#reporting-a-test"><i class="fa fa-check"></i><b>5.8</b> Reporting a test</a></li>
+<li class="chapter" data-level="5.9" data-path="abtests.html"><a href="abtests.html#checklist-4"><i class="fa fa-check"></i><b>5.9</b> Checklist</a></li>
+<li class="chapter" data-level="5.10" data-path="abtests.html"><a href="abtests.html#further-reading-4"><i class="fa fa-check"></i><b>5.10</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="geo.html"><a href="geo.html"><i class="fa fa-check"></i><b>6</b> Geo experiments</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="geo.html"><a href="geo.html#when-geo-tests-are-the-right-tool"><i class="fa fa-check"></i><b>6.1</b> When geo tests are the right tool</a></li>
+<li class="chapter" data-level="6.2" data-path="geo.html"><a href="geo.html#design-choices"><i class="fa fa-check"></i><b>6.2</b> Design choices</a></li>
+<li class="chapter" data-level="6.3" data-path="geo.html"><a href="geo.html#worked-example-a-heavy-up-test-on-40-regions"><i class="fa fa-check"></i><b>6.3</b> Worked example: a heavy-up test on 40 regions</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="geo.html"><a href="geo.html#power-what-this-design-could-have-detected"><i class="fa fa-check"></i><b>6.3.1</b> Power: what this design could have detected</a></li>
+<li class="chapter" data-level="6.3.2" data-path="geo.html"><a href="geo.html#from-lift-to-iroas"><i class="fa fa-check"></i><b>6.3.2</b> From lift to iROAS</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="geo.html"><a href="geo.html#analysis-methods-in-practice"><i class="fa fa-check"></i><b>6.4</b> Analysis methods in practice</a></li>
+<li class="chapter" data-level="6.5" data-path="geo.html"><a href="geo.html#things-that-break-geo-tests"><i class="fa fa-check"></i><b>6.5</b> Things that break geo tests</a></li>
+<li class="chapter" data-level="6.6" data-path="geo.html"><a href="geo.html#checklist-5"><i class="fa fa-check"></i><b>6.6</b> Checklist</a></li>
+<li class="chapter" data-level="6.7" data-path="geo.html"><a href="geo.html#further-reading-5"><i class="fa fa-check"></i><b>6.7</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="quasi.html"><a href="quasi.html"><i class="fa fa-check"></i><b>7</b> Quasi-experiments: DiD, CausalImpact and synthetic control</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="quasi.html"><a href="quasi.html#making-the-best-of-things-that-already-happened"><i class="fa fa-check"></i><b>7.1</b> Making the best of things that already happened</a></li>
+<li class="chapter" data-level="7.2" data-path="quasi.html"><a href="quasi.html#difference-in-differences"><i class="fa fa-check"></i><b>7.2</b> Difference-in-differences</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="quasi.html"><a href="quasi.html#worked-example-an-event-study"><i class="fa fa-check"></i><b>7.2.1</b> Worked example: an event study</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="quasi.html"><a href="quasi.html#causalimpact-a-model-based-counterfactual"><i class="fa fa-check"></i><b>7.3</b> CausalImpact: a model-based counterfactual</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="quasi.html"><a href="quasi.html#worked-example-a-site-change-in-one-market"><i class="fa fa-check"></i><b>7.3.1</b> Worked example: a site change in one market</a></li>
+<li class="chapter" data-level="7.3.2" data-path="quasi.html"><a href="quasi.html#placebo-in-time"><i class="fa fa-check"></i><b>7.3.2</b> Placebo in time</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="quasi.html"><a href="quasi.html#synthetic-control-for-a-single-unit"><i class="fa fa-check"></i><b>7.4</b> Synthetic control for a single unit</a></li>
+<li class="chapter" data-level="7.5" data-path="quasi.html"><a href="quasi.html#when-there-is-no-control-at-all"><i class="fa fa-check"></i><b>7.5</b> When there is no control at all</a></li>
+<li class="chapter" data-level="7.6" data-path="quasi.html"><a href="quasi.html#threats-and-how-to-probe-them"><i class="fa fa-check"></i><b>7.6</b> Threats and how to probe them</a></li>
+<li class="chapter" data-level="7.7" data-path="quasi.html"><a href="quasi.html#checklist-6"><i class="fa fa-check"></i><b>7.7</b> Checklist</a></li>
+<li class="chapter" data-level="7.8" data-path="quasi.html"><a href="quasi.html#further-reading-6"><i class="fa fa-check"></i><b>7.8</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lift.html"><a href="lift.html"><i class="fa fa-check"></i><b>8</b> Reading platform lift studies</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lift.html"><a href="lift.html#what-a-lift-study-is"><i class="fa fa-check"></i><b>8.1</b> What a lift study is</a></li>
+<li class="chapter" data-level="8.2" data-path="lift.html"><a href="lift.html#what-exactly-was-measured"><i class="fa fa-check"></i><b>8.2</b> What exactly was measured</a></li>
+<li class="chapter" data-level="8.3" data-path="lift.html"><a href="lift.html#worked-example-from-a-study-readout-to-usable-numbers"><i class="fa fa-check"></i><b>8.3</b> Worked example: from a study readout to usable numbers</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="lift.html"><a href="lift.html#intent-to-treat-versus-reached-users"><i class="fa fa-check"></i><b>8.3.1</b> Intent-to-treat versus reached users</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="lift.html"><a href="lift.html#sizing-the-holdout"><i class="fa fa-check"></i><b>8.4</b> Sizing the holdout</a></li>
+<li class="chapter" data-level="8.5" data-path="lift.html"><a href="lift.html#using-a-lift-study"><i class="fa fa-check"></i><b>8.5</b> Using a lift study</a></li>
+<li class="chapter" data-level="8.6" data-path="lift.html"><a href="lift.html#brand-lift-studies"><i class="fa fa-check"></i><b>8.6</b> Brand lift studies</a></li>
+<li class="chapter" data-level="8.7" data-path="lift.html"><a href="lift.html#checklist-7"><i class="fa fa-check"></i><b>8.7</b> Checklist</a></li>
+<li class="chapter" data-level="8.8" data-path="lift.html"><a href="lift.html#further-reading-7"><i class="fa fa-check"></i><b>8.8</b> Further reading</a></li>
+</ul></li>
+<li class="part"><span><b>III Models</b></span></li>
+<li class="chapter" data-level="9" data-path="mmm.html"><a href="mmm.html"><i class="fa fa-check"></i><b>9</b> Marketing mix modeling end to end</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="mmm.html"><a href="mmm.html#what-an-mmm-is-and-what-it-is-not"><i class="fa fa-check"></i><b>9.1</b> What an MMM is, and what it is not</a></li>
+<li class="chapter" data-level="9.2" data-path="mmm.html"><a href="mmm.html#the-building-blocks"><i class="fa fa-check"></i><b>9.2</b> The building blocks</a></li>
+<li class="chapter" data-level="9.3" data-path="mmm.html"><a href="mmm.html#the-data-for-this-part-of-the-book"><i class="fa fa-check"></i><b>9.3</b> The data for this part of the book</a></li>
+<li class="chapter" data-level="9.4" data-path="mmm.html"><a href="mmm.html#fitting-a-classical-mmm"><i class="fa fa-check"></i><b>9.4</b> Fitting a classical MMM</a></li>
+<li class="chapter" data-level="9.5" data-path="mmm.html"><a href="mmm.html#reading-the-result"><i class="fa fa-check"></i><b>9.5</b> Reading the result</a></li>
+<li class="chapter" data-level="9.6" data-path="mmm.html"><a href="mmm.html#modeling-decisions-that-matter"><i class="fa fa-check"></i><b>9.6</b> Modeling decisions that matter</a></li>
+<li class="chapter" data-level="9.7" data-path="mmm.html"><a href="mmm.html#the-tool-landscape"><i class="fa fa-check"></i><b>9.7</b> The tool landscape</a></li>
+<li class="chapter" data-level="9.8" data-path="mmm.html"><a href="mmm.html#checklist-8"><i class="fa fa-check"></i><b>9.8</b> Checklist</a></li>
+<li class="chapter" data-level="9.9" data-path="mmm.html"><a href="mmm.html#further-reading-8"><i class="fa fa-check"></i><b>9.9</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="bayesmmm.html"><a href="bayesmmm.html"><i class="fa fa-check"></i><b>10</b> Bayesian MMM in practice</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="bayesmmm.html"><a href="bayesmmm.html#what-priors-buy-you"><i class="fa fa-check"></i><b>10.1</b> What priors buy you</a></li>
+<li class="chapter" data-level="10.2" data-path="bayesmmm.html"><a href="bayesmmm.html#the-model"><i class="fa fa-check"></i><b>10.2</b> The model</a></li>
+<li class="chapter" data-level="10.3" data-path="bayesmmm.html"><a href="bayesmmm.html#prior-predictive-check"><i class="fa fa-check"></i><b>10.3</b> Prior predictive check</a></li>
+<li class="chapter" data-level="10.4" data-path="bayesmmm.html"><a href="bayesmmm.html#fitting-and-diagnostics"><i class="fa fa-check"></i><b>10.4</b> Fitting and diagnostics</a></li>
+<li class="chapter" data-level="10.5" data-path="bayesmmm.html"><a href="bayesmmm.html#results-what-the-posterior-says"><i class="fa fa-check"></i><b>10.5</b> Results: what the posterior says</a></li>
+<li class="chapter" data-level="10.6" data-path="bayesmmm.html"><a href="bayesmmm.html#the-same-model-with-pymc-marketing"><i class="fa fa-check"></i><b>10.6</b> The same model with PyMC-Marketing</a></li>
+<li class="chapter" data-level="10.7" data-path="bayesmmm.html"><a href="bayesmmm.html#checklist-9"><i class="fa fa-check"></i><b>10.7</b> Checklist</a></li>
+<li class="chapter" data-level="10.8" data-path="bayesmmm.html"><a href="bayesmmm.html#further-reading-9"><i class="fa fa-check"></i><b>10.8</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="validation.html"><a href="validation.html"><i class="fa fa-check"></i><b>11</b> Validating and calibrating MMM</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="validation.html"><a href="validation.html#what-validation-has-to-catch"><i class="fa fa-check"></i><b>11.1</b> What validation has to catch</a></li>
+<li class="chapter" data-level="11.2" data-path="validation.html"><a href="validation.html#out-of-sample-forecasts-and-stability"><i class="fa fa-check"></i><b>11.2</b> Out-of-sample forecasts and stability</a></li>
+<li class="chapter" data-level="11.3" data-path="validation.html"><a href="validation.html#calibrating-with-experiments"><i class="fa fa-check"></i><b>11.3</b> Calibrating with experiments</a></li>
+<li class="chapter" data-level="11.4" data-path="validation.html"><a href="validation.html#what-calibration-did-and-did-not-do"><i class="fa fa-check"></i><b>11.4</b> What calibration did and did not do</a></li>
+<li class="chapter" data-level="11.5" data-path="validation.html"><a href="validation.html#calibrating-well"><i class="fa fa-check"></i><b>11.5</b> Calibrating well</a></li>
+<li class="chapter" data-level="11.6" data-path="validation.html"><a href="validation.html#other-validation-worth-doing"><i class="fa fa-check"></i><b>11.6</b> Other validation worth doing</a></li>
+<li class="chapter" data-level="11.7" data-path="validation.html"><a href="validation.html#checklist-10"><i class="fa fa-check"></i><b>11.7</b> Checklist</a></li>
+<li class="chapter" data-level="11.8" data-path="validation.html"><a href="validation.html#further-reading-10"><i class="fa fa-check"></i><b>11.8</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="curves.html"><a href="curves.html"><i class="fa fa-check"></i><b>12</b> Response curves and budget optimization</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="curves.html"><a href="curves.html#average-returns-do-not-set-budgets"><i class="fa fa-check"></i><b>12.1</b> Average returns do not set budgets</a></li>
+<li class="chapter" data-level="12.2" data-path="curves.html"><a href="curves.html#response-curves-from-the-posterior"><i class="fa fa-check"></i><b>12.2</b> Response curves from the posterior</a></li>
+<li class="chapter" data-level="12.3" data-path="curves.html"><a href="curves.html#marginal-roi-at-current-spend"><i class="fa fa-check"></i><b>12.3</b> Marginal ROI at current spend</a></li>
+<li class="chapter" data-level="12.4" data-path="curves.html"><a href="curves.html#optimizing-the-allocation"><i class="fa fa-check"></i><b>12.4</b> Optimizing the allocation</a></li>
+<li class="chapter" data-level="12.5" data-path="curves.html"><a href="curves.html#setting-the-total-budget"><i class="fa fa-check"></i><b>12.5</b> Setting the total budget</a></li>
+<li class="chapter" data-level="12.6" data-path="curves.html"><a href="curves.html#turning-a-recommendation-into-a-test"><i class="fa fa-check"></i><b>12.6</b> Turning a recommendation into a test</a></li>
+<li class="chapter" data-level="12.7" data-path="curves.html"><a href="curves.html#checklist-11"><i class="fa fa-check"></i><b>12.7</b> Checklist</a></li>
+<li class="chapter" data-level="12.8" data-path="curves.html"><a href="curves.html#further-reading-11"><i class="fa fa-check"></i><b>12.8</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="attribution.html"><a href="attribution.html"><i class="fa fa-check"></i><b>13</b> Attribution and its limits</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="attribution.html"><a href="attribution.html#what-attribution-does"><i class="fa fa-check"></i><b>13.1</b> What attribution does</a></li>
+<li class="chapter" data-level="13.2" data-path="attribution.html"><a href="attribution.html#worked-example-five-attribution-models-against-the-truth"><i class="fa fa-check"></i><b>13.2</b> Worked example: five attribution models against the truth</a></li>
+<li class="chapter" data-level="13.3" data-path="attribution.html"><a href="attribution.html#what-the-example-shows"><i class="fa fa-check"></i><b>13.3</b> What the example shows</a></li>
+<li class="chapter" data-level="13.4" data-path="attribution.html"><a href="attribution.html#what-attribution-is-still-good-for"><i class="fa fa-check"></i><b>13.4</b> What attribution is still good for</a></li>
+<li class="chapter" data-level="13.5" data-path="attribution.html"><a href="attribution.html#signal-loss-and-cookieless-approaches"><i class="fa fa-check"></i><b>13.5</b> Signal loss and cookieless approaches</a></li>
+<li class="chapter" data-level="13.6" data-path="attribution.html"><a href="attribution.html#checklist-12"><i class="fa fa-check"></i><b>13.6</b> Checklist</a></li>
+<li class="chapter" data-level="13.7" data-path="attribution.html"><a href="attribution.html#further-reading-12"><i class="fa fa-check"></i><b>13.7</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="triangulation.html"><a href="triangulation.html"><i class="fa fa-check"></i><b>14</b> Triangulation: deciding under contradictory evidence</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="triangulation.html"><a href="triangulation.html#the-situation-you-are-actually-in"><i class="fa fa-check"></i><b>14.1</b> The situation you are actually in</a></li>
+<li class="chapter" data-level="14.2" data-path="triangulation.html"><a href="triangulation.html#every-estimate-has-two-kinds-of-error"><i class="fa fa-check"></i><b>14.2</b> Every estimate has two kinds of error</a></li>
+<li class="chapter" data-level="14.3" data-path="triangulation.html"><a href="triangulation.html#worked-example-what-is-search-really-worth"><i class="fa fa-check"></i><b>14.3</b> Worked example: what is search really worth?</a></li>
+<li class="chapter" data-level="14.4" data-path="triangulation.html"><a href="triangulation.html#from-belief-to-decision"><i class="fa fa-check"></i><b>14.4</b> From belief to decision</a></li>
+<li class="chapter" data-level="14.5" data-path="triangulation.html"><a href="triangulation.html#diagnosing-disagreement"><i class="fa fa-check"></i><b>14.5</b> Diagnosing disagreement</a></li>
+<li class="chapter" data-level="14.6" data-path="triangulation.html"><a href="triangulation.html#deciding-what-to-test-next"><i class="fa fa-check"></i><b>14.6</b> Deciding what to test next</a></li>
+<li class="chapter" data-level="14.7" data-path="triangulation.html"><a href="triangulation.html#a-measurement-scorecard"><i class="fa fa-check"></i><b>14.7</b> A measurement scorecard</a></li>
+<li class="chapter" data-level="14.8" data-path="triangulation.html"><a href="triangulation.html#checklist-13"><i class="fa fa-check"></i><b>14.8</b> Checklist</a></li>
+<li class="chapter" data-level="14.9" data-path="triangulation.html"><a href="triangulation.html#further-reading-13"><i class="fa fa-check"></i><b>14.9</b> Further reading</a></li>
+</ul></li>
+<li class="part"><span><b>IV Customers</b></span></li>
+<li class="chapter" data-level="15" data-path="ltv.html"><a href="ltv.html"><i class="fa fa-check"></i><b>15</b> Cohorts, retention, LTV and payback</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="ltv.html"><a href="ltv.html#why-cohorts"><i class="fa fa-check"></i><b>15.1</b> Why cohorts</a></li>
+<li class="chapter" data-level="15.2" data-path="ltv.html"><a href="ltv.html#worked-example-two-channels-twelve-cohorts"><i class="fa fa-check"></i><b>15.2</b> Worked example: two channels, twelve cohorts</a></li>
+<li class="chapter" data-level="15.3" data-path="ltv.html"><a href="ltv.html#heterogeneity-makes-churn-fall-over-time"><i class="fa fa-check"></i><b>15.3</b> Heterogeneity makes churn fall over time</a></li>
+<li class="chapter" data-level="15.4" data-path="ltv.html"><a href="ltv.html#payback-and-what-a-channel-can-afford"><i class="fa fa-check"></i><b>15.4</b> Payback and what a channel can afford</a></li>
+<li class="chapter" data-level="15.5" data-path="ltv.html"><a href="ltv.html#practical-choices"><i class="fa fa-check"></i><b>15.5</b> Practical choices</a></li>
+<li class="chapter" data-level="15.6" data-path="ltv.html"><a href="ltv.html#checklist-14"><i class="fa fa-check"></i><b>15.6</b> Checklist</a></li>
+<li class="chapter" data-level="15.7" data-path="ltv.html"><a href="ltv.html#further-reading-14"><i class="fa fa-check"></i><b>15.7</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="churn.html"><a href="churn.html"><i class="fa fa-check"></i><b>16</b> Churn and survival analysis</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="churn.html"><a href="churn.html#churn-is-a-time-to-event-problem"><i class="fa fa-check"></i><b>16.1</b> Churn is a time-to-event problem</a></li>
+<li class="chapter" data-level="16.2" data-path="churn.html"><a href="churn.html#worked-example-the-cost-of-ignoring-censoring"><i class="fa fa-check"></i><b>16.2</b> Worked example: the cost of ignoring censoring</a></li>
+<li class="chapter" data-level="16.3" data-path="churn.html"><a href="churn.html#comparing-groups"><i class="fa fa-check"></i><b>16.3</b> Comparing groups</a></li>
+<li class="chapter" data-level="16.4" data-path="churn.html"><a href="churn.html#cox-regression-and-why-its-hazard-ratios-are-not-effects"><i class="fa fa-check"></i><b>16.4</b> Cox regression, and why its hazard ratios are not effects</a></li>
+<li class="chapter" data-level="16.5" data-path="churn.html"><a href="churn.html#predicting-churn-versus-preventing-it"><i class="fa fa-check"></i><b>16.5</b> Predicting churn versus preventing it</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="churn.html"><a href="churn.html#worked-example-risk-targeting-versus-uplift-targeting"><i class="fa fa-check"></i><b>16.5.1</b> Worked example: risk targeting versus uplift targeting</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="churn.html"><a href="churn.html#practical-notes"><i class="fa fa-check"></i><b>16.6</b> Practical notes</a></li>
+<li class="chapter" data-level="16.7" data-path="churn.html"><a href="churn.html#checklist-15"><i class="fa fa-check"></i><b>16.7</b> Checklist</a></li>
+<li class="chapter" data-level="16.8" data-path="churn.html"><a href="churn.html#further-reading-15"><i class="fa fa-check"></i><b>16.8</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="segmentation.html"><a href="segmentation.html"><i class="fa fa-check"></i><b>17</b> Segmentation</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="segmentation.html"><a href="segmentation.html#what-a-segmentation-is-for"><i class="fa fa-check"></i><b>17.1</b> What a segmentation is for</a></li>
+<li class="chapter" data-level="17.2" data-path="segmentation.html"><a href="segmentation.html#worked-example-a-customer-base-with-four-true-segments"><i class="fa fa-check"></i><b>17.2</b> Worked example: a customer base with four true segments</a></li>
+<li class="chapter" data-level="17.3" data-path="segmentation.html"><a href="segmentation.html#rfm-the-managerial-baseline"><i class="fa fa-check"></i><b>17.3</b> RFM: the managerial baseline</a></li>
+<li class="chapter" data-level="17.4" data-path="segmentation.html"><a href="segmentation.html#clustering-and-the-choice-that-decides-everything"><i class="fa fa-check"></i><b>17.4</b> Clustering, and the choice that decides everything</a></li>
+<li class="chapter" data-level="17.5" data-path="segmentation.html"><a href="segmentation.html#how-many-segments"><i class="fa fa-check"></i><b>17.5</b> How many segments?</a></li>
+<li class="chapter" data-level="17.6" data-path="segmentation.html"><a href="segmentation.html#mixed-data"><i class="fa fa-check"></i><b>17.6</b> Mixed data</a></li>
+<li class="chapter" data-level="17.7" data-path="segmentation.html"><a href="segmentation.html#from-segments-to-actions"><i class="fa fa-check"></i><b>17.7</b> From segments to actions</a></li>
+<li class="chapter" data-level="17.8" data-path="segmentation.html"><a href="segmentation.html#checklist-16"><i class="fa fa-check"></i><b>17.8</b> Checklist</a></li>
+<li class="chapter" data-level="17.9" data-path="segmentation.html"><a href="segmentation.html#further-reading-16"><i class="fa fa-check"></i><b>17.9</b> Further reading</a></li>
+</ul></li>
+<li class="part"><span><b>V Brand, pricing and demand</b></span></li>
+<li class="chapter" data-level="18" data-path="brand.html"><a href="brand.html"><i class="fa fa-check"></i><b>18</b> Brand measurement</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="brand.html"><a href="brand.html#the-measurement-problem-with-brand"><i class="fa fa-check"></i><b>18.1</b> The measurement problem with brand</a></li>
+<li class="chapter" data-level="18.2" data-path="brand.html"><a href="brand.html#share-of-search"><i class="fa fa-check"></i><b>18.2</b> Share of search</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="brand.html"><a href="brand.html#worked-example-finding-a-lead-that-is-really-there"><i class="fa fa-check"></i><b>18.2.1</b> Worked example: finding a lead that is really there</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="brand.html"><a href="brand.html#what-brand-growth-looks-like-double-jeopardy"><i class="fa fa-check"></i><b>18.3</b> What brand growth looks like: double jeopardy</a></li>
+<li class="chapter" data-level="18.4" data-path="brand.html"><a href="brand.html#measuring-brand-effects-causally"><i class="fa fa-check"></i><b>18.4</b> Measuring brand effects causally</a></li>
+<li class="chapter" data-level="18.5" data-path="brand.html"><a href="brand.html#checklist-17"><i class="fa fa-check"></i><b>18.5</b> Checklist</a></li>
+<li class="chapter" data-level="18.6" data-path="brand.html"><a href="brand.html#further-reading-17"><i class="fa fa-check"></i><b>18.6</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="pricing.html"><a href="pricing.html"><i class="fa fa-check"></i><b>19</b> Pricing research and elasticities</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="pricing.html"><a href="pricing.html#a-map-of-pricing-methods"><i class="fa fa-check"></i><b>19.1</b> A map of pricing methods</a></li>
+<li class="chapter" data-level="19.2" data-path="pricing.html"><a href="pricing.html#van-westendorp-finding-the-acceptable-range"><i class="fa fa-check"></i><b>19.2</b> Van Westendorp: finding the acceptable range</a></li>
+<li class="chapter" data-level="19.3" data-path="pricing.html"><a href="pricing.html#choice-based-conjoint-what-features-are-worth"><i class="fa fa-check"></i><b>19.3</b> Choice-based conjoint: what features are worth</a></li>
+<li class="chapter" data-level="19.4" data-path="pricing.html"><a href="pricing.html#will-a-price-change-make-money"><i class="fa fa-check"></i><b>19.4</b> Will a price change make money?</a></li>
+<li class="chapter" data-level="19.5" data-path="pricing.html"><a href="pricing.html#elasticities-from-data-and-price-tests"><i class="fa fa-check"></i><b>19.5</b> Elasticities from data, and price tests</a></li>
+<li class="chapter" data-level="19.6" data-path="pricing.html"><a href="pricing.html#checklist-18"><i class="fa fa-check"></i><b>19.6</b> Checklist</a></li>
+<li class="chapter" data-level="19.7" data-path="pricing.html"><a href="pricing.html#further-reading-18"><i class="fa fa-check"></i><b>19.7</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i><b>20</b> Forecasting and anomaly detection</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="forecasting.html"><a href="forecasting.html#two-jobs-for-the-same-model"><i class="fa fa-check"></i><b>20.1</b> Two jobs for the same model</a></li>
+<li class="chapter" data-level="20.2" data-path="forecasting.html"><a href="forecasting.html#the-data"><i class="fa fa-check"></i><b>20.2</b> The data</a></li>
+<li class="chapter" data-level="20.3" data-path="forecasting.html"><a href="forecasting.html#three-forecasters-and-a-fair-test"><i class="fa fa-check"></i><b>20.3</b> Three forecasters and a fair test</a></li>
+<li class="chapter" data-level="20.4" data-path="forecasting.html"><a href="forecasting.html#anomaly-detection-is-todays-number-a-problem"><i class="fa fa-check"></i><b>20.4</b> Anomaly detection: is today’s number a problem?</a></li>
+<li class="chapter" data-level="20.5" data-path="forecasting.html"><a href="forecasting.html#tools"><i class="fa fa-check"></i><b>20.5</b> Tools</a></li>
+<li class="chapter" data-level="20.6" data-path="forecasting.html"><a href="forecasting.html#checklist-19"><i class="fa fa-check"></i><b>20.6</b> Checklist</a></li>
+<li class="chapter" data-level="20.7" data-path="forecasting.html"><a href="forecasting.html#further-reading-19"><i class="fa fa-check"></i><b>20.7</b> Further reading</a></li>
+</ul></li>
+<li class="part"><span><b>VI Channel playbooks</b></span></li>
+<li class="chapter" data-level="21" data-path="search.html"><a href="search.html"><i class="fa fa-check"></i><b>21</b> Paid search</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="search.html"><a href="search.html#why-search-needs-special-care"><i class="fa fa-check"></i><b>21.1</b> Why search needs special care</a></li>
+<li class="chapter" data-level="21.2" data-path="search.html"><a href="search.html#brand-terms-how-much-would-you-get-anyway"><i class="fa fa-check"></i><b>21.2</b> Brand terms: how much would you get anyway?</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="search.html"><a href="search.html#worked-example"><i class="fa fa-check"></i><b>21.2.1</b> Worked example</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="search.html"><a href="search.html#non-brand-terms-marginal-not-average"><i class="fa fa-check"></i><b>21.3</b> Non-brand terms: marginal, not average</a></li>
+<li class="chapter" data-level="21.4" data-path="search.html"><a href="search.html#smart-bidding-and-automated-campaigns"><i class="fa fa-check"></i><b>21.4</b> Smart bidding and automated campaigns</a></li>
+<li class="chapter" data-level="21.5" data-path="search.html"><a href="search.html#checklist-20"><i class="fa fa-check"></i><b>21.5</b> Checklist</a></li>
+<li class="chapter" data-level="21.6" data-path="search.html"><a href="search.html#further-reading-20"><i class="fa fa-check"></i><b>21.6</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="social.html"><a href="social.html"><i class="fa fa-check"></i><b>22</b> Paid social and creative fatigue</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="social.html"><a href="social.html#what-makes-paid-social-different"><i class="fa fa-check"></i><b>22.1</b> What makes paid social different</a></li>
+<li class="chapter" data-level="22.2" data-path="social.html"><a href="social.html#testing-creatives-fairly"><i class="fa fa-check"></i><b>22.2</b> Testing creatives fairly</a></li>
+<li class="chapter" data-level="22.3" data-path="social.html"><a href="social.html#creative-fatigue"><i class="fa fa-check"></i><b>22.3</b> Creative fatigue</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="social.html"><a href="social.html#worked-example-estimating-how-fast-response-decays"><i class="fa fa-check"></i><b>22.3.1</b> Worked example: estimating how fast response decays</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="social.html"><a href="social.html#checklist-21"><i class="fa fa-check"></i><b>22.4</b> Checklist</a></li>
+<li class="chapter" data-level="22.5" data-path="social.html"><a href="social.html#further-reading-21"><i class="fa fa-check"></i><b>22.5</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="seo.html"><a href="seo.html"><i class="fa fa-check"></i><b>23</b> SEO measurement</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="seo.html"><a href="seo.html#why-seo-is-hard-to-measure"><i class="fa fa-check"></i><b>23.1</b> Why SEO is hard to measure</a></li>
+<li class="chapter" data-level="23.2" data-path="seo.html"><a href="seo.html#worked-example-an-seo-split-test"><i class="fa fa-check"></i><b>23.2</b> Worked example: an SEO split test</a></li>
+<li class="chapter" data-level="23.3" data-path="seo.html"><a href="seo.html#designing-seo-tests"><i class="fa fa-check"></i><b>23.3</b> Designing SEO tests</a></li>
+<li class="chapter" data-level="23.4" data-path="seo.html"><a href="seo.html#data-caveats"><i class="fa fa-check"></i><b>23.4</b> Data caveats</a></li>
+<li class="chapter" data-level="23.5" data-path="seo.html"><a href="seo.html#checklist-22"><i class="fa fa-check"></i><b>23.5</b> Checklist</a></li>
+<li class="chapter" data-level="23.6" data-path="seo.html"><a href="seo.html#further-reading-22"><i class="fa fa-check"></i><b>23.6</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="crm.html"><a href="crm.html"><i class="fa fa-check"></i><b>24</b> CRM and email holdouts</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="crm.html"><a href="crm.html#why-crm-measurement-is-easy-to-get-wrong"><i class="fa fa-check"></i><b>24.1</b> Why CRM measurement is easy to get wrong</a></li>
+<li class="chapter" data-level="24.2" data-path="crm.html"><a href="crm.html#worked-example-attributed-versus-incremental"><i class="fa fa-check"></i><b>24.2</b> Worked example: attributed versus incremental</a></li>
+<li class="chapter" data-level="24.3" data-path="crm.html"><a href="crm.html#holdout-designs-for-crm"><i class="fa fa-check"></i><b>24.3</b> Holdout designs for CRM</a></li>
+<li class="chapter" data-level="24.4" data-path="crm.html"><a href="crm.html#guardrails-and-long-term-effects"><i class="fa fa-check"></i><b>24.4</b> Guardrails and long-term effects</a></li>
+<li class="chapter" data-level="24.5" data-path="crm.html"><a href="crm.html#checklist-23"><i class="fa fa-check"></i><b>24.5</b> Checklist</a></li>
+<li class="chapter" data-level="24.6" data-path="crm.html"><a href="crm.html#further-reading-23"><i class="fa fa-check"></i><b>24.6</b> Further reading</a></li>
+</ul></li>
+<li class="part"><span><b>VII Practice</b></span></li>
+<li class="chapter" data-level="25" data-path="readouts.html"><a href="readouts.html"><i class="fa fa-check"></i><b>25</b> Readouts that change decisions</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="readouts.html"><a href="readouts.html#the-readout-is-part-of-the-method"><i class="fa fa-check"></i><b>25.1</b> The readout is part of the method</a></li>
+<li class="chapter" data-level="25.2" data-path="readouts.html"><a href="readouts.html#a-structure-that-works"><i class="fa fa-check"></i><b>25.2</b> A structure that works</a></li>
+<li class="chapter" data-level="25.3" data-path="readouts.html"><a href="readouts.html#saying-how-sure-you-are"><i class="fa fa-check"></i><b>25.3</b> Saying how sure you are</a></li>
+<li class="chapter" data-level="25.4" data-path="readouts.html"><a href="readouts.html#showing-uncertainty-in-charts"><i class="fa fa-check"></i><b>25.4</b> Showing uncertainty in charts</a></li>
+<li class="chapter" data-level="25.5" data-path="readouts.html"><a href="readouts.html#an-example-two-versions-of-the-same-readout"><i class="fa fa-check"></i><b>25.5</b> An example: two versions of the same readout</a></li>
+<li class="chapter" data-level="25.6" data-path="readouts.html"><a href="readouts.html#checklist-24"><i class="fa fa-check"></i><b>25.6</b> Checklist</a></li>
+<li class="chapter" data-level="25.7" data-path="readouts.html"><a href="readouts.html#further-reading-24"><i class="fa fa-check"></i><b>25.7</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="toolkit.html"><a href="toolkit.html"><i class="fa fa-check"></i><b>26</b> The analyst’s toolkit</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="toolkit.html"><a href="toolkit.html#habits-before-tools"><i class="fa fa-check"></i><b>26.1</b> Habits before tools</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="toolkit.html"><a href="toolkit.html#simulation-based-power-in-a-dozen-lines"><i class="fa fa-check"></i><b>26.1.1</b> Simulation-based power, in a dozen lines</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="toolkit.html"><a href="toolkit.html#the-core-stack"><i class="fa fa-check"></i><b>26.2</b> The core stack</a></li>
+<li class="chapter" data-level="26.3" data-path="toolkit.html"><a href="toolkit.html#ai-assistants-in-measurement-work"><i class="fa fa-check"></i><b>26.3</b> AI assistants in measurement work</a></li>
+<li class="chapter" data-level="26.4" data-path="toolkit.html"><a href="toolkit.html#building-a-measurement-teams-library"><i class="fa fa-check"></i><b>26.4</b> Building a measurement team’s library</a></li>
+<li class="chapter" data-level="26.5" data-path="toolkit.html"><a href="toolkit.html#checklist-25"><i class="fa fa-check"></i><b>26.5</b> Checklist</a></li>
+<li class="chapter" data-level="26.6" data-path="toolkit.html"><a href="toolkit.html#further-reading-25"><i class="fa fa-check"></i><b>26.6</b> Further reading</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>A</b> Resource library</a></li>
+<li class="chapter" data-level="B" data-path="glossary.html"><a href="glossary.html"><i class="fa fa-check"></i><b>B</b> Glossary</a></li>
+<li class="chapter" data-level="C" data-path="checklists.html"><a href="checklists.html"><i class="fa fa-check"></i><b>C</b> All checklists in one place</a>
+<ul>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#what-marketing-science-is-for"><i class="fa fa-check"></i>What marketing science is for</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#data-and-signal-foundations"><i class="fa fa-check"></i>Data and signal foundations</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#causal-thinking-for-marketers"><i class="fa fa-check"></i>Causal thinking for marketers</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#bayesian-reasoning-in-practice"><i class="fa fa-check"></i>Bayesian reasoning in practice</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#ab-tests-that-hold-up"><i class="fa fa-check"></i>A/B tests that hold up</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#geo-experiments"><i class="fa fa-check"></i>Geo experiments</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#quasi-experiments-did-causalimpact-and-synthetic-control"><i class="fa fa-check"></i>Quasi-experiments: DiD, CausalImpact and synthetic control</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#reading-platform-lift-studies"><i class="fa fa-check"></i>Reading platform lift studies</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#marketing-mix-modeling-end-to-end"><i class="fa fa-check"></i>Marketing mix modeling end to end</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#bayesian-mmm-in-practice"><i class="fa fa-check"></i>Bayesian MMM in practice</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#validating-and-calibrating-mmm"><i class="fa fa-check"></i>Validating and calibrating MMM</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#response-curves-and-budget-optimization"><i class="fa fa-check"></i>Response curves and budget optimization</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#attribution-and-its-limits"><i class="fa fa-check"></i>Attribution and its limits</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#triangulation-deciding-under-contradictory-evidence"><i class="fa fa-check"></i>Triangulation: deciding under contradictory evidence</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#cohorts-retention-ltv-and-payback"><i class="fa fa-check"></i>Cohorts, retention, LTV and payback</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#churn-and-survival-analysis"><i class="fa fa-check"></i>Churn and survival analysis</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#segmentation-1"><i class="fa fa-check"></i>Segmentation</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#brand-measurement-1"><i class="fa fa-check"></i>Brand measurement</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#pricing-research-and-elasticities"><i class="fa fa-check"></i>Pricing research and elasticities</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#forecasting-and-anomaly-detection"><i class="fa fa-check"></i>Forecasting and anomaly detection</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#paid-search-1"><i class="fa fa-check"></i>Paid search</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#paid-social-and-creative-fatigue"><i class="fa fa-check"></i>Paid social and creative fatigue</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#seo-measurement"><i class="fa fa-check"></i>SEO measurement</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#crm-and-email-holdouts"><i class="fa fa-check"></i>CRM and email holdouts</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#readouts-that-change-decisions"><i class="fa fa-check"></i>Readouts that change decisions</a></li>
+<li class="chapter" data-level="" data-path="checklists.html"><a href="checklists.html#the-analysts-toolkit"><i class="fa fa-check"></i>The analyst’s toolkit</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/" target="blank">Built with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="index.html">Practical Marketing Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="attribution" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Attribution and its limits<a href="attribution.html#attribution" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="decision">
+<p>What multi-touch attribution can and cannot tell you, which questions it is still good for, and why no path-based model, rule-based or data-driven, answers the incrementality question.</p>
+</div>
+<div id="what-attribution-does" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> What attribution does<a href="attribution.html#what-attribution-does" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Attribution takes the conversion paths users followed (the sequence of ad and channel touches before converting or not) and divides credit for conversions among the touched channels. Rule-based models use a fixed rule: last touch, first touch, linear, position-based, time decay. Data-driven models learn weights from the paths: Markov chain removal effects, Shapley values, and the proprietary models inside ad platforms and analytics tools.</p>
+<p>All of them share one property that determines what they can do. <strong>They distribute observed conversions among the touches that preceded them.</strong> None of them compares what happened with what would have happened without a channel. In the vocabulary of Chapter <a href="purpose.html#purpose">1</a>, they produce attributed numbers, not incremental ones. The data-driven models are more sophisticated about the distribution, but they distribute the same pool.</p>
+</div>
+<div id="worked-example-five-attribution-models-against-the-truth" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Worked example: five attribution models against the truth<a href="attribution.html#worked-example-five-attribution-models-against-the-truth" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We simulate 200,000 users with different baseline purchase intent and four channels:</p>
+<ul>
+<li><strong>Social</strong> prospecting reaches users at random and has the largest true effect (+1.0 percentage point).</li>
+<li><strong>Display</strong> retargeting and <strong>email</strong> target users who already show intent; their true effects are small (+0.1 and +0.2 points).</li>
+<li><strong>Search</strong> is reached mostly by high-intent users who look the brand up, with a moderate true effect (+0.4 points).</li>
+</ul>
+<p>Each touch gets a time, so every user has an ordered path. Social tends to come early, search late.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb114-1"><a href="attribution.html#cb114-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, itertools, math</span>
+<span id="cb114-2"><a href="attribution.html#cb114-2" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb114-3"><a href="attribution.html#cb114-3" tabindex="-1"></a></span>
+<span id="cb114-4"><a href="attribution.html#cb114-4" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">13</span>)</span>
+<span id="cb114-5"><a href="attribution.html#cb114-5" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">200_000</span></span>
+<span id="cb114-6"><a href="attribution.html#cb114-6" tabindex="-1"></a>CH <span class="op">=</span> [<span class="st">&quot;social&quot;</span>, <span class="st">&quot;display&quot;</span>, <span class="st">&quot;email&quot;</span>, <span class="st">&quot;search&quot;</span>]</span>
+<span id="cb114-7"><a href="attribution.html#cb114-7" tabindex="-1"></a>intent <span class="op">=</span> rng.beta(<span class="dv">1</span>, <span class="dv">25</span>, n)                                  <span class="co"># baseline conversion probability</span></span>
+<span id="cb114-8"><a href="attribution.html#cb114-8" tabindex="-1"></a>exposed <span class="op">=</span> {</span>
+<span id="cb114-9"><a href="attribution.html#cb114-9" tabindex="-1"></a>    <span class="st">&quot;social&quot;</span>:  rng.random(n) <span class="op">&lt;</span> <span class="fl">0.30</span>,                         <span class="co"># random reach</span></span>
+<span id="cb114-10"><a href="attribution.html#cb114-10" tabindex="-1"></a>    <span class="st">&quot;display&quot;</span>: rng.random(n) <span class="op">&lt;</span> np.clip(intent <span class="op">*</span> <span class="dv">5</span> <span class="op">+</span> <span class="fl">0.05</span>, <span class="dv">0</span>, <span class="dv">1</span>),   <span class="co"># selected on intent</span></span>
+<span id="cb114-11"><a href="attribution.html#cb114-11" tabindex="-1"></a>    <span class="st">&quot;email&quot;</span>:   rng.random(n) <span class="op">&lt;</span> np.clip(intent <span class="op">*</span> <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb114-12"><a href="attribution.html#cb114-12" tabindex="-1"></a>    <span class="st">&quot;search&quot;</span>:  rng.random(n) <span class="op">&lt;</span> np.clip(intent <span class="op">*</span> <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb114-13"><a href="attribution.html#cb114-13" tabindex="-1"></a>}</span>
+<span id="cb114-14"><a href="attribution.html#cb114-14" tabindex="-1"></a>lift <span class="op">=</span> {<span class="st">&quot;social&quot;</span>: <span class="fl">0.010</span>, <span class="st">&quot;display&quot;</span>: <span class="fl">0.001</span>, <span class="st">&quot;email&quot;</span>: <span class="fl">0.002</span>, <span class="st">&quot;search&quot;</span>: <span class="fl">0.004</span>}</span>
+<span id="cb114-15"><a href="attribution.html#cb114-15" tabindex="-1"></a>u <span class="op">=</span> rng.random(n)</span>
+<span id="cb114-16"><a href="attribution.html#cb114-16" tabindex="-1"></a></span>
+<span id="cb114-17"><a href="attribution.html#cb114-17" tabindex="-1"></a><span class="kw">def</span> converts(off<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb114-18"><a href="attribution.html#cb114-18" tabindex="-1"></a>    p <span class="op">=</span> intent <span class="op">+</span> <span class="bu">sum</span>(lift[c] <span class="op">*</span> exposed[c] <span class="cf">for</span> c <span class="kw">in</span> CH <span class="cf">if</span> c <span class="op">!=</span> off)</span>
+<span id="cb114-19"><a href="attribution.html#cb114-19" tabindex="-1"></a>    <span class="cf">return</span> u <span class="op">&lt;</span> p</span>
+<span id="cb114-20"><a href="attribution.html#cb114-20" tabindex="-1"></a></span>
+<span id="cb114-21"><a href="attribution.html#cb114-21" tabindex="-1"></a>y <span class="op">=</span> converts()</span>
+<span id="cb114-22"><a href="attribution.html#cb114-22" tabindex="-1"></a>true_incr <span class="op">=</span> {c: y.<span class="bu">sum</span>() <span class="op">-</span> converts(off<span class="op">=</span>c).<span class="bu">sum</span>() <span class="cf">for</span> c <span class="kw">in</span> CH}</span>
+<span id="cb114-23"><a href="attribution.html#cb114-23" tabindex="-1"></a></span>
+<span id="cb114-24"><a href="attribution.html#cb114-24" tabindex="-1"></a><span class="co"># Ordered paths from touch times: social early, search late</span></span>
+<span id="cb114-25"><a href="attribution.html#cb114-25" tabindex="-1"></a>window <span class="op">=</span> {<span class="st">&quot;social&quot;</span>: (<span class="dv">0</span>, <span class="fl">.6</span>), <span class="st">&quot;display&quot;</span>: (<span class="fl">.3</span>, <span class="fl">.9</span>), <span class="st">&quot;email&quot;</span>: (<span class="fl">.2</span>, <span class="dv">1</span>), <span class="st">&quot;search&quot;</span>: (<span class="fl">.6</span>, <span class="dv">1</span>)}</span>
+<span id="cb114-26"><a href="attribution.html#cb114-26" tabindex="-1"></a>times <span class="op">=</span> np.column_stack([np.where(exposed[c], rng.uniform(<span class="op">*</span>window[c], n), np.inf) <span class="cf">for</span> c <span class="kw">in</span> CH])</span>
+<span id="cb114-27"><a href="attribution.html#cb114-27" tabindex="-1"></a>order, n_touch <span class="op">=</span> np.argsort(times, axis<span class="op">=</span><span class="dv">1</span>), np.isfinite(times).<span class="bu">sum</span>(<span class="dv">1</span>)</span>
+<span id="cb114-28"><a href="attribution.html#cb114-28" tabindex="-1"></a>paths <span class="op">=</span> [<span class="bu">tuple</span>(CH[j] <span class="cf">for</span> j <span class="kw">in</span> order[i, :n_touch[i]]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n)]</span>
+<span id="cb114-29"><a href="attribution.html#cb114-29" tabindex="-1"></a></span>
+<span id="cb114-30"><a href="attribution.html#cb114-30" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Conversions: </span><span class="sc">{</span>y<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss">;  conversions with at least one touch: </span><span class="sc">{</span>(y <span class="op">&amp;</span> (n_touch <span class="op">&gt;</span> <span class="dv">0</span>))<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss">;  &quot;</span></span>
+<span id="cb114-31"><a href="attribution.html#cb114-31" tabindex="-1"></a>      <span class="ss">f&quot;truly incremental: </span><span class="sc">{</span><span class="bu">sum</span>(true_incr.values())<span class="sc">:,}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<pre><code>## Conversions: 8,696;  conversions with at least one touch: 7,382;  truly incremental: 959</code></pre>
+<p>Now the rule-based models, then the two common data-driven ones. The <strong>Markov</strong> model treats paths as a chain of states from start to conversion or drop-out; a channel’s removal effect is how much the conversion probability falls if paths through it are redirected to drop-out. The <strong>Shapley</strong> model treats channels as players in a cooperative game whose value is the number of conversions achieved by each coalition of channels.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb116-1"><a href="attribution.html#cb116-1" tabindex="-1"></a>res <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>CH)</span>
+<span id="cb116-2"><a href="attribution.html#cb116-2" tabindex="-1"></a>res[<span class="st">&quot;true incremental&quot;</span>] <span class="op">=</span> pd.Series(true_incr)</span>
+<span id="cb116-3"><a href="attribution.html#cb116-3" tabindex="-1"></a>last, first, linear <span class="op">=</span> (pd.Series(<span class="fl">0.0</span>, index<span class="op">=</span>CH) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>))</span>
+<span id="cb116-4"><a href="attribution.html#cb116-4" tabindex="-1"></a><span class="cf">for</span> p, conv <span class="kw">in</span> <span class="bu">zip</span>(paths, y):</span>
+<span id="cb116-5"><a href="attribution.html#cb116-5" tabindex="-1"></a>    <span class="cf">if</span> conv <span class="kw">and</span> p:</span>
+<span id="cb116-6"><a href="attribution.html#cb116-6" tabindex="-1"></a>        last[p[<span class="op">-</span><span class="dv">1</span>]] <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span> first[p[<span class="dv">0</span>]] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb116-7"><a href="attribution.html#cb116-7" tabindex="-1"></a>        <span class="cf">for</span> c <span class="kw">in</span> p: linear[c] <span class="op">+=</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">len</span>(p)</span>
+<span id="cb116-8"><a href="attribution.html#cb116-8" tabindex="-1"></a>res[<span class="st">&quot;last touch&quot;</span>], res[<span class="st">&quot;first touch&quot;</span>], res[<span class="st">&quot;linear&quot;</span>] <span class="op">=</span> last, first, linear</span>
+<span id="cb116-9"><a href="attribution.html#cb116-9" tabindex="-1"></a></span>
+<span id="cb116-10"><a href="attribution.html#cb116-10" tabindex="-1"></a><span class="co"># Markov chain: transition counts between start, channels, conversion and drop-out</span></span>
+<span id="cb116-11"><a href="attribution.html#cb116-11" tabindex="-1"></a>states <span class="op">=</span> [<span class="st">&quot;start&quot;</span>] <span class="op">+</span> CH <span class="op">+</span> [<span class="st">&quot;conv&quot;</span>, <span class="st">&quot;null&quot;</span>]</span>
+<span id="cb116-12"><a href="attribution.html#cb116-12" tabindex="-1"></a>ix <span class="op">=</span> {s: i <span class="cf">for</span> i, s <span class="kw">in</span> <span class="bu">enumerate</span>(states)}</span>
+<span id="cb116-13"><a href="attribution.html#cb116-13" tabindex="-1"></a>T <span class="op">=</span> np.zeros((<span class="bu">len</span>(states), <span class="bu">len</span>(states)))</span>
+<span id="cb116-14"><a href="attribution.html#cb116-14" tabindex="-1"></a><span class="cf">for</span> p, conv <span class="kw">in</span> <span class="bu">zip</span>(paths, y):</span>
+<span id="cb116-15"><a href="attribution.html#cb116-15" tabindex="-1"></a>    seq <span class="op">=</span> [<span class="st">&quot;start&quot;</span>, <span class="op">*</span>p, <span class="st">&quot;conv&quot;</span> <span class="cf">if</span> conv <span class="cf">else</span> <span class="st">&quot;null&quot;</span>]</span>
+<span id="cb116-16"><a href="attribution.html#cb116-16" tabindex="-1"></a>    <span class="cf">for</span> a, b <span class="kw">in</span> <span class="bu">zip</span>(seq[:<span class="op">-</span><span class="dv">1</span>], seq[<span class="dv">1</span>:]):</span>
+<span id="cb116-17"><a href="attribution.html#cb116-17" tabindex="-1"></a>        T[ix[a], ix[b]] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb116-18"><a href="attribution.html#cb116-18" tabindex="-1"></a></span>
+<span id="cb116-19"><a href="attribution.html#cb116-19" tabindex="-1"></a><span class="kw">def</span> p_conversion(removed<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb116-20"><a href="attribution.html#cb116-20" tabindex="-1"></a>    P <span class="op">=</span> T.copy()</span>
+<span id="cb116-21"><a href="attribution.html#cb116-21" tabindex="-1"></a>    <span class="cf">if</span> removed:                                   <span class="co"># redirect transitions into `removed` to drop-out</span></span>
+<span id="cb116-22"><a href="attribution.html#cb116-22" tabindex="-1"></a>        r <span class="op">=</span> ix[removed]<span class="op">;</span> P[:, ix[<span class="st">&quot;null&quot;</span>]] <span class="op">+=</span> P[:, r]<span class="op">;</span> P[:, r] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb116-23"><a href="attribution.html#cb116-23" tabindex="-1"></a>    P <span class="op">=</span> np.divide(P, P.<span class="bu">sum</span>(<span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>), out<span class="op">=</span>np.zeros_like(P), where<span class="op">=</span>P.<span class="bu">sum</span>(<span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>) <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb116-24"><a href="attribution.html#cb116-24" tabindex="-1"></a>    tr <span class="op">=</span> [ix[s] <span class="cf">for</span> s <span class="kw">in</span> [<span class="st">&quot;start&quot;</span>] <span class="op">+</span> CH]          <span class="co"># transient states</span></span>
+<span id="cb116-25"><a href="attribution.html#cb116-25" tabindex="-1"></a>    <span class="cf">return</span> np.linalg.solve(np.eye(<span class="bu">len</span>(tr)) <span class="op">-</span> P[np.ix_(tr, tr)], P[np.ix_(tr, [ix[<span class="st">&quot;conv&quot;</span>]])])[<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb116-26"><a href="attribution.html#cb116-26" tabindex="-1"></a></span>
+<span id="cb116-27"><a href="attribution.html#cb116-27" tabindex="-1"></a>removal <span class="op">=</span> pd.Series({c: <span class="dv">1</span> <span class="op">-</span> p_conversion(c) <span class="op">/</span> p_conversion() <span class="cf">for</span> c <span class="kw">in</span> CH})</span>
+<span id="cb116-28"><a href="attribution.html#cb116-28" tabindex="-1"></a>touched_conv <span class="op">=</span> (y <span class="op">&amp;</span> (n_touch <span class="op">&gt;</span> <span class="dv">0</span>)).<span class="bu">sum</span>()</span>
+<span id="cb116-29"><a href="attribution.html#cb116-29" tabindex="-1"></a>res[<span class="st">&quot;markov&quot;</span>] <span class="op">=</span> removal <span class="op">/</span> removal.<span class="bu">sum</span>() <span class="op">*</span> touched_conv</span>
+<span id="cb116-30"><a href="attribution.html#cb116-30" tabindex="-1"></a></span>
+<span id="cb116-31"><a href="attribution.html#cb116-31" tabindex="-1"></a><span class="co"># Shapley: v(S) = conversions of users whose set of touched channels is contained in S</span></span>
+<span id="cb116-32"><a href="attribution.html#cb116-32" tabindex="-1"></a>conv_by_set <span class="op">=</span> Counter(<span class="bu">frozenset</span>(p) <span class="cf">for</span> p, conv <span class="kw">in</span> <span class="bu">zip</span>(paths, y) <span class="cf">if</span> conv <span class="kw">and</span> p)</span>
+<span id="cb116-33"><a href="attribution.html#cb116-33" tabindex="-1"></a>v <span class="op">=</span> <span class="kw">lambda</span> S: <span class="bu">sum</span>(k <span class="cf">for</span> s, k <span class="kw">in</span> conv_by_set.items() <span class="cf">if</span> s <span class="op">&lt;=</span> S)</span>
+<span id="cb116-34"><a href="attribution.html#cb116-34" tabindex="-1"></a>shapley <span class="op">=</span> {}</span>
+<span id="cb116-35"><a href="attribution.html#cb116-35" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> CH:</span>
+<span id="cb116-36"><a href="attribution.html#cb116-36" tabindex="-1"></a>    others <span class="op">=</span> [o <span class="cf">for</span> o <span class="kw">in</span> CH <span class="cf">if</span> o <span class="op">!=</span> c]</span>
+<span id="cb116-37"><a href="attribution.html#cb116-37" tabindex="-1"></a>    shapley[c] <span class="op">=</span> <span class="bu">sum</span>(math.factorial(r) <span class="op">*</span> math.factorial(<span class="bu">len</span>(CH) <span class="op">-</span> r <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> math.factorial(<span class="bu">len</span>(CH))</span>
+<span id="cb116-38"><a href="attribution.html#cb116-38" tabindex="-1"></a>                     <span class="op">*</span> (v(<span class="bu">frozenset</span>(S) <span class="op">|</span> {c}) <span class="op">-</span> v(<span class="bu">frozenset</span>(S)))</span>
+<span id="cb116-39"><a href="attribution.html#cb116-39" tabindex="-1"></a>                     <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(others) <span class="op">+</span> <span class="dv">1</span>) <span class="cf">for</span> S <span class="kw">in</span> itertools.combinations(others, r))</span>
+<span id="cb116-40"><a href="attribution.html#cb116-40" tabindex="-1"></a>res[<span class="st">&quot;shapley&quot;</span>] <span class="op">=</span> pd.Series(shapley)</span>
+<span id="cb116-41"><a href="attribution.html#cb116-41" tabindex="-1"></a><span class="bu">print</span>(res.<span class="bu">round</span>(<span class="dv">0</span>).astype(<span class="bu">int</span>).to_string())</span></code></pre></div>
+<pre><code>##          true incremental  last touch  first touch  linear  markov  shapley
+## social                564         882         2758    1698    1682     1698
+## display                51        1087         1750    1584    1613     1584
+## email                  68         861         1189    1075    1130     1075
+## search                276        4552         1685    3025    2957     3025</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb118-1"><a href="attribution.html#cb118-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb118-2"><a href="attribution.html#cb118-2" tabindex="-1"></a>ratio <span class="op">=</span> res.drop(columns<span class="op">=</span><span class="st">&quot;true incremental&quot;</span>).div(res[<span class="st">&quot;true incremental&quot;</span>], axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb118-3"><a href="attribution.html#cb118-3" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>))</span>
+<span id="cb118-4"><a href="attribution.html#cb118-4" tabindex="-1"></a>ratio.plot.bar(ax<span class="op">=</span>ax, width<span class="op">=</span><span class="fl">0.8</span>, rot<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb118-5"><a href="attribution.html#cb118-5" tabindex="-1"></a>ax.axhline(<span class="dv">1</span>, color<span class="op">=</span><span class="st">&quot;#333&quot;</span>, lw<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span> ax.set_yscale(<span class="st">&quot;log&quot;</span>)</span>
+<span id="cb118-6"><a href="attribution.html#cb118-6" tabindex="-1"></a>ax.set_ylabel(<span class="st">&quot;Credit / true incremental&quot;</span>)</span>
+<span id="cb118-7"><a href="attribution.html#cb118-7" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">8</span>, ncol<span class="op">=</span><span class="dv">5</span>, loc<span class="op">=</span><span class="st">&quot;upper center&quot;</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.15</span>))</span>
+<span id="cb118-8"><a href="attribution.html#cb118-8" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb118-9"><a href="attribution.html#cb118-9" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:attr-plot"></span>
+<img src="practical-marketing-science_files/figure-html/attr-plot-1.png" alt="Credit per channel under each model, as a multiple of the channel's true incremental conversions. A value of 1 would be correct." width="88%" />
+<p class="caption">
+Figure 13.1: Credit per channel under each model, as a multiple of the channel’s true incremental conversions. A value of 1 would be correct.
+</p>
+</div>
+</div>
+<div id="what-the-example-shows" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> What the example shows<a href="attribution.html#what-the-example-shows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Every model hands out far more credit than there is incrementality.</strong> All five distribute the conversions of touched users, around seven and a half thousand, while fewer than a thousand were caused by the advertising. Most of what attribution credits would have happened anyway. Using attributed conversions to judge whether channels pay for themselves will overstate returns across the board.</p>
+<p><strong>Every model gets the ranking wrong.</strong> The channel that truly drives the most incremental conversions is social. Last touch ranks it third. The linear, Markov and Shapley models move it up to second, but all of them still put search first, because high-intent users who were going to convert anyway search for the brand right before converting. Display and email, with tiny true effects, receive credit worth fifteen to thirty times what they deliver, because they target people who are already converting.</p>
+<p><strong>Data-driven is not the same as causal.</strong> The Markov and Shapley models are more defensible than last touch, but they learn from the same paths, and the paths are shaped by targeting. A channel aimed at high-intent users will look valuable in any model that learns from who converts after seeing it.</p>
+<p><strong>Shapley here is exactly linear attribution.</strong> With the common coalition definition used above (a coalition is credited with the conversions of users whose touches fall within it), the Shapley value splits each conversion equally among the channels in its path. That is a known result, and it means a “game theory” model can be simpler than it sounds. Other value functions give different answers, but none of them introduces a counterfactual.</p>
+<div class="pitfall">
+<p>Replacing last-touch with a data-driven model and treating the problem as solved. Data-driven attribution reduces the most obvious biases of rule-based models, but it remains a correlational allocation of observed conversions. It does not measure incrementality, and it inherits whatever selection the targeting creates.</p>
+</div>
+</div>
+<div id="what-attribution-is-still-good-for" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> What attribution is still good for<a href="attribution.html#what-attribution-is-still-good-for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Attribution is the wrong tool for budget decisions between channels. It is still useful for questions where the selection bias is roughly constant across the things being compared:</p>
+<ul>
+<li><strong>Within-channel optimization</strong>: comparing campaigns, ad sets, keywords or creatives inside one channel with similar targeting.</li>
+<li><strong>Journey analysis</strong>: which channels typically appear early and late, how long paths are, where users drop off.</li>
+<li><strong>Fast operational signals</strong>: daily monitoring of trends and anomalies, ahead of slower methods.</li>
+<li><strong>Feeding models</strong>: path data can inform priors on how channels interact, as long as nobody reads the credit as incremental.</li>
+</ul>
+<p>When attribution numbers are reported to decision makers, convert them with an incrementality factor from an experiment (Chapter <a href="lift.html#lift">8</a>) wherever one exists, and say clearly when one does not.</p>
+</div>
+<div id="signal-loss-and-cookieless-approaches" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Signal loss and cookieless approaches<a href="attribution.html#signal-loss-and-cookieless-approaches" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Path-based attribution also depends on stitching touches to the same user, which is exactly what signal loss breaks (Chapter <a href="data.html#data">2</a>). Paths become shorter and more fragmented, and the channels whose touches are hardest to observe (upper-funnel video, cross-device journeys, users who decline consent) lose credit systematically. Aggregate approaches are the response: regression-based attribution, which models conversions on channel activity over time (Google’s open-source <em>rba</em> is an example), is essentially a small MMM, and inherits both the strengths and the confounding problems of Chapter <a href="mmm.html#mmm">9</a>.</p>
+</div>
+<div id="checklist-12" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> Checklist<a href="attribution.html#checklist-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="checklist">
+<ul>
+<li>Is the attribution output being used to compare channels or set budgets? If so, stop and look for incrementality evidence.</li>
+<li>Are attributed conversions labeled as attributed in every report, never as incremental?</li>
+<li>For each channel, is its targeting correlated with existing intent (retargeting, CRM, branded search)? Expect over-credit.</li>
+<li>Where an incrementality factor exists, is it applied, with its date and conditions?</li>
+<li>How much of the journey is invisible because of consent, devices or platforms, and which channels does that hurt?</li>
+</ul>
+</div>
+</div>
+<div id="further-reading-12" class="section level2 hasAnchor" number="13.7">
+<h2><span class="header-section-number">13.7</span> Further reading<a href="attribution.html#further-reading-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><em>How to game attribution models</em> (Admend, archived).</li>
+<li>Markov chain attribution: the <code>ChannelAttribution</code> package and the tutorials.</li>
+<li>Shapley value attribution: <code>shap</code> / <code>shapiq</code> for Shapley values in machine learning more broadly.</li>
+<li>The <code>mta</code> Python package for further model variants.</li>
+
+</ul>
+<p>Full links are in Appendix <a href="resources.html#resources">A</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="curves.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="triangulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["practical-marketing-science.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
