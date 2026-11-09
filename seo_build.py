@@ -58,6 +58,91 @@ POST_DATES = {
     "crafting-a-robust-marketing-mix-model-with-pymc-marketing": ("2023-12-17", "2023-12-17"),
 }
 
+# Search titles and descriptions for blog posts, written for the queries each post
+# gets impressions for in Search Console. The on-page heading is left unchanged.
+POST_META = {
+    "unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing": (
+        "Meta GeoLift Guide: How to Run a Geo Lift Test in R",
+        "Step-by-step guide to Meta GeoLift: set test goals, prepare market data, run a power "
+        "analysis, launch the geo lift test in R and read the incremental lift.",
+    ),
+    "how-to-create-your-own-attribution-model": (
+        "How to Create a Custom Attribution Model (Shapley & Markov)",
+        "Build a custom attribution model from your own data: collect touchpoints, set an "
+        "attribution window, apply Shapley value and Markov chain models, then validate with lift tests.",
+    ),
+    "crafting-a-robust-marketing-mix-model-with-pymc-marketing": (
+        "PyMC-Marketing MMM Tutorial: Build a Bayesian Marketing Mix Model",
+        "Step-by-step PyMC-Marketing tutorial: prepare data, set custom priors, fit a Bayesian "
+        "marketing mix model with adstock and saturation, and check the results.",
+    ),
+    "creating-a-marketing-mix-model-with-lightweightmmm-a-step-by-step-guide": (
+        "Google LightweightMMM Tutorial: Build a Marketing Mix Model in Python",
+        "Build a marketing mix model with Google's LightweightMMM in Python: prepare and scale "
+        "data, train the model, read media contributions and optimise the budget.",
+    ),
+    "creating-a-marketing-mix-model-with-meta-robyn-a-step-by-step-guide": (
+        "Meta Robyn MMM Tutorial: Build a Marketing Mix Model in R",
+        "Step-by-step guide to building a marketing mix model with Meta's Robyn in R, from data "
+        "preparation and hyperparameters to model selection and budget allocation.",
+    ),
+    "unleashing-the-power-of-causal-impact-in-marketing-analytics": (
+        "CausalImpact for Marketing: Measure Campaign Impact in R",
+        "How to use Google's CausalImpact R package to measure the incremental effect of a "
+        "marketing campaign or launch when you cannot run a randomised test.",
+    ),
+}
+
+# "Go deeper" links from each post to the matching book chapter.
+BOOK_LINKS = {
+    "unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing": [
+        ("geo", "Geo experiments"), ("lift", "Reading platform lift studies")],
+    "how-to-create-your-own-attribution-model": [
+        ("attribution", "Attribution and its limits"), ("triangulation", "Triangulation: deciding under contradictory evidence")],
+    "how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study": [
+        ("attribution", "Attribution and its limits"), ("lift", "Reading platform lift studies")],
+    "crafting-a-robust-marketing-mix-model-with-pymc-marketing": [
+        ("bayesmmm", "Bayesian MMM in practice"), ("validation", "Validating and calibrating MMM")],
+    "creating-a-marketing-mix-model-with-lightweightmmm-a-step-by-step-guide": [
+        ("mmm", "Marketing mix modeling end to end"), ("curves", "Response curves and budget optimization")],
+    "creating-a-marketing-mix-model-with-meta-robyn-a-step-by-step-guide": [
+        ("mmm", "Marketing mix modeling end to end"), ("validation", "Validating and calibrating MMM")],
+    "unleashing-the-power-of-causal-impact-in-marketing-analytics": [
+        ("quasi", "Quasi-experiments: DiD, CausalImpact and synthetic control")],
+    "how-i-helped-unisport-increase-their-sales-with-segmentation-analysis": [
+        ("segmentation", "Segmentation")],
+    "how-to-use-facebook-lead-ads-to-generate-quality-low-cost-leads-a-zopto-case-study": [
+        ("social", "Paid social and creative fatigue")],
+}
+
+RELATED_BLOCK = re.compile(r"\s*<!-- book-links:start -->.*?<!-- book-links:end -->", re.S)
+
+
+def add_book_links(path: Path) -> None:
+    s = RELATED_BLOCK.sub("", path.read_text(encoding="utf-8"))
+    links = BOOK_LINKS.get(path.stem)
+    if links:
+        items = "".join(
+            f'<li><a href="../{BOOK_DIR}/{ch}.html">{esc(label)}</a></li>' for ch, label in links
+        )
+        box = (
+            "\n<!-- book-links:start -->\n"
+            '<aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;'
+            'border:2px solid var(--border-color);border-radius:8px;">'
+            f'<p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, '
+            f'<a href="../{BOOK_DIR}/index.html">{BOOK_TITLE}</a></p>'
+            f'<ul style="margin:0;padding-left:1.2rem;">{items}</ul></aside>\n'
+            "<!-- book-links:end -->"
+        )
+        marker = '<a href="../blog.html" class="back-link"'
+        i = s.find(marker)
+        if i < 0:
+            raise ValueError(f"{path}: no back-link to anchor book links")
+        line_start = s.rfind("\n", 0, i)
+        s = s[:line_start] + box + s[line_start:]
+    path.write_text(s, encoding="utf-8")
+
+
 SEO_BLOCK = re.compile(r"\s*<!-- seo:start -->.*?<!-- seo:end -->", re.S)
 OLD_TAGS = re.compile(
     r'\s*<meta\s+(?:name|property)="(?:description|og:[^"]+|twitter:[^"]+)"\s+content="[^"]*"\s*/?>',
@@ -190,11 +275,15 @@ def main() -> None:
 
     # Blog posts
     for path in sorted((ROOT / "blog").glob("*.html")):
+        add_book_links(path)
         s = path.read_text(encoding="utf-8")
         slug = path.stem
-        desc = clip(existing_description(s) or text_of(s.split("<body", 1)[-1]))
-        title = text_of(TITLE.search(s).group(1))
-        headline = re.sub(r"\s+-\s+Christos Visvardis$", "", title)
+        h1 = re.search(r"<h1[^>]*>(.*?)</h1>", s, re.S)
+        headline = text_of(h1.group(1)) if h1 else text_of(TITLE.search(s).group(1))
+        new_title, new_desc = POST_META.get(slug, (None, None))
+        desc = new_desc or clip(existing_description(s) or text_of(s.split("<body", 1)[-1]))
+        if not new_title:
+            new_title = f"{headline} - {SITE_NAME}"
         published, modified = POST_DATES.get(slug, (TODAY, TODAY))
         url = url_for(f"blog/{slug}.html")
         ld = [{
@@ -208,7 +297,7 @@ def main() -> None:
             "mainEntityOfPage": url,
             "author": {"@type": "Person", "name": AUTHOR, "url": BASE + "/"},
         }]
-        apply(path, None, desc, "article", ld)
+        apply(path, new_title, desc, "article", ld)
         sitemap.append((url, modified))
 
     # Book chapters

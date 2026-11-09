@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Create Your Own Custom Attribution Model - Christos Visvardis</title>
+    <title>How to Create a Custom Attribution Model (Shapley &amp; Markov)</title>
 <!-- seo:start -->
-<meta name="description" content="Allocating marketing budget efficiently is problematic without knowing the contribution of each marketing channel to a user’s lifetime value and your">
+<meta name="description" content="Build a custom attribution model from your own data: collect touchpoints, set an attribution window, apply Shapley value and Markov chain models, then validate with lift tests.">
 <link rel="canonical" href="https://visvardis.com/blog/how-to-create-your-own-attribution-model">
 <meta property="og:site_name" content="Christos Visvardis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Create Your Own Custom Attribution Model - Christos Visvardis">
-<meta property="og:description" content="Allocating marketing budget efficiently is problematic without knowing the contribution of each marketing channel to a user’s lifetime value and your">
+<meta property="og:title" content="How to Create a Custom Attribution Model (Shapley &amp; Markov)">
+<meta property="og:description" content="Build a custom attribution model from your own data: collect touchpoints, set an attribution window, apply Shapley value and Markov chain models, then validate with lift tests.">
 <meta property="og:url" content="https://visvardis.com/blog/how-to-create-your-own-attribution-model">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Create Your Own Custom Attribution Model - Christos Visvardis">
-<meta name="twitter:description" content="Allocating marketing budget efficiently is problematic without knowing the contribution of each marketing channel to a user’s lifetime value and your">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Create Your Own Custom Attribution Model", "description": "Allocating marketing budget efficiently is problematic without knowing the contribution of each marketing channel to a user’s lifetime value and your", "datePublished": "2021-07-08", "dateModified": "2024-12-17", "url": "https://visvardis.com/blog/how-to-create-your-own-attribution-model", "mainEntityOfPage": "https://visvardis.com/blog/how-to-create-your-own-attribution-model", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
+<meta name="twitter:title" content="How to Create a Custom Attribution Model (Shapley &amp; Markov)">
+<meta name="twitter:description" content="Build a custom attribution model from your own data: collect touchpoints, set an attribution window, apply Shapley value and Markov chain models, then validate with lift tests.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Create Your Own Custom Attribution Model", "description": "Build a custom attribution model from your own data: collect touchpoints, set an attribution window, apply Shapley value and Markov chain models, then validate with lift tests.", "datePublished": "2021-07-08", "dateModified": "2024-12-17", "url": "https://visvardis.com/blog/how-to-create-your-own-attribution-model", "mainEntityOfPage": "https://visvardis.com/blog/how-to-create-your-own-attribution-model", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
 <!-- seo:end -->
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -159,6 +159,9 @@
 <p>Something we have to take into account when running all sorts of tests is duration and seasonality.&nbsp;</p>
 <p>A rule of thumb is that tests should last for at least one week (and ideally 4 weeks or more), since there might be fluctuations of conversions for different days (e.g. a lot more conversions on weekends compared to weekdays). Moreover, you should avoid periods during which you experience big increases or decreases (e.g. Christmas, Black Friday).</p>
                 </div>
+<!-- book-links:start -->
+<aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:2px solid var(--border-color);border-radius:8px;"><p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, <a href="../practical-marketing-science-book/index.html">Practical Marketing Science</a></p><ul style="margin:0;padding-left:1.2rem;"><li><a href="../practical-marketing-science-book/attribution.html">Attribution and its limits</a></li><li><a href="../practical-marketing-science-book/triangulation.html">Triangulation: deciding under contradictory evidence</a></li></ul></aside>
+<!-- book-links:end -->
                 <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
             </article>
         </main>
