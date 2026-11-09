@@ -1,0 +1,30 @@
+# Old WordPress post URLs -> new blog pages (Cloudflare Pages)
+/crafting-a-robust-marketing-mix-model-with-pymc-marketing /blog/crafting-a-robust-marketing-mix-model-with-pymc-marketing 301
+/crafting-a-robust-marketing-mix-model-with-pymc-marketing/ /blog/crafting-a-robust-marketing-mix-model-with-pymc-marketing 301
+/creating-a-marketing-mix-model-with-lightweightmmm-a-step-by-step-guide /blog/creating-a-marketing-mix-model-with-lightweightmmm-a-step-by-step-guide 301
+/creating-a-marketing-mix-model-with-lightweightmmm-a-step-by-step-guide/ /blog/creating-a-marketing-mix-model-with-lightweightmmm-a-step-by-step-guide 301
+/creating-a-marketing-mix-model-with-meta-robyn-a-step-by-step-guide /blog/creating-a-marketing-mix-model-with-meta-robyn-a-step-by-step-guide 301
+/creating-a-marketing-mix-model-with-meta-robyn-a-step-by-step-guide/ /blog/creating-a-marketing-mix-model-with-meta-robyn-a-step-by-step-guide 301
+/how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study /blog/how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study 301
+/how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study/ /blog/how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study 301
+/how-i-helped-unisport-increase-their-sales-with-segmentation-analysis /blog/how-i-helped-unisport-increase-their-sales-with-segmentation-analysis 301
+/how-i-helped-unisport-increase-their-sales-with-segmentation-analysis/ /blog/how-i-helped-unisport-increase-their-sales-with-segmentation-analysis 301
+/how-to-create-your-own-attribution-model /blog/how-to-create-your-own-attribution-model 301
+/how-to-create-your-own-attribution-model/ /blog/how-to-create-your-own-attribution-model 301
+/how-to-use-facebook-lead-ads-to-generate-quality-low-cost-leads-a-zopto-case-study /blog/how-to-use-facebook-lead-ads-to-generate-quality-low-cost-leads-a-zopto-case-study 301
+/how-to-use-facebook-lead-ads-to-generate-quality-low-cost-leads-a-zopto-case-study/ /blog/how-to-use-facebook-lead-ads-to-generate-quality-low-cost-leads-a-zopto-case-study 301
+/unleashing-the-power-of-causal-impact-in-marketing-analytics /blog/unleashing-the-power-of-causal-impact-in-marketing-analytics 301
+/unleashing-the-power-of-causal-impact-in-marketing-analytics/ /blog/unleashing-the-power-of-causal-impact-in-marketing-analytics 301
+/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing /blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing 301
+/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing/ /blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing 301
+
+# Old WordPress pages
+/about / 301
+/about/ / 301
+/cv / 301
+/cv/ / 301
+/feed / 301
+/feed/ / 301
+/front-page / 301
+/front-page/ / 301
+/blog/feed/ /blog 301
