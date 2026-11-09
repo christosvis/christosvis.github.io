@@ -256,8 +256,24 @@ def book_description(s: str) -> str:
     return ""
 
 
+CARD = re.compile(r'(<article class="blog-card">\s*<h3>)(.*?)(</h3>\s*<p>)(.*?)(</p>\s*<a href="blog/([^"]+)\.html")', re.S)
+
+
+def update_cards(path: Path) -> None:
+    """Use the new post titles and descriptions on the blog and home page cards."""
+    def repl(m: re.Match) -> str:
+        meta = POST_META.get(m.group(6))
+        if not meta:
+            return m.group(0)
+        return m.group(1) + esc(meta[0]) + m.group(3) + esc(meta[1]) + m.group(5)
+    s = path.read_text(encoding="utf-8")
+    path.write_text(CARD.sub(repl, s), encoding="utf-8")
+
+
 def main() -> None:
     sitemap: list[tuple[str, str]] = []
+    update_cards(ROOT / "blog.html")
+    update_cards(ROOT / "index.html")
 
     # Main pages
     for rel, (title, desc) in PAGES.items():
@@ -276,11 +292,14 @@ def main() -> None:
     # Blog posts
     for path in sorted((ROOT / "blog").glob("*.html")):
         add_book_links(path)
-        s = path.read_text(encoding="utf-8")
         slug = path.stem
+        new_title, new_desc = POST_META.get(slug, (None, None))
+        s = path.read_text(encoding="utf-8")
+        if new_title:  # keep the visible heading in line with the search title
+            s = re.sub(r"(<h1[^>]*>).*?(</h1>)", lambda m: m.group(1) + esc(new_title) + m.group(2), s, count=1, flags=re.S)
+            path.write_text(s, encoding="utf-8")
         h1 = re.search(r"<h1[^>]*>(.*?)</h1>", s, re.S)
         headline = text_of(h1.group(1)) if h1 else text_of(TITLE.search(s).group(1))
-        new_title, new_desc = POST_META.get(slug, (None, None))
         desc = new_desc or clip(existing_description(s) or text_of(s.split("<body", 1)[-1]))
         if not new_title:
             new_title = f"{headline} - {SITE_NAME}"
