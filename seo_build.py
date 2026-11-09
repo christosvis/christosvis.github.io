@@ -47,14 +47,14 @@ PAGES = {
 
 # Original publish / last-modified dates of the blog posts (from the WordPress export).
 POST_DATES = {
-    "how-to-create-your-own-attribution-model": ("2021-07-08", "2024-12-17"),
+    "how-to-create-your-own-attribution-model": ("2021-07-08", "2026-11-09"),
     "how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study": ("2021-07-09", "2023-01-23"),
     "how-i-helped-unisport-increase-their-sales-with-segmentation-analysis": ("2021-07-09", "2021-07-09"),
     "how-to-use-facebook-lead-ads-to-generate-quality-low-cost-leads-a-zopto-case-study": ("2021-07-09", "2021-07-09"),
     "creating-a-marketing-mix-model-with-lightweightmmm-a-step-by-step-guide": ("2023-11-12", "2023-11-12"),
     "creating-a-marketing-mix-model-with-meta-robyn-a-step-by-step-guide": ("2023-11-12", "2023-11-12"),
     "unleashing-the-power-of-causal-impact-in-marketing-analytics": ("2023-11-13", "2023-11-13"),
-    "unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing": ("2023-11-13", "2024-09-04"),
+    "unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing": ("2023-11-13", "2026-11-09"),
     "crafting-a-robust-marketing-mix-model-with-pymc-marketing": ("2023-12-17", "2023-12-17"),
 }
 

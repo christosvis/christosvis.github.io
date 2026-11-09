@@ -875,3 +875,24 @@ footer {
     border-color: #30363d;
     color: #ff7b72;
 }
+
+/* Tables in blog posts */
+.blog-post .post-content figure.wp-block-table {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+.blog-post .post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+.blog-post .post-content th,
+.blog-post .post-content td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+}
+.blog-post .post-content th {
+    font-weight: 700;
+}

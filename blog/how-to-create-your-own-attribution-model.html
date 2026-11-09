@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Custom Attribution Model (Shapley &amp; Markov)">
 <meta name="twitter:description" content="Build a custom attribution model from your own data: collect touchpoints, set an attribution window, apply Shapley value and Markov chain models, then validate with lift tests.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Create a Custom Attribution Model (Shapley & Markov)", "description": "Build a custom attribution model from your own data: collect touchpoints, set an attribution window, apply Shapley value and Markov chain models, then validate with lift tests.", "datePublished": "2021-07-08", "dateModified": "2024-12-17", "url": "https://visvardis.com/blog/how-to-create-your-own-attribution-model", "mainEntityOfPage": "https://visvardis.com/blog/how-to-create-your-own-attribution-model", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to Create a Custom Attribution Model (Shapley & Markov)", "description": "Build a custom attribution model from your own data: collect touchpoints, set an attribution window, apply Shapley value and Markov chain models, then validate with lift tests.", "datePublished": "2021-07-08", "dateModified": "2026-11-09", "url": "https://visvardis.com/blog/how-to-create-your-own-attribution-model", "mainEntityOfPage": "https://visvardis.com/blog/how-to-create-your-own-attribution-model", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
 <!-- seo:end -->
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,8 +66,10 @@
         <main>
             <article class="blog-post">
                 <h1>How to Create a Custom Attribution Model (Shapley &amp; Markov)</h1>
+                <p class="post-updated" style="color:var(--secondary-text);font-size:.9rem;margin-top:-.5rem;">Last updated: 9 November 2026</p>
                 <div class="post-content">
-                    <p>Allocating marketing budget efficiently is problematic without knowing the contribution of each marketing channel to a user’s lifetime value and your overall conversions.&nbsp;</p>
+                    <p>This guide shows how to build a custom attribution model from your own data: collecting touchpoints and conversions, choosing an attribution window, comparing <a href="#rule-based">rule-based models</a>, and building data-driven Shapley value and Markov chain models, with <a href="#worked-example">a worked example in R</a>. It then covers how to calibrate the model with lift tests.</p>
+<p>Allocating marketing budget efficiently is problematic without knowing the contribution of each marketing channel to a user’s lifetime value and your overall conversions.&nbsp;</p>
 <p>The problem arises from the fact that analytics tools and marketing tools report the <strong>last click</strong> that occurred and are biased towards <strong>their own data</strong>. Plus, they can’t always detect other channels efficiently.</p>
 <p>As companies and marketing budgets grow, customer journeys become more complex and convoluted since the number of marketing channels they use&nbsp;<strong>increases</strong>.</p>
 <figure class="wp-block-image"><img src="https://assets-global.website-files.com/5a1eb87c9afe1000014a4c7d/5e8e3f0877a390b3053ac5d3_image.png" alt=""/></figure>
@@ -78,6 +80,7 @@
 <li>Google would get credit as the last paid channel in Google Analytics.</li>
 </ul>
 <p>As seen in the example above, relying on third-party tools for attribution&nbsp;<strong>will not reveal the whole customer journey</strong>&nbsp;and will have inherent biases because of the data and the way it is treated under different analytics tools.</p>
+<p>The gaps have grown since this guide was first written. Apple's App Tracking Transparency, cookie consent requirements and shorter cookie lifetimes mean that more journeys are now incomplete: some touchpoints are never recorded at all. A custom model still gives you a consistent, transparent view across channels, but it should be checked against experiments, which this guide covers <a href="#lift-test">further down</a>.</p>
 <h2 class="wp-block-heading"><strong>Create your own attribution model</strong></h2>
 <p>The goal is to create your own custom attribution model. This way you can give credit where credit is due when it comes to the different channels on your customer journey.&nbsp;</p>
 <p><strong>Having a data-driven model helps you to:&nbsp;</strong></p>
@@ -119,10 +122,19 @@
 <p>Decide on an attribution window based on your data and business considerations like the purchase cycle for your products. The attribution window is the time period during which a purchase should be credited to a touchpoint that happened within that period.&nbsp;</p>
 <p>Different industries have different purchase cycles and that affects their attribution window.&nbsp;</p>
 <p>For example, it takes much longer for a customer to decide on the purchase of a vacation package worth thousands of dollars than to buy an inexpensive t-shirt. Generally, expensive purchases have long cycles that might take months and dozens of touchpoints to complete, whereas cheaper and impulse purchases might take only a few hours from the first touchpoint to the conversion.</p>
-<p>Analytics tools like&nbsp;Google Analytics&nbsp;provide reports that help you see the distribution of users based on how long it took them in terms of time and number of touchpoints to convert.</p>
-<figure class="wp-block-image aligncenter"><img src="https://assets-global.website-files.com/5a1eb87c9afe1000014a4c7d/5e8e3f08e9ad1d0255304438_9pJGxw7Y5hzQ41cEpSoRdEgmi36dpLzL0EzdNLHD2y1jRFli3nqlElzOkWeKihqwMuqbIGffDHKMSQpe7ILU3Se4YcvUsm1mQxm6ok7rTWHJRz6lRn1K2w2mQM_aOnlZYm8OUmYN.png" alt=""/><figcaption class="wp-element-caption">Time lag report in Google Analytics</figcaption></figure>
+<p>To choose the window, look at how long it actually takes your customers to convert. With your own path data, plot the number of days and the number of touchpoints between the first touch and the conversion. In GA4, the <em>Advertising</em> section's conversion paths report shows a similar view. Pick a window that covers the large majority of conversions for your product.</p>
+<h2 class="wp-block-heading" id="rule-based"><strong>Rule-based models first</strong></h2>
+<p>Before building a data-driven model, it helps to know the simple rule-based models. They are easy to compute from the same path data and make a useful baseline:</p>
+<figure class="wp-block-table"><table><thead><tr><th>Model</th><th>Credit goes to</th><th>Good for</th></tr></thead><tbody>
+<tr><td>Last click</td><td>The final touchpoint</td><td>A simple baseline; over-credits search and email</td></tr>
+<tr><td>First click</td><td>The first touchpoint</td><td>Seeing which channels start journeys</td></tr>
+<tr><td>Linear</td><td>All touchpoints equally</td><td>A neutral baseline</td></tr>
+<tr><td>Time decay</td><td>Touchpoints closer to the conversion</td><td>Short purchase cycles</td></tr>
+<tr><td>Position-based (40/20/40)</td><td>First and last touch, the rest shared</td><td>Balancing discovery and closing</td></tr>
+</tbody></table></figure>
+<p>The weights in these models are arbitrary: someone decided them, rather than learning them from your data. Data-driven models learn the weights from your converting and non-converting paths.</p>
 <h2 class="wp-block-heading"><strong>Building your Attribution Model</strong></h2>
-<p>There are two widely accepted data-driven models for attribution:&nbsp;</p>
+<p>For a real-world example, see <a href="how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study.html">how I built a custom attribution model for NA-KD</a>. There are two widely accepted data-driven models for attribution:&nbsp;</p>
 <ol class="wp-block-list">
 <li>Shapley Value</li>
 <li>Markov Chains.</li>
@@ -130,7 +142,7 @@
 <p>The inputs needed for both models are the touchpoints and the conversions, which as stated above are part of the data that you will import into your database.</p>
 <h3 class="wp-block-heading"><strong>Using the Shapley Value Attribution Model</strong></h3>
 <p><a href="https://en.wikipedia.org/wiki/Shapley_value" target="_blank" rel="noreferrer noopener"><strong>Shapley Value</strong></a>&nbsp;- named after the Nobel Prize-winning economist Lloyd Shapley - is a game theory model for cooperative problems. In other words, the model tries to assign credit to different parties that contributed to a total value. This is also the question we’re trying to answer with an attribution model, namely how much credit every marketing channel should get for making a user convert along the path.</p>
-<p>The Shapley model is also the one used by Google for their own data-driven attribution model in Google Analytics 360, however by creating your own model you will have better control over your data and will avoid the biases that Google Analytics might have by giving more credit to Google Search.</p>
+<p>Google Analytics 4 uses a data-driven model as its default attribution model, so you may already see data-driven numbers there. But you can't see or tune how GA4's model works, and it only sees the touchpoints GA4 tracks. By creating your own model you have full control over the data and the method, and you avoid any tendency of a vendor's tool to favour its own channels.</p>
 <p>In order to calculate the contribution of a channel under the Shapley Value model, we compare all the different permutations of paths and touchpoints that occurred. For example, we take two paths that differ by a single touchpoint and we assign the difference in total value to that extra touchpoint, since it is the only difference between the two.</p>
 <figure class="wp-block-image aligncenter"><img src="https://assets-global.website-files.com/5a1eb87c9afe1000014a4c7d/5e8e3f08a338300c6eb83789_OKNRq1ucErTcSXLwXqqQiuSdVpf5FHJlcSZtqYEoSr8WqUcFKIZOte8hqbENzqGeua0E9KRTusFfOio6uNt-_eNNiSu_zyvjylmi0UoOrsOg-oE1ZScQ97J6Y61W_JNjnz45SYZN.png" alt=""/><figcaption class="wp-element-caption"><a href="https://support.google.com/analytics/answer/3191594?hl=en" target="_blank" rel="noreferrer noopener">Shapley Value example by Google</a></figcaption></figure>
 <p>Then we compute all the permutations and we assign credit to each channel accordingly. Thus, the model calculates the probability of conversion when a specific channel is present in the conversion path.</p>
@@ -143,13 +155,51 @@
 <figure class="wp-block-image aligncenter"><img src="https://assets-global.website-files.com/5a1eb87c9afe1000014a4c7d/5e8f9aaa9f39018fb38d461b_Screen%20Shot%202020-04-09%20at%205.58.14%20PM.png" alt=""/></figure>
 <p>The above table is an example of the output of a custom attribution model compared to a standard last-click model. Note that the total number of conversions is the same for both models, but what changes is the allocation between different channels. Moreover, the data-driven model can have fractional conversions, since credit for a conversion is given to multiple channels.</p>
 <p>You can also calculate the revenue and ROI for each of the channels since you have conversions, revenue and marketing cost in your database. This will help you allocate your marketing budget across channels.</p>
-<h2 class="wp-block-heading">How to run a “Lift Test”</h2>
+<h2 class="wp-block-heading" id="worked-example">Worked example: a Markov attribution model in R</h2>
+<p>The <a href="https://cran.r-project.org/package=ChannelAttribution" target="_blank" rel="noreferrer noopener">ChannelAttribution</a> R package builds both the rule-based models and a Markov chain model from path data. The input is one row per unique path, with the number of conversions, their value, and the number of times that path ended without a conversion. Here is a small simulated example:</p>
+<pre class="wp-block-code"><code>install.packages("ChannelAttribution")
+library(ChannelAttribution)
+
+# One row per unique path: conversions, conversion value and non-converting count
+paths &lt;- data.frame(
+  path        = c("facebook &gt; google_search &gt; email",
+                  "google_search",
+                  "facebook &gt; google_search",
+                  "facebook",
+                  "email &gt; google_search",
+                  "facebook &gt; email"),
+  conversions = c(30, 50, 25, 5, 15, 10),
+  revenue     = c(3000, 4500, 2600, 400, 1500, 900),
+  null_paths  = c(70, 400, 120, 300, 60, 90)
+)
+
+heuristic &lt;- heuristic_models(paths, var_path = "path", var_conv = "conversions",
+                              var_value = "revenue", sep = "&gt;")
+markov &lt;- markov_model(paths, var_path = "path", var_conv = "conversions",
+                       var_value = "revenue", var_null = "null_paths",
+                       order = 1, sep = "&gt;", seed = 42, out_more = FALSE)
+
+results &lt;- merge(heuristic[, c("channel_name", "last_touch_conversions", "linear_touch_conversions")],
+                 markov[, c("channel_name", "total_conversion")],
+                 by = "channel_name")
+names(results) &lt;- c("channel", "last_click", "linear", "markov")
+print(results, digits = 3)</code></pre>
+<p>The output:</p>
+<figure class="wp-block-table"><table><thead><tr><th>Channel</th><th>Last click</th><th>Linear</th><th>Markov</th></tr></thead><tbody>
+<tr><td>email</td><td>40</td><td>22.5</td><td>31.9</td></tr>
+<tr><td>facebook</td><td>5</td><td>32.5</td><td>36.4</td></tr>
+<tr><td>google_search</td><td>90</td><td>80.0</td><td>66.7</td></tr>
+</tbody></table></figure>
+<p>All three models share out the same 135 conversions; they disagree on who gets the credit. Last click gives Facebook only 5 conversions, because Facebook mostly starts journeys that end with a search or an email. The Markov model sees that removing Facebook would break many converting paths and credits it with about 36. That gap is exactly why last-click reporting undervalues upper-funnel channels.</p>
+<p>The Markov model is estimated by simulation, so the results can move slightly between runs; setting <code>seed</code> keeps them reproducible. With real data, build the paths table from your warehouse using the attribution window you chose, and include the non-converting paths: without them the model can't tell which channels actually raise the chance of converting.</p>
+<h2 class="wp-block-heading" id="lift-test">How to run a “Lift Test”</h2>
 <p>In the models and data mentioned above we talked about capturing touchpoints via UTM tags. UTM tags occur through clicks, which means that there are channels (mainly social media) that will be underrepresented due to the lack of impressions.</p>
 <p><strong>In order to incorporate impressions to your model, you should consider running lift tests for channels like Facebook and Instagram as they rely on impressions more than other channels.&nbsp;</strong></p>
 <p><strong>A lift test</strong>&nbsp;is a randomized control test where we randomize an audience into a test and control group. We only show ads to the test group.&nbsp;</p>
 <p>The difference in conversions between the two groups is known as lift or incrementality and represents the real impact of a channel’s ads on the audience. Moreover, since this is based on the concept of randomized control trials, it also incorporates the concept of causality, meaning that we know that it was the ads that caused the extra conversions.</p>
 <figure class="wp-block-image aligncenter"><img src="https://assets-global.website-files.com/5a1eb87c9afe1000014a4c7d/5e8e3f0802fdad038cf05bff_cL50hQ8PE3o0WarsWbqHHVmKg2C2tAjtF91mFqHi45_Y5MgFpknlAFYcd8lT0zKdQvEHTIK4h88CrYK5gEmuK-2O0RtqLcKiAZ6xMZxM0AvVq8bJmePLjV-XvGpwt9bpbCB0ibha.png" alt=""/><figcaption class="wp-element-caption"><a href="https://www.facebook.com/business/m/one-sheeters/conversion-lift" target="_blank" rel="noreferrer noopener">Source</a></figcaption></figure>
-<p>A good practice is to regularly run lift tests (e.g. once a quarter) so that you can see the effect of Facebook, Instagram and other impression-heavy channels and calibrate your attribution model accordingly.</p>
+<p>A good practice is to run lift tests regularly, so that you can see the effect of Facebook, Instagram and other impression-heavy channels and calibrate your attribution model accordingly. Retest when spend, strategy or season change materially; otherwise, once or twice a year for your largest channels is a reasonable default. The same logic applies to geo tests; see <a href="unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing.html#retest">how often to retest a geo lift test</a>.</p>
+<p>For more on what attribution can and cannot tell you, and how to combine it with experiments and MMM, see the <a href="../practical-marketing-science-book/attribution.html">Attribution and its limits</a> and <a href="../practical-marketing-science-book/triangulation.html">Triangulation</a> chapters of my free book.</p>
 <h2 class="wp-block-heading">Lift test vs attribution model</h2>
 <p>Both attribution models and lift tests are useful and should work in conjunction to give the best possible results. They both have their advantages and limitations, as you can see in the table below:</p>
 <figure class="is-style-regular wp-block-table"><table class="has-fixed-layout"><thead><tr><th><strong>Lift Test</strong></th><th><strong>Attribution Model</strong></th></tr></thead><tbody><tr><td><strong>Accurate results</strong></td><td>Approximation based on model</td></tr><tr><td>One data point in time</td><td><strong>Tool that can be used on a daily basis</strong></td></tr><tr><td>Holdout</td><td><strong>No holdout</strong></td></tr><tr><td><strong>Based on results, not on arbitrary rules</strong></td><td>Rule-based unless you build a&nbsp;<strong>data-driven</strong>&nbsp;model</td></tr><tr><td><strong>Causality</strong></td><td>Correlation</td></tr><tr><td><strong>Baseline (organic, brand effect) is taken into account</strong></td><td>Gives little to no credit to organic</td></tr><tr><td><strong>Impressions are taken into account&nbsp;</strong>(but not segregated)</td><td>Impressions hard to track (depends on channel)</td></tr><tr><td>Not all channels have lift tests (imperfect alternatives like matched market test, before-after etc exist)</td><td><strong>Models all digital channels</strong>. Offline is problematic</td></tr></tbody></table></figure>

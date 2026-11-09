@@ -163,6 +163,11 @@ def main():
             # Write individual blog page
             html_content = create_blog_post_html(post_data)
             file_path = os.path.join(BLOG_DIR, f"{slug}.html")
+            # Posts edited by hand after the WordPress import carry a "Last updated" line;
+            # never overwrite them with the old WordPress content.
+            if os.path.exists(file_path) and 'class="post-updated"' in open(file_path, encoding='utf-8').read():
+                print(f"Skipped {file_path} (edited by hand)")
+                continue
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(html_content)
             print(f"Created {file_path}")

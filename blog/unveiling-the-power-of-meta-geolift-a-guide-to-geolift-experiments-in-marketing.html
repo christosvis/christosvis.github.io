@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Meta GeoLift Guide: How to Run a Geo Lift Test in R">
 <meta name="twitter:description" content="Step-by-step guide to Meta GeoLift: set test goals, prepare market data, run a power analysis, launch the geo lift test in R and read the incremental lift.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Meta GeoLift Guide: How to Run a Geo Lift Test in R", "description": "Step-by-step guide to Meta GeoLift: set test goals, prepare market data, run a power analysis, launch the geo lift test in R and read the incremental lift.", "datePublished": "2023-11-13", "dateModified": "2024-09-04", "url": "https://visvardis.com/blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing", "mainEntityOfPage": "https://visvardis.com/blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Meta GeoLift Guide: How to Run a Geo Lift Test in R", "description": "Step-by-step guide to Meta GeoLift: set test goals, prepare market data, run a power analysis, launch the geo lift test in R and read the incremental lift.", "datePublished": "2023-11-13", "dateModified": "2026-11-09", "url": "https://visvardis.com/blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing", "mainEntityOfPage": "https://visvardis.com/blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
 <!-- seo:end -->
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,8 +66,9 @@
         <main>
             <article class="blog-post">
                 <h1>Meta GeoLift Guide: How to Run a Geo Lift Test in R</h1>
+                <p class="post-updated" style="color:var(--secondary-text);font-size:.9rem;margin-top:-.5rem;">Last updated: 9 November 2026</p>
                 <div class="post-content">
-                    <p>In the dynamic landscape of digital marketing, understanding the real impact of geo-targeted campaigns is key. Enter <a href="https://facebookincubator.github.io/GeoLift/" target="_blank" rel="noreferrer noopener">Meta GeoLift</a>, a game-changer in marketing measurement. In this post, we'll delve into what GeoLift experiments are, why they're a must for marketers, and a step-by-step guide on running Meta GeoLift</p>
+                    <p><a href="https://facebookincubator.github.io/GeoLift/" target="_blank" rel="noreferrer noopener">Meta's GeoLift</a> is an open-source R package for measuring the incremental impact of marketing with geo experiments: you run a campaign in some regions, hold others back, and use a synthetic control to estimate what would have happened without it. This guide walks through a full geo lift test in R (choosing test markets, running a power analysis, launching the test and reading the lift) and then covers <a href="#how-long">how long to run a test and how many markets you need</a>, <a href="#retest">how often to retest</a>, and <a href="#pitfalls">the most common pitfalls</a>.</p>
 <p><strong>What are GeoLift Experiments?</strong><br>GeoLift experiments are a way to measure the effectiveness of marketing efforts in specific geographic locations. Unlike traditional metrics, GeoLift focuses on the incremental impact, answering the crucial question: Did our campaign make a real difference in these specific regions?</p>
 <p><strong>Why Use Meta GeoLift for Marketing Measurement?</strong></p>
 <ul>
@@ -81,7 +82,7 @@
 </ul>
 <h2 class="wp-block-heading"><strong>How to Run Meta GeoLift: A Step-by-Step Guide</strong></h2>
 <h3 class="wp-block-heading"><strong>Define Experiment Goals</strong> </h3>
-<p>Clearly outline what you aim to achieve with your GeoLift experiment. Are you looking to boost click-through rates, increase conversions, or enhance brand engagement?</p>
+<p>Start from the decision the test will feed. Are you deciding whether a channel works at all (a go-dark or holdout test), or how much to spend on it (a heavy-up or scale-back test)? Then pick an outcome you can measure by region from your own data: conversions, revenue or sign-ups. Avoid clicks or impressions as the goal; they only tell you the ads were delivered, not that they changed what people did.</p>
 <hr class="wp-block-separator has-alpha-channel-opacity"/>
 <h3 class="wp-block-heading"><strong>Data and R Environment</strong></h3>
 <p>Ensure you have the required packages installed.</p>
@@ -255,7 +256,28 @@ head(GeoTestData_PreTest)</code></pre>
 </ul>
 <figure class="wp-block-image size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-11.png" alt="" class="wp-image-730"/></figure>
 <figure class="wp-block-image size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-12.png" alt="" class="wp-image-731"/></figure>
-<p><br>Meta GeoLift opens the door to a new era of precision in marketing. By running GeoLift experiments, marketers can elevate their strategies, ensuring every ad dollar spent contributes significantly to the bottom line. Ready to unlock the geo-marketing potential? Dive into Meta GeoLift and watch your campaigns soar.</p>
+<h2 class="wp-block-heading" id="how-long">How long should a geo lift test run, and how many markets?</h2>
+<p>Let the power analysis decide, not a rule of thumb. In practice most tests need two to six weeks: long enough to cover full weekly cycles and the delay between seeing an ad and buying, short enough that the market doesn't change underneath you. More test markets and a larger expected lift both shorten the test.</p>
+<p>If the power analysis says you would need months, or most of your markets, to detect a realistic lift, the test is not worth running at that budget. Increase the spend difference between test and control, or test a bigger channel.</p>
+<h2 class="wp-block-heading" id="retest">How often should you retest a geo lift test?</h2>
+<p>A geo lift result is a snapshot: it tells you what the channel did at that spend level, with that creative, in that season. Retest when one of those changes materially:</p>
+<ul>
+<li><strong>Spend moves well outside the range you tested.</strong> Returns usually fall as spend rises, so a lift measured at one budget does not tell you about double that budget.</li>
+<li><strong>The strategy changes:</strong> a new creative approach, new audience, or new bidding or campaign structure.</li>
+<li><strong>The season or market shifts.</strong> A result from a quiet quarter may not hold in peak season, and vice versa.</li>
+<li><strong>The result starts to disagree with other evidence,</strong> such as your marketing mix model or platform lift studies.</li>
+</ul>
+<p>Without a trigger, a reasonable default for your largest channels is roughly once or twice a year, staggered so that you are not testing every channel at once. Between tests, leave a washout period and rotate the markets you use as test regions, so that earlier treatments don't leak into the next test's baseline. Use each result to calibrate your marketing mix model, so the learning carries forward between tests.</p>
+<h2 class="wp-block-heading" id="pitfalls">Common geo lift pitfalls</h2>
+<ul>
+<li><strong>Spillover between regions.</strong> People who live in a control region but work or shop in a test region see the ads, which shrinks the measured lift. Choose regions that are as self-contained as possible.</li>
+<li><strong>Uneven delivery.</strong> Check that the extra spend actually reached the test markets, region by region. A test where delivery didn't happen measures nothing.</li>
+<li><strong>Other activity mid-test.</strong> A promotion, price change, PR spike or another channel's campaign launching in some markets during the test will be counted as lift (or hide it).</li>
+<li><strong>Too few markets.</strong> With only one or two test markets, a single local event can decide the result. The power analysis shows how many you need.</li>
+</ul>
+<p>For a fuller treatment, including a worked example on 40 regions, see the <a href="../practical-marketing-science-book/geo.html">Geo experiments</a> chapter of my free book.</p>
+<h2 class="wp-block-heading">Summary</h2>
+<p>GeoLift lets you measure what a channel really adds by comparing test regions with a synthetic control built from the rest. Design the test around a decision and a business outcome, let the power analysis set the duration and number of markets, and retest when spend, strategy or season change. Geo tests are also the best way to calibrate an attribution model; see <a href="how-to-create-your-own-attribution-model.html">how to create a custom attribution model</a>.</p>
                 </div>
 <!-- book-links:start -->
 <aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:2px solid var(--border-color);border-radius:8px;"><p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, <a href="../practical-marketing-science-book/index.html">Practical Marketing Science</a></p><ul style="margin:0;padding-left:1.2rem;"><li><a href="../practical-marketing-science-book/geo.html">Geo experiments</a></li><li><a href="../practical-marketing-science-book/lift.html">Reading platform lift studies</a></li></ul></aside>
