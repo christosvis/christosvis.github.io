@@ -353,7 +353,39 @@ def main() -> None:
         xml.append(f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod></url>")
     xml.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(xml) + "\n", encoding="utf-8")
-    print(f"Updated {len(sitemap)} pages and sitemap.xml")
+    tagged = add_analytics()
+    print(f"Updated {len(sitemap)} pages and sitemap.xml; GA4 tag on {tagged} pages")
+
+
+# Google Analytics 4. Every HTML page gets this block straight after <head>.
+GA4_ID = "G-0VCH9LPNYB"
+GA_BLOCK = re.compile(r"\s*<!-- ga4:start -->.*?<!-- ga4:end -->", re.S)
+
+
+def add_analytics() -> int:
+    tag = (
+        "\n<!-- ga4:start -->\n"
+        f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>\n'
+        "<script>\n"
+        "  window.dataLayer = window.dataLayer || [];\n"
+        "  function gtag(){dataLayer.push(arguments);}\n"
+        "  gtag('js', new Date());\n"
+        f"  gtag('config', '{GA4_ID}');\n"
+        "</script>\n"
+        "<!-- ga4:end -->"
+    )
+    count = 0
+    for path in sorted(ROOT.rglob("*.html")):
+        if ".git" in path.parts:
+            continue
+        s = GA_BLOCK.sub("", path.read_text(encoding="utf-8"))
+        i = s.find("<head>")
+        if i < 0:
+            continue
+        i += len("<head>")
+        path.write_text(s[:i] + tag + s[i:], encoding="utf-8")
+        count += 1
+    return count
 
 
 if __name__ == "__main__":
