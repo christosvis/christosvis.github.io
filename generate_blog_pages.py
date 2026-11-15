@@ -36,9 +36,6 @@ def create_blog_post_html(post):
     <title>{title} - Christos Visvardis</title>
     <meta name="description" content="{excerpt}">
     <link rel="stylesheet" href="../style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">

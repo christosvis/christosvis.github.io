@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- theme:start -->
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<!-- theme:end -->
 <!-- ga4:start -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VCH9LPNYB"></script>
 <script>
@@ -27,9 +30,6 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CausalImpact for Marketing: Measure Campaign Impact in R", "description": "How to use Google's CausalImpact R package to measure the incremental effect of a marketing campaign or launch when you cannot run a randomised test.", "datePublished": "2023-11-13", "dateModified": "2023-11-13", "url": "https://visvardis.com/blog/unleashing-the-power-of-causal-impact-in-marketing-analytics", "mainEntityOfPage": "https://visvardis.com/blog/unleashing-the-power-of-causal-impact-in-marketing-analytics", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
 <!-- seo:end -->
     <link rel="stylesheet" href="../style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -146,7 +146,10 @@ impact &lt;- CausalImpact(bsts.model = bsts.model, post.period.response = post.p
         </main>
 
         <footer>
-            <p>&copy; 2026 Christos Visvardis. All rights reserved.</p>
+            <div class="footer-grid">
+                <p>&copy; 2026 Christos Visvardis</p>
+                <nav class="footer-links" aria-label="Footer"><a href="../about.html">About</a><a href="../portfolio.html">Portfolio</a><a href="../blog.html">Blog</a><a href="../practical-marketing-science-book/index.html">Book</a><a href="https://www.linkedin.com/in/cvis/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/christosvis" target="_blank" rel="noopener">GitHub</a></nav>
+            </div>
         </footer>
     </div>
 

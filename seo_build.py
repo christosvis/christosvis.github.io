@@ -396,10 +396,91 @@ def update_cards(path: Path) -> None:
     path.write_text(CARD.sub(repl, s), encoding="utf-8")
 
 
+# Topic tag shown on each article card (blog page and home page).
+CARD_TAGS = {
+    "google-meridian-mmm-tutorial": "MMM",
+    "meridian-geox-geo-experiment-tutorial": "Experiments",
+    "ab-tests-that-hold-up": "Experiments",
+    "crafting-a-robust-marketing-mix-model-with-pymc-marketing": "MMM",
+    "creating-a-marketing-mix-model-with-lightweightmmm-a-step-by-step-guide": "MMM",
+    "creating-a-marketing-mix-model-with-meta-robyn-a-step-by-step-guide": "MMM",
+    "unleashing-the-power-of-causal-impact-in-marketing-analytics": "Causal inference",
+    "unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing": "Experiments",
+    "how-to-create-your-own-attribution-model": "Attribution",
+    "how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study": "Case study",
+    "how-i-helped-unisport-increase-their-sales-with-segmentation-analysis": "Case study",
+    "how-to-use-facebook-lead-ads-to-generate-quality-low-cost-leads-a-zopto-case-study": "Case study",
+}
+ARTICLE_CARD = re.compile(r'<article class="blog-card">.*?</article>', re.S)
+
+
+def tag_cards(path: Path) -> None:
+    """Put one topic tag at the top of each article card (replacing any old one)."""
+    def repl(m: re.Match) -> str:
+        card = re.sub(r'\s*<span class="card-tag">[^<]*</span>', "", m.group(0))
+        slug = re.search(r'href="blog/([^"]+)\.html"', card)
+        tag = CARD_TAGS.get(slug.group(1)) if slug else None
+        if not tag:
+            return card
+        span = f'\n                        <span class="card-tag">{esc(tag)}</span>'
+        date = re.search(r'<p class="card-date">[^<]*</p>', card)
+        at = date.end() if date else len('<article class="blog-card">')
+        return card[:at] + span + card[at:]
+    s = path.read_text(encoding="utf-8")
+    path.write_text(ARTICLE_CARD.sub(repl, s), encoding="utf-8")
+
+
+# The same footer on every page (outside the book), with links to the main pages.
+def footer_html(prefix: str) -> str:
+    links = [("about.html", "About"), ("portfolio.html", "Portfolio"), ("blog.html", "Blog"),
+             (f"{BOOK_DIR}/index.html", "Book")]
+    inner = "".join(f'<a href="{prefix}{href}">{label}</a>' for href, label in links)
+    inner += ('<a href="https://www.linkedin.com/in/cvis/" target="_blank" rel="noopener">LinkedIn</a>'
+              '<a href="https://github.com/christosvis" target="_blank" rel="noopener">GitHub</a>')
+    return ("<footer>\n            <div class=\"footer-grid\">\n"
+            f"                <p>&copy; {date.today().year} Christos Visvardis</p>\n"
+            f'                <nav class="footer-links" aria-label="Footer">{inner}</nav>\n'
+            "            </div>\n        </footer>")
+
+
+# Set the colour theme before the page is drawn, so dark-mode visitors get no white flash.
+THEME_BLOCK = re.compile(r"\s*<!-- theme:start -->.*?<!-- theme:end -->", re.S)
+THEME_SNIPPET = (
+    "\n<!-- theme:start -->\n<script>(function(){try{var t=localStorage.getItem('theme');"
+    "if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}"
+    "document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>\n<!-- theme:end -->"
+)
+
+
+def site_pages() -> list[Path]:
+    return [p for p in sorted(ROOT.rglob("*.html"))
+            if ".git" not in p.parts and BOOK_DIR not in p.parts]
+
+
+def add_theme_and_footer() -> int:
+    n = 0
+    for path in site_pages():
+        s = THEME_BLOCK.sub("", path.read_text(encoding="utf-8"))
+        i = s.find("<head>")
+        if i < 0:
+            continue
+        i += len("<head>")
+        s = s[:i] + THEME_SNIPPET + s[i:]
+        prefix = "../" * (len(path.relative_to(ROOT).parts) - 1)
+        if path.name == "404.html":
+            prefix = "/"
+        s = re.sub(r"<footer>.*?</footer>", lambda m: footer_html(prefix), s, count=1, flags=re.S)
+        path.write_text(s, encoding="utf-8")
+        n += 1
+    return n
+
+
 def main() -> None:
     sitemap: list[tuple[str, str]] = []
     update_cards(ROOT / "blog.html")
     update_cards(ROOT / "index.html")
+    tag_cards(ROOT / "blog.html")
+    tag_cards(ROOT / "index.html")
 
     # Main pages
     for rel, (title, desc) in PAGES.items():
@@ -481,6 +562,7 @@ def main() -> None:
     xml.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(xml) + "\n", encoding="utf-8")
     tagged = add_analytics()
+    add_theme_and_footer()  # runs after analytics so the theme script is the first thing in <head>
     print(f"Updated {len(sitemap)} pages and sitemap.xml; GA4 tag on {tagged} pages")
 
 

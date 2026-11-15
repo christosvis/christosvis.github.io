@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+<!-- theme:start -->
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<!-- theme:end -->
 <!-- ga4:start -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VCH9LPNYB"></script>
 <script>
@@ -80,7 +83,7 @@
         <main>
             <section id="about-page" class="about-page">
                 <div class="about-intro">
-                    <img src="assets/christos-visvardis.jpg" alt="Christos Visvardis" width="640" height="702">
+                    <picture><source type="image/webp" srcset="assets/christos-visvardis-480.webp 480w, assets/christos-visvardis-640.webp 640w" sizes="(max-width: 768px) 90vw, 320px"><img src="assets/christos-visvardis.jpg" alt="Christos Visvardis" width="640" height="702"></picture>
                     <div>
                         <h1>About me</h1>
                         <p>I'm Christos Visvardis, a marketing scientist. For more than 15 years I have worked on one
@@ -176,7 +179,10 @@
         </main>
 
         <footer>
-            <p>&copy; 2026 Christos Visvardis. All rights reserved.</p>
+            <div class="footer-grid">
+                <p>&copy; 2026 Christos Visvardis</p>
+                <nav class="footer-links" aria-label="Footer"><a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="blog.html">Blog</a><a href="practical-marketing-science-book/index.html">Book</a><a href="https://www.linkedin.com/in/cvis/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/christosvis" target="_blank" rel="noopener">GitHub</a></nav>
+            </div>
         </footer>
     </div>
 

@@ -370,7 +370,6 @@ nav a:hover {
 /* Hero Section */
 .hero {
     margin-bottom: var(--spacing-xl);
-    animation: fadeIn 1s ease-out;
 }
 
 .hero h1 {
@@ -1087,3 +1086,231 @@ footer {
     outline: 2px solid var(--accent-color, currentColor);
     outline-offset: 2px;
 }
+
+/* ===== Home page sections (moved from index.html) ===== */
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-grid h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+}
+
+.hero-photo img {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+    margin-left: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.hero p a {
+    color: inherit;
+}
+
+.section-note {
+    color: var(--secondary-text);
+    margin: -0.75rem 0 1.5rem;
+}
+
+/* results */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.stat-card {
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem 1.25rem 1rem;
+}
+
+.stat-card p {
+    margin: 0 0 0.5rem;
+    line-height: 1.5;
+}
+
+.stat-card .stat-number {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+}
+
+/* book */
+.book-feature {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+}
+
+.book-feature h2 {
+    margin-top: 0;
+}
+
+.book-feature p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.book-feature .btn {
+    white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-photo {
+        order: -1;
+    }
+
+    .hero-photo img {
+        max-width: 220px;
+        margin: 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-feature {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.25rem;
+    }
+}
+.card-date {
+    color: var(--secondary-text);
+    font-size: 0.85rem;
+    margin: 0 0 0.5rem;
+}
+@media (max-width: 600px) {
+    nav ul {
+        gap: 0.9rem;
+    }
+
+    nav li:has(> a[aria-label="LinkedIn"]),
+    nav li:has(> a[aria-label="GitHub"]) {
+        display: none;
+    }
+}
+
+/* ===== Design refresh: brand colour, layout, cards, footer ===== */
+:root {
+    --brand: #1F4E79;          /* the book's blue */
+    --brand-soft: #EEF3F8;
+}
+[data-theme="dark"] {
+    --brand: #8DB8E8;
+    --brand-soft: #16222f;
+}
+
+/* Wider layout on pages with card grids; posts and About keep a reading width */
+.wide .container { max-width: 1080px; }
+.section-note, .hero-text p { max-width: 62ch; }
+
+/* Header */
+.logo { white-space: nowrap; letter-spacing: -0.01em; }
+nav a:not([aria-label]):hover { color: var(--brand); }
+
+/* Buttons */
+.btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+[data-theme="dark"] .btn.primary { color: #0d1620; }
+.btn.primary:hover { background: var(--brand); filter: brightness(1.1); }
+
+/* Hero */
+.hero-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3.5rem; }
+.hero-eyebrow { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+                color: var(--brand); margin-bottom: 0.75rem; }
+.hero-grid h1 { font-size: clamp(2.3rem, 4.6vw, 3.4rem); line-height: 1.08; letter-spacing: -0.025em; }
+.hero p a { color: var(--brand); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.hero-photo img { box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 12px 32px rgba(31,78,121,.14); }
+
+/* Section headings with a short accent rule */
+main section > h2 { letter-spacing: -0.015em; }
+main section > h2::after { content: ""; display: block; width: 40px; height: 3px; border-radius: 2px;
+                            background: var(--brand); margin-top: 0.6rem; }
+
+/* Results */
+.wide .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.stat-card { border-top: 3px solid var(--brand); }
+.stat-card .stat-number { color: var(--brand); font-size: 1.7rem; letter-spacing: -0.02em; }
+
+/* Book: a cover drawn in CSS (no image) next to the text */
+.book-feature { display: grid; grid-template-columns: 150px 1fr; gap: 2.25rem; align-items: center;
+                background: var(--brand-soft); border: 1px solid var(--border-color); border-radius: 14px; padding: 2rem; }
+.book-feature .btn { margin-top: 1rem; }
+.book-cover, .book-cover:hover { text-decoration: none; color: #fff; }
+.book-cover { aspect-ratio: 3 / 4; border-radius: 4px 10px 10px 4px; background: linear-gradient(160deg, #1F4E79, #12324f);
+              padding: 1rem 0.85rem; display: flex; flex-direction: column; justify-content: space-between;
+              box-shadow: inset 6px 0 0 rgba(0,0,0,.18), 0 10px 24px rgba(18,50,79,.30); transform: rotate(-2deg); }
+.book-cover strong { font-size: 1.05rem; line-height: 1.15; color: #fff; }
+.book-cover span { font-size: 0.7rem; opacity: .8; color: #fff; }
+
+/* Logos */
+.clients-grid img { filter: grayscale(1); opacity: .65; transition: opacity .2s, filter .2s; }
+.clients-grid img:hover { filter: none; opacity: 1; }
+
+/* Article cards */
+.wide .blog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.blog-card { transition: border-color .2s, transform .2s; }
+.blog-card:hover { border-color: var(--brand); transform: translateY(-3px); }
+.card-tag { display: inline-block; align-self: flex-start; font-size: 0.72rem; font-weight: 700; letter-spacing: .04em;
+            text-transform: uppercase; color: var(--brand); background: var(--brand-soft);
+            padding: 0.2rem 0.55rem; border-radius: 999px; margin-bottom: 0.6rem; }
+.blog-card .read-more { color: var(--brand); font-weight: 700; }
+
+/* Links inside posts */
+.blog-post .post-content a { color: var(--brand); }
+
+/* Footer with links */
+footer .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
+footer .footer-grid p { margin: 0; }
+footer .footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+footer .footer-links a { color: var(--secondary-text); text-decoration: none; font-size: .9rem; }
+footer .footer-links a:hover { color: var(--brand); }
+
+@media (max-width: 900px) {
+    .wide .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wide .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .hero-photo { order: -1; max-width: 160px; }
+    .hero-photo img { border-radius: 50%; aspect-ratio: 1; object-fit: cover; object-position: 50% 20%; margin: 0; }
+    .book-feature { grid-template-columns: 1fr; padding: 1.5rem; }
+    .book-cover { max-width: 120px; }
+    .wide .blog-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+    header { flex-wrap: wrap; row-gap: 0.4rem; }
+    header nav { width: 100%; }
+    header nav ul { justify-content: space-between; gap: 0.5rem; }
+    .wide .stats-grid { grid-template-columns: 1fr; }
+    .stat-card .stat-number { font-size: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .blog-card, .blog-card:hover, .clients-grid img { transition: none; transform: none; }
+}
+#contact .btn { margin-bottom: 1rem; }
+/* Old "Last updated" line: superseded by .post-meta, kept as a marker for generate_blog_pages.py */
+.post-updated { display: none; }
+.book-links a { color: var(--brand); }
