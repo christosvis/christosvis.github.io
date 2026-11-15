@@ -452,6 +452,34 @@ THEME_SNIPPET = (
 )
 
 
+# Browser-tab icon (favicon) on every page, including the book.
+ICON_BLOCK = re.compile(r"\s*<!-- icons:start -->.*?<!-- icons:end -->", re.S)
+ICON_LINKS = (
+    "\n<!-- icons:start -->\n"
+    '<link rel="icon" href="/favicon.ico" sizes="48x48">\n'
+    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+    '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
+    '<link rel="manifest" href="/site.webmanifest">\n'
+    '<meta name="theme-color" content="#1F4E79">\n'
+    "<!-- icons:end -->"
+)
+
+
+def add_icons() -> int:
+    n = 0
+    for path in sorted(ROOT.rglob("*.html")):
+        if ".git" in path.parts:
+            continue
+        s = ICON_BLOCK.sub("", path.read_text(encoding="utf-8"))
+        m = TITLE.search(s)
+        if not m:
+            continue
+        s = s[:m.end()] + ICON_LINKS + s[m.end():]
+        path.write_text(s, encoding="utf-8")
+        n += 1
+    return n
+
+
 def site_pages() -> list[Path]:
     return [p for p in sorted(ROOT.rglob("*.html"))
             if ".git" not in p.parts and BOOK_DIR not in p.parts]
@@ -563,6 +591,7 @@ def main() -> None:
     (ROOT / "sitemap.xml").write_text("\n".join(xml) + "\n", encoding="utf-8")
     tagged = add_analytics()
     add_theme_and_footer()  # runs after analytics so the theme script is the first thing in <head>
+    add_icons()
     print(f"Updated {len(sitemap)} pages and sitemap.xml; GA4 tag on {tagged} pages")
 
 
