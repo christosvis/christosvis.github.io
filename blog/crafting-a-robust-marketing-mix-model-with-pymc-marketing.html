@@ -142,13 +142,15 @@ custom_beta_channel_prior = {
 )</code></pre>
 <h3 class="wp-block-heading">4. <strong>Fitting the Model</strong></h3>
 <p>Now, fit the model using your data.</p>
-<pre class="wp-block-code"><code><code>X = data.drop('sales', axis=1) y = data&#91;'sales'] mmm.fit(X, y)</code></code></pre>
+<pre class="wp-block-code"><code>X = data.drop('sales', axis=1)
+y = data&#91;'sales']
+mmm.fit(X, y)</code></pre>
 <h3 class="wp-block-heading">5. <strong>Analyzing the Results</strong></h3>
 <p>Post-fitting, delve into the results:</p>
 <ul>
 <li>Use <code>mmm.plot_components_contributions()</code> to visualize contributions from different channels.</li>
 </ul>
-<figure class="wp-block-image aligncenter size-large"><img src="https://visvardis.com/wp-content/uploads/2023/12/image-1024x602.png" alt="" class="wp-image-741"/><figcaption class="wp-element-caption">An example channel contribution plot</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/pymc-marketing-components.png" alt="PyMC-Marketing posterior predictive model components: channel, control, seasonality and intercept contributions over time" loading="lazy"/><figcaption class="wp-element-caption">An example channel contribution plot</figcaption></figure>
 <ul>
 <li>Check the model diagnostics and ensure your model's robustness.</li>
 </ul>
@@ -157,7 +159,7 @@ custom_beta_channel_prior = {
 <pre class="wp-block-code"><code>with mmm.model:<br>posterior_predictive = pm.sample_posterior_predictive(mmm.trace)</code></pre>
 <p>For a visual comparison, you can plot the actual sales data against the predicted sales.</p>
 <pre class="wp-block-code"><code>mmm.plot_posterior_predictive(original_scale=True);</code></pre>
-<figure class="wp-block-image aligncenter size-large"><img src="https://visvardis.com/wp-content/uploads/2023/12/image-1-1024x602.png" alt="" class="wp-image-742"/><figcaption class="wp-element-caption">Compare the model against the actual data.</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/pymc-marketing-posterior-predictive.png" alt="PyMC-Marketing posterior predictive check: observed sales against the model&#x27;s predictions with credible intervals" loading="lazy"/><figcaption class="wp-element-caption">Compare the model against the actual data.</figcaption></figure>
 <h4 class="wp-block-heading">Statistical Comparison</h4>
 <p>You can also calculate summary statistics like RMSE (Root Mean Squared Error) to quantitatively assess the model's performance:</p>
 <pre class="wp-block-code"><code>from sklearn.metrics import mean_squared_error

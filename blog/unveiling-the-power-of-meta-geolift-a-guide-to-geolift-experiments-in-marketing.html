@@ -124,7 +124,7 @@ head(GeoTestData_PreTest)</code></pre>
         time_id = "time",
         location_id = "location")</code></pre>
 <p>This plot provides insights into the shared patterns across locations, crucial for a successful GeoLift test.</p>
-<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-13.png" alt="" class="wp-image-733"/></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/geolift-pretest-geoplot.png" alt="GeoPlot of the pre-test data: daily outcome for each location" loading="lazy"/><figcaption class="wp-element-caption">Pre-test data: the daily outcome for every location</figcaption></figure>
 <hr class="wp-block-separator has-alpha-channel-opacity"/>
 <h3 class="wp-block-heading"><strong>Power analysis</strong></h3>
 <pre class="wp-block-code"><code>MarketSelections &lt;- GeoLiftMarketSelection(data = GeoTestData_PreTest,
@@ -176,7 +176,7 @@ head(GeoTestData_PreTest)</code></pre>
 <li>We're using <code>GeoPlot</code> to visualize the time-series data for post-campaign results.</li>
 <li>The <code>treatment_start</code> parameter is set to 91, indicating the time stamp at which the campaign started.</li>
 </ul>
-<figure class="wp-block-image size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-10.png" alt="" class="wp-image-729"/></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/geolift-test-geoplot.png" alt="GeoPlot of the test data with the campaign start at day 91 marked" loading="lazy"/><figcaption class="wp-element-caption">Test data for every location, with the campaign start (day 91) marked</figcaption></figure>
 <h3 class="wp-block-heading">GeoLift Inference:</h3>
 <p>Let's run GeoLift</p>
 <pre class="wp-block-code"><code>   GeoTest &lt;- GeoLift(Y_id = "Y",
@@ -265,8 +265,8 @@ head(GeoTestData_PreTest)</code></pre>
 <li>Using the <code>plot</code> function to visualize the lift and average treatment effect over time.</li>
 <li>The charts help assess the model's fit and the effectiveness of the marketing campaign.</li>
 </ul>
-<figure class="wp-block-image size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-11.png" alt="" class="wp-image-730"/></figure>
-<figure class="wp-block-image size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-12.png" alt="" class="wp-image-731"/></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/geolift-lift.png" alt="GeoLift lift plot: test markets against their synthetic control, with the treatment period shaded" loading="lazy"/><figcaption class="wp-element-caption">The test markets (Chicago and Portland) against their synthetic control</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/geolift-att.png" alt="GeoLift average treatment effect on the treated (ATT) per day, with the treatment period shaded" loading="lazy"/><figcaption class="wp-element-caption">Average effect per day in the test markets (ATT)</figcaption></figure>
 <h2 class="wp-block-heading" id="how-long">How long should a geo lift test run, and how many markets?</h2>
 <p>Let the power analysis decide, not a rule of thumb. In practice most tests need two to six weeks: long enough to cover full weekly cycles and the delay between seeing an ad and buying, short enough that the market doesn't change underneath you. More test markets and a larger expected lift both shorten the test.</p>
 <p>If the power analysis says you would need months, or most of your markets, to detect a realistic lift, the test is not worth running at that budget. Increase the spend difference between test and control, or test a bigger channel.</p>

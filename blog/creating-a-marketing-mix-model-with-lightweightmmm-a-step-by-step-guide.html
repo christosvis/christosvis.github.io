@@ -130,11 +130,11 @@ mmm.fit(
 <pre class="wp-block-code"><code>mmm.print_summary()</code></pre>
 <p>Visualize posterior distributions of media effects:</p>
 <pre class="wp-block-code"><code>plot.plot_media_channel_posteriors(media_mix_model=mmm)</code></pre>
-<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-1.png" alt="" class="wp-image-705"/><figcaption class="wp-element-caption">Posterior distributions of the media effects</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/lightweightmmm-media-posteriors.png" alt="LightweightMMM posterior distributions of the media effect for each channel" loading="lazy"/><figcaption class="wp-element-caption">Posterior distributions of the media effects</figcaption></figure>
 <h2 class="wp-block-heading">Step 5: Model Evaluation and Prediction</h2>
 <p>Check the model's fit to the training data:</p>
 <pre class="wp-block-code"><code>plot.plot_model_fit(mmm, target_scaler=target_scaler)</code></pre>
-<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-2.png" alt="" class="wp-image-706"/><figcaption class="wp-element-caption">Our model's fit to the training data</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/lightweightmmm-model-fit.png" alt="LightweightMMM model fit: true and predicted KPI on the training data" loading="lazy"/><figcaption class="wp-element-caption">Our model's fit to the training data</figcaption></figure>
 <p>Make predictions on unseen data:</p>
 <pre class="wp-block-code"><code>new_predictions = mmm.predict(
     media=media_scaler.transform(media_data_test),
@@ -143,20 +143,21 @@ mmm.fit(
 )</code></pre>
 <pre class="wp-block-code"><code>plot.plot_out_of_sample_model_fit(out_of_sample_predictions=new_predictions,
                                  out_of_sample_target=target_scaler.transform(target&#91;split_point:]))</code></pre>
-<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-3.png" alt="" class="wp-image-707"/><figcaption class="wp-element-caption">Model predictions on unseen data</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/lightweightmmm-out-of-sample.png" alt="LightweightMMM out-of-sample predictions against the held-out KPI" loading="lazy"/><figcaption class="wp-element-caption">Model predictions on unseen data</figcaption></figure>
 <h2 class="wp-block-heading">Step 6: Media Insights</h2>
 <p>Extract media contribution and ROI estimates:</p>
 <pre class="wp-block-code"><code>media_contribution, roi_hat = mmm.get_posterior_metrics(target_scaler=target_scaler, cost_scaler=cost_scaler)</code></pre>
 <p>Visualize media contributions over time:</p>
-<pre class="wp-block-code"><code>plot.plot_media_baseline_contribution_area_plot(media_mix_model=mmm, target_scaler=target_scaler, fig_size=(30,10))</code></pre>
-<figure class="wp-block-image size-large"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-4-1024x370.png" alt="" class="wp-image-708"/><figcaption class="wp-element-caption">Estimated media &amp; baseline contribution over time</figcaption></figure>
+<pre class="wp-block-code"><code>plot.plot_media_baseline_contribution_area_plot(media_mix_model=mmm, target_scaler=target_scaler, fig_size=(16,6))</code></pre>
+<figure class="wp-block-image size-large"><img src="../assets/blog/lightweightmmm-baseline-contribution.png" alt="LightweightMMM stacked area chart of baseline and channel contributions over time" loading="lazy"/><figcaption class="wp-element-caption">Estimated media &amp; baseline contribution over time</figcaption></figure>
 <p>Visualize media contributions with credibility intervals:</p>
 <pre class="wp-block-code"><code>plot.plot_bars_media_metrics(metric=media_contribution, metric_name="Media Contribution Percentage")
 plot.plot_bars_media_metrics(metric=roi_hat, metric_name="ROI hat")</code></pre>
-<figure class="wp-block-image aligncenter size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-5.png" alt="" class="wp-image-709"/><figcaption class="wp-element-caption">Estimated media contributions with their respective credibility intervals</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/lightweightmmm-media-contribution.png" alt="LightweightMMM media contribution percentage by channel with credibility intervals" loading="lazy"/><figcaption class="wp-element-caption">Estimated media contributions with their respective credibility intervals</figcaption></figure>
 <h2 class="wp-block-heading">Step 7: Optimization</h2>
 <p>Optimize budget allocation based on the model:</p>
-<pre class="wp-block-code"><code>n_time_periods = 10
+<pre class="wp-block-code"><code>prices = jnp.ones(mmm.n_media_channels)  # cost per unit of media, 1 if media is spend
+n_time_periods = 10
 budget = jnp.sum(jnp.dot(prices, media_data.mean(axis=0))) * n_time_periods
 solution, kpi_without_optim, previous_media_allocation = optimize_media.find_optimal_budgets(
     n_time_periods=n_time_periods,
@@ -169,7 +170,10 @@ solution, kpi_without_optim, previous_media_allocation = optimize_media.find_opt
     seed=SEED
 )</code></pre>
 <p>Check budget constraint and visualize results:</p>
-<pre class="wp-block-code"><code>plot.plot_pre_post_budget_allocation_comparison(
+<pre class="wp-block-code"><code>optimal_buget_allocation = prices * solution.x
+previous_budget_allocation = prices * previous_media_allocation
+
+plot.plot_pre_post_budget_allocation_comparison(
     media_mix_model=mmm,
     kpi_with_optim=solution&#91;'fun'],
     kpi_without_optim=kpi_without_optim,
@@ -177,7 +181,7 @@ solution, kpi_without_optim, previous_media_allocation = optimize_media.find_opt
     previous_budget_allocation=previous_budget_allocation,
     figure_size=(10,10)
 )</code></pre>
-<figure class="wp-block-image size-full"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-6.png" alt="" class="wp-image-710"/><figcaption class="wp-element-caption">Pre/post optimization budget allocation comparison for each channel and pre/post optimization predicted target variable comparison</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/lightweightmmm-budget-optimisation.png" alt="LightweightMMM budget allocation before and after optimisation, and the predicted KPI for each" loading="lazy"/><figcaption class="wp-element-caption">Pre/post optimization budget allocation comparison for each channel and pre/post optimization predicted target variable comparison</figcaption></figure>
 <h2 class="wp-block-heading">Step 8: Saving and Loading the Model</h2>
 <p>Save the trained model to disk:</p>
 <pre class="wp-block-code"><code>file_path = "media_mix_model.pkl"

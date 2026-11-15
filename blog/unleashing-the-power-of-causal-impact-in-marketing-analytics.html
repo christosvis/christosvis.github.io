@@ -102,7 +102,7 @@ impact &lt;- CausalImpact(data, pre.period, post.period)</code></pre>
 <p><strong>4. Plotting the results:</strong></p>
 <pre class="wp-block-code"><code>plot(impact)</code></pre>
 <p>This code generates a plot with three panels. The first panel shows the data and a counterfactual prediction for the post-treatment period. The second panel displays the difference between observed data and counterfactual predictions, representing the pointwise causal effect. The third panel shows the cumulative effect of the intervention.</p>
-<figure class="wp-block-image aligncenter size-large"><img src="https://visvardis.com/wp-content/uploads/2023/11/image-8-1024x731.png" alt="" class="wp-image-724"/><figcaption class="wp-element-caption">An example Causal Impact plot</figcaption></figure>
+<figure class="wp-block-image size-large"><img src="../assets/blog/causal-impact-plot.png" alt="CausalImpact plot with original, pointwise and cumulative panels around the intervention" loading="lazy"/><figcaption class="wp-element-caption">An example Causal Impact plot</figcaption></figure>
 <p><strong>6. Printing a summary table:</strong></p>
 <pre class="wp-block-code"><code>summary(impact)</code></pre>
 <p>This snippet prints a summary table providing details about the average, cumulative, absolute, and relative effects of the intervention. It also includes information about the posterior tail-area probability and the posterior probability of a causal effect.</p>
