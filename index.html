@@ -13,19 +13,19 @@
 <!-- ga4:end -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christos Visvardis | Marketing Science &amp; Measurement Lead</title>
+    <title>Christos Visvardis | Marketing Science &amp; Measurement Expert</title>
 <!-- seo:start -->
-<meta name="description" content="Marketing scientist (ex-Facebook, Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
+<meta name="description" content="Marketing scientist (ex-Facebook / Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
 <link rel="canonical" href="https://visvardis.com/">
 <meta property="og:site_name" content="Christos Visvardis">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Christos Visvardis | Marketing Science &amp; Measurement Lead">
-<meta property="og:description" content="Marketing scientist (ex-Facebook, Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
+<meta property="og:title" content="Christos Visvardis | Marketing Science &amp; Measurement Expert">
+<meta property="og:description" content="Marketing scientist (ex-Facebook / Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
 <meta property="og:url" content="https://visvardis.com/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Christos Visvardis | Marketing Science &amp; Measurement Lead">
-<meta name="twitter:description" content="Marketing scientist (ex-Facebook, Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://visvardis.com/#person", "name": "Christos Visvardis", "url": "https://visvardis.com/", "jobTitle": "Marketing Science & Measurement Lead", "knowsAbout": ["Marketing Mix Modeling", "Marketing Attribution", "Incrementality Testing", "Causal Inference", "Geo Experiments"], "sameAs": ["https://www.linkedin.com/in/cvis/", "https://github.com/christosvis"]}, {"@type": "WebSite", "@id": "https://visvardis.com/#website", "url": "https://visvardis.com/", "name": "Christos Visvardis", "publisher": {"@id": "https://visvardis.com/#person"}}]}</script>
+<meta name="twitter:title" content="Christos Visvardis | Marketing Science &amp; Measurement Expert">
+<meta name="twitter:description" content="Marketing scientist (ex-Facebook / Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://visvardis.com/#person", "name": "Christos Visvardis", "url": "https://visvardis.com/", "jobTitle": "Marketing Science & Measurement Expert", "knowsAbout": ["Marketing Mix Modeling", "Marketing Attribution", "Incrementality Testing", "Causal Inference", "Geo Experiments"], "sameAs": ["https://www.linkedin.com/in/cvis/", "https://github.com/christosvis"]}, {"@type": "WebSite", "@id": "https://visvardis.com/#website", "url": "https://visvardis.com/", "name": "Christos Visvardis", "publisher": {"@id": "https://visvardis.com/#person"}}]}</script>
 <!-- seo:end -->
     <style>
         /* Inter Font */
@@ -964,6 +964,11 @@
                 display: none;
             }
         }
+    
+        /* Whole blog card is clickable: the "Read Article" link stretches over the card */
+        .blog-card { position: relative; cursor: pointer; }
+        .blog-card .read-more::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+        .blog-card:has(.read-more:focus-visible) { outline: 2px solid var(--accent-color, currentColor); outline-offset: 2px; }
     </style>
 </head>
 
@@ -1018,9 +1023,9 @@
             <section class="hero">
                 <div class="hero-grid">
                     <div class="hero-text">
-                        <h1>Marketing Science &amp; Measurement Lead</h1>
+                        <h1>Marketing Science &amp; Measurement Expert</h1>
                         <p>I help companies find out what their marketing actually does, and move budget to what works.
-                            I spent six years in marketing science at <strong>Facebook</strong>, <strong>Meta</strong>
+                            I spent six years in marketing science at <strong>Facebook / Meta</strong>
                             and <strong>TikTok</strong>, led analytics teams at <strong>Cheapflights</strong> (acquired
                             by Kayak) and <strong>MindGeek</strong>, and since 2022 I have advised brands as an
                             independent marketing scientist.</p>
@@ -1080,7 +1085,7 @@
 
             <section id="clients">
                 <h2>Brands I've worked with</h2>
-                <p class="section-note">Across my roles at Facebook, Meta, TikTok and as an independent advisor.</p>
+                <p class="section-note">Across my roles at Facebook / Meta, TikTok and as an independent advisor.</p>
                 <div class="clients-grid">
                     <img src="assets/clients/HM-Logo-4-1024x674.webp" alt="H&M" loading="lazy" width="91" height="60">
                     <img src="assets/clients/Ikea_logo-4-1024x410.webp" alt="IKEA" loading="lazy" width="105"
@@ -1114,25 +1119,24 @@
                 <div class="blog-grid">
                     <article class="blog-card">
                         <p class="card-date">November 2026</p>
+                        <h3>Google Meridian MMM Tutorial: Build a Marketing Mix Model in Python</h3>
+                        <p>Step-by-step Google Meridian tutorial: load geo-level data, set ROI priors, fit the Bayesian MMM, check convergence and fit, read ROI and response curves, and optimise the budget.</p>
+                        <a href="blog/google-meridian-mmm-tutorial.html" class="read-more">Read Article &rarr;</a>
+                    </article>
+                    <article class="blog-card">
+                        <p class="card-date">November 2026</p>
+                        <h3>Meridian GeoX Tutorial: How to Run a Geo Experiment in Python</h3>
+                        <p>How to design and analyse a geo experiment with Google's Meridian GeoX: pick treatment regions, check the MDE and budget, measure lift and iCPD, and calibrate Meridian with the result.</p>
+                        <a href="blog/meridian-geox-geo-experiment-tutorial.html" class="read-more">Read Article &rarr;</a>
+                    </article>
+                    <article class="blog-card">
+                        <p class="card-date">November 2026</p>
                         <h3>A/B Tests That Hold Up: Seven Rules for Trustworthy Experiments</h3>
                         <p>How to design, run and read A/B tests you can trust: a written plan, power and the MDE, no peeking, multiple comparisons, CUPED and the checks that catch broken tests.</p>
                         <a href="blog/ab-tests-that-hold-up.html"
                             class="read-more">Read Article &rarr;</a>
                     </article>
-                    <article class="blog-card">
-                        <p class="card-date">December 2023</p>
-                        <h3>PyMC-Marketing MMM Tutorial: Build a Bayesian Marketing Mix Model</h3>
-                        <p>Step-by-step PyMC-Marketing tutorial: prepare data, set custom priors, fit a Bayesian marketing mix model with adstock and saturation, and check the results.</p>
-                        <a href="blog/crafting-a-robust-marketing-mix-model-with-pymc-marketing.html"
-                            class="read-more">Read Article &rarr;</a>
-                    </article>
-                    <article class="blog-card">
-                        <p class="card-date">November 2023 &middot; updated November 2026</p>
-                        <h3>Meta GeoLift Guide: How to Run a Geo Lift Test in R</h3>
-                        <p>Step-by-step guide to Meta GeoLift: set test goals, prepare market data, run a power analysis, launch the geo lift test in R and read the incremental lift.</p>
-                        <a href="blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing.html"
-                            class="read-more">Read Article &rarr;</a>
-                    </article>
+
                 </div>
                 <div class="section-footer">
                     <a href="blog.html" class="btn secondary">Read my blog for articles and case studies</a>

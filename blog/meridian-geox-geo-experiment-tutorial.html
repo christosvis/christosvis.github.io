@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ga4:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0VCH9LPNYB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0VCH9LPNYB');
+</script>
+<!-- ga4:end -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meridian GeoX Tutorial: How to Run a Geo Experiment in Python</title>
+<!-- seo:start -->
+<meta name="description" content="How to design and analyse a geo experiment with Google&#x27;s Meridian GeoX: pick treatment regions, check the MDE and budget, measure lift and iCPD, and calibrate Meridian with the result.">
+<link rel="canonical" href="https://visvardis.com/blog/meridian-geox-geo-experiment-tutorial">
+<meta property="og:site_name" content="Christos Visvardis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Meridian GeoX Tutorial: How to Run a Geo Experiment in Python">
+<meta property="og:description" content="How to design and analyse a geo experiment with Google&#x27;s Meridian GeoX: pick treatment regions, check the MDE and budget, measure lift and iCPD, and calibrate Meridian with the result.">
+<meta property="og:url" content="https://visvardis.com/blog/meridian-geox-geo-experiment-tutorial">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Meridian GeoX Tutorial: How to Run a Geo Experiment in Python">
+<meta name="twitter:description" content="How to design and analyse a geo experiment with Google&#x27;s Meridian GeoX: pick treatment regions, check the MDE and budget, measure lift and iCPD, and calibrate Meridian with the result.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Meridian GeoX Tutorial: How to Run a Geo Experiment in Python", "description": "How to design and analyse a geo experiment with Google's Meridian GeoX: pick treatment regions, check the MDE and budget, measure lift and iCPD, and calibrate Meridian with the result.", "datePublished": "2026-11-15", "dateModified": "2026-11-15", "url": "https://visvardis.com/blog/meridian-geox-geo-experiment-tutorial", "mainEntityOfPage": "https://visvardis.com/blog/meridian-geox-geo-experiment-tutorial", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
+<!-- seo:end -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">Christos Visvardis</a>
+            <nav>
+                <ul>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../blog.html" class="active">Blog</a></li>
+                    <li><a href="../practical-marketing-science-book/index.html">Book</a></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/cvis/" target="_blank" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/christosvis" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+                                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12.3 22h-.1a10.313 10.313 0 0 1-10.2-10.2a10.288 10.288 0 0 1 10.2-10.2c.2 0 .4 0 .6.1a9.843 9.843 0 0 0-8.5 12.2a9.867 9.867 0 0 0 8.6 8c-.2.1-.4.1-.6.1z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <article class="blog-post">
+                <h1>Meridian GeoX Tutorial: How to Run a Geo Experiment in Python</h1>
+                <p class="post-meta">Published November 2026</p>
+                <div class="post-content">
+                    <p><a href="https://developers.google.com/meridian/geox" target="_blank" rel="noreferrer noopener">Meridian GeoX</a> is Google's open-source Python library for geo experiments. You give it daily conversions (and, if you have it, spend) by region; it designs the test for you (which regions get the treatment, how long to run, what budget you need and the smallest lift you can detect), then measures the incremental lift once the test is over. The result can feed straight into a <a href="google-meridian-mmm-tutorial.html">Meridian marketing mix model</a> as a calibrated ROI prior.</p>
+                    <p>This guide walks through a full single-cell test with Google's example data: design, launch, analysis, comparing designs, a multi-cell test, and calibrating Meridian with the result. Every code block was run with <code>meridian-geox</code> 1.0.1 and <code>google-meridian</code> 2.2.0 on Python 3.12, and the numbers and charts below are the real output.</p>
+
+                    <h2>When a geo experiment is the right tool</h2>
+                    <p>Use a geo experiment when you can't randomise individual users but you can control where the ads run: TV, out-of-home, audio, search or paid social measured on your own sales data, or any channel where platform lift studies don't exist or can't be trusted. You split regions into treatment and control, change the marketing in the treatment regions only, and compare what happened with what the control regions say would have happened. If you have used <a href="unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing.html">Meta's GeoLift</a> in R, GeoX does the same job in Python, with stratified geo assignment, multi-cell tests and a direct path into Meridian.</p>
+
+                    <h2>Choose the experiment type</h2>
+                    <figure class="wp-block-table"><table><thead><tr><th>Type</th><th>What changes in the treatment regions</th><th>Use it for</th></tr></thead><tbody>
+                    <tr><td>Holdback</td><td>A new campaign runs in the treatment regions only; control regions get none</td><td>Testing a channel or campaign you aren't running yet</td></tr>
+                    <tr><td>Go-dark</td><td>Existing spend is switched off (or reduced, "go-dim")</td><td>Measuring what a channel you already run is adding</td></tr>
+                    <tr><td>Heavy-up</td><td>Spend is increased above business as usual</td><td>Measuring the return on the next dollar (marginal return)</td></tr>
+                    </tbody></table></figure>
+                    <p>Go-dark and heavy-up need a spend column in your data, because GeoX estimates the budget change from your current spend. Holdback only needs conversions.</p>
+
+                    <h2>Install and prepare the data</h2>
+<pre class="wp-block-code"><code>pip install meridian-geox</code></pre>
+                    <p>GeoX needs one row per region per day with four columns: <code>date</code>, <code>location</code>, <code>conversions</code> (or revenue) and, optionally, <code>spend</code>. Use your own conversion data, ideally from your CRM or backend rather than an ad platform, and make sure it reflects business as usual. You need at least three times as much history as the test will last: a 30-day test needs 90 days of pre-test data. Google's example has 114 regions with daily data from 1 January to 31 March 2020.</p>
+<pre class="wp-block-code"><code>import datetime
+import pandas as pd
+import meridian_geox as geox
+
+design_data = pd.read_csv(
+    "https://raw.githubusercontent.com/google/meridian-geox/refs/heads/main/"
+    "meridian_geox/data/example_design_data_single_cell.csv"
+)
+design_data["date"] = pd.to_datetime(design_data["date"])
+design_data["location"] = design_data["location"].astype(str)</code></pre>
+
+                    <h2>Design the experiment</h2>
+                    <p>A design is a choice of treatment regions plus the power it gives you. GeoX generates thousands of candidate splits, scores them, and returns the best ones:</p>
+<pre class="wp-block-code"><code>design_config = geox.DesignConfig(
+    experiment_duration=datetime.timedelta(days=30),
+    experiment_types=geox.ExperimentType.HOLDBACK,
+    methodology=geox.Methodology.TBR,                              # time-based regression
+    geo_assignment_rule=geox.GeoAssignmentRule.STRATIFIED_SAMPLING,
+    cost_per_incremental_conversion=1,                             # your expected CpIC
+    cell_count=1,
+    design_output_count=5,
+)
+constraints = geox.Constraints(
+    excluded_geos={"105"},                     # regions that must not be in the test
+    budget_constraint=geox.Budget(budget=500000),
+    max_conversions_percent=0.3,               # treatment regions: at most 30% of conversions
+)
+quality_checks = geox.QualityCheckConfig(
+    exclude_geos_no_response=True,
+    exclude_outlier_dates=True,
+)
+
+design_set = geox.run_design(design_data, design_config, constraints, quality_checks)
+design_set.design_metrics</code></pre>
+                    <p>A few of the settings matter more than the rest:</p>
+                    <ul>
+                        <li><strong>Methodology.</strong> <code>TBR</code> (time-based regression) predicts the treatment regions' conversions from the control regions' conversions, fitted on the pre-test period. <code>SDID</code> (synthetic difference-in-differences) is the alternative.</li>
+                        <li><strong>Stratified sampling</strong> groups similar regions into strata and samples treatment regions from each, so treatment and control look alike. In practice it gives lower detectable effects than a purely random split.</li>
+                        <li><strong>Cost per incremental conversion (CpIC)</strong> is your best guess of what one extra conversion costs in this channel. For a holdback test, GeoX uses it to turn the detectable effect into the budget you'll need.</li>
+                        <li><strong><code>max_conversions_percent</code></strong> caps how much of the business is in the treatment group, which limits the risk of the test.</li>
+                    </ul>
+                    <p>The top design from the example data:</p>
+                    <figure class="wp-block-table"><table><thead><tr><th>Metric</th><th>Value</th><th>What it means</th></tr></thead><tbody>
+                    <tr><td><code>treatment_geo_count</code></td><td>27</td><td>Regions that get the campaign</td></tr>
+                    <tr><td><code>treatment_conversions_pct</code></td><td>30.1%</td><td>Share of conversions in those regions</td></tr>
+                    <tr><td><code>r2</code></td><td>0.91</td><td>How well the control regions predict the treatment regions before the test</td></tr>
+                    <tr><td><code>mde</code></td><td>1.31%</td><td>The smallest lift the test can reliably detect (80% power, 90% confidence)</td></tr>
+                    <tr><td><code>mde_abs</code></td><td>7,086</td><td>The same, in conversions over the 30 days</td></tr>
+                    <tr><td><code>budget</code></td><td>7,086</td><td>Minimum campaign spend needed: <code>mde_abs</code> × CpIC</td></tr>
+                    <tr><td><code>p_value (AA)</code></td><td>0.39</td><td>A placebo test on pre-test data; a high value means no false lift before launch</td></tr>
+                    </tbody></table></figure>
+                    <p>Read the MDE first. If it is larger than the lift you realistically expect, the test will most likely come back inconclusive: lengthen it, add regions, or put more budget behind it. Then check the design-implied CpIC against your own expectation: if the implied CpIC is lower than what you expect to pay, the test is underpowered. For holdback designs the two are equal by construction.</p>
+                    <p>Plot the selected design to see how closely the control regions track the treatment regions before the test:</p>
+<pre class="wp-block-code"><code>design_id = design_set.design_metrics["design_id"].iloc[0]   # top-ranked design
+design = design_set.designs[design_id]
+geox.plot_design(design)</code></pre>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/geox-design-fit.png" alt="GeoX design plot: observed and counterfactual daily conversions of the treatment regions over the pre-test period" loading="lazy"/><figcaption class="wp-element-caption">Observed conversions in the treatment regions against the counterfactual built from the control regions, before the test</figcaption></figure>
+
+                    <h2>Save the design before you launch</h2>
+                    <p>Export the design and keep the file with your test plan. You will analyse the test with exactly this file.</p>
+<pre class="wp-block-code"><code>with open("geox_design.json", "w") as f:
+    f.write(design.export_to_json())</code></pre>
+                    <p>This step matters more than it looks. The design search is randomised, so running <code>run_design</code> again later can pick a different set of treatment regions. When I tested this, a rerun picked 30 regions instead of 27. Analysing the test against regions that never got the campaign produced a nonsense result. Always analyse with the saved design.</p>
+
+                    <h2>Run the test</h2>
+                    <p>Launch the campaign in the 27 treatment regions only, for the full 30 days. Then:</p>
+                    <ul>
+                        <li>Check delivery by region in the first few days. Spend leaking into control regions shrinks the measured lift.</li>
+                        <li>Keep everything else the same in both groups: no promotions, price changes or other channel launches in only some regions.</li>
+                        <li>Don't stop early because the results look good. The MDE assumes the full duration.</li>
+                    </ul>
+
+                    <h2>Analyse the results</h2>
+                    <p>When the test is over, load the conversion (and spend) data for the pre-test and test periods, and analyse it against the saved design:</p>
+<pre class="wp-block-code"><code>analysis_data = pd.read_csv(
+    "https://raw.githubusercontent.com/google/meridian-geox/refs/heads/main/"
+    "meridian_geox/data/example_analysis_data_single_cell_holdback.csv"
+)
+analysis_data["date"] = pd.to_datetime(analysis_data["date"])
+analysis_data["location"] = analysis_data["location"].astype(str)
+
+with open("geox_design.json") as f:
+    saved_design = geox.Design.load_from_json(f.read())
+
+analysis_config = geox.AnalysisConfig(
+    design=saved_design,
+    analysis_start_date=pd.to_datetime("2020-04-01"),
+    analysis_end_date=pd.to_datetime("2020-04-30"),
+)
+result = geox.analyze(
+    analysis_data,
+    analysis_config,
+    geox.QualityCheckConfig(exclude_outlier_dates=True),
+)
+result.results["cell_1"]</code></pre>
+                    <p>The example campaign's result:</p>
+                    <figure class="wp-block-table"><table><thead><tr><th>Metric</th><th>Estimate</th><th>90% interval</th></tr></thead><tbody>
+                    <tr><td>Incremental conversions</td><td>31,560</td><td>30,311 to 32,409</td></tr>
+                    <tr><td>Lift</td><td>+5.8%</td><td>+5.6% to +6.0%</td></tr>
+                    <tr><td>iCPD (incremental conversions per dollar)</td><td>2.30</td><td>2.21 to 2.36</td></tr>
+                    <tr><td>p-value</td><td>0.002</td><td></td></tr>
+                    </tbody></table></figure>
+                    <p>The campaign added about 31,560 conversions over the month, a 5.8% lift in the treatment regions, well above the 1.31% the test was designed to detect. iCPD is the number of incremental conversions per dollar spent, so one extra conversion cost about $0.43 (1 ÷ 2.30). If you analyse revenue instead of conversions, iCPD is your incremental ROAS. A test is inconclusive when its interval includes zero; this one is clearly not.</p>
+<pre class="wp-block-code"><code>geox.plot_analysis(result)</code></pre>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/geox-analysis-lift.png" alt="GeoX analysis: observed against counterfactual conversions in the treatment regions, and the daily difference with confidence intervals" loading="lazy"/><figcaption class="wp-element-caption">Observed conversions jump above the counterfactual on the first day of the test (top); the daily difference stays around 1,000 conversions for the whole month (bottom)</figcaption></figure>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/geox-analysis-cumulative.png" alt="GeoX analysis: cumulative incremental conversions and cumulative iCPD over the test period" loading="lazy"/><figcaption class="wp-element-caption">Cumulative incremental conversions (top) and cumulative iCPD, which settles at about 2.3 after the first week (bottom)</figcaption></figure>
+                    <p>Two checks before you trust the number: the pre-test part of the top chart should show observed and counterfactual moving together (it does), and the cumulative iCPD should settle rather than keep drifting (it does, after about a week).</p>
+
+                    <h2>Compare designs before you choose</h2>
+                    <p><code>compare_designs</code> runs several design configurations on the same data and ranks all the resulting designs together, for example random against stratified assignment, or a 14-day against a 30-day test:</p>
+<pre class="wp-block-code"><code>comparison = geox.compare_designs(
+    design_data,
+    [
+        (geox.DesignConfig(
+            experiment_duration=datetime.timedelta(days=30),
+            experiment_types=geox.ExperimentType.HOLDBACK,
+            methodology=geox.Methodology.TBR,
+            geo_assignment_rule=geox.GeoAssignmentRule.RANDOM),
+         geox.Constraints()),
+        (geox.DesignConfig(
+            experiment_duration=datetime.timedelta(days=30),
+            experiment_types=geox.ExperimentType.HOLDBACK,
+            methodology=geox.Methodology.TBR,
+            geo_assignment_rule=geox.GeoAssignmentRule.STRATIFIED_SAMPLING),
+         geox.Constraints()),
+    ],
+)
+comparison.design_metrics</code></pre>
+                    <p>On the example data, all ten best designs used stratified sampling, with detectable effects from 1.37% to 1.44%; no random split made the top ten.</p>
+
+                    <h2>Test several treatments at once (multi-cell)</h2>
+                    <p>A multi-cell test compares more than one treatment against a shared control group in a single study, for example switching a channel off in some regions and doubling it in others. That gives you both the channel's average return and its marginal return from one test:</p>
+<pre class="wp-block-code"><code># multicell_data: daily conversions and spend by region, prepared as above
+multicell_data = pd.read_csv(
+    "https://raw.githubusercontent.com/google/meridian-geox/refs/heads/main/"
+    "meridian_geox/data/example_design_data_multi_cell_go_dark_heavy_up.csv"
+)
+multicell_data["date"] = pd.to_datetime(multicell_data["date"])
+multicell_data["location"] = multicell_data["location"].astype(str)
+
+multicell_config = geox.DesignConfig(
+    experiment_duration=datetime.timedelta(days=30),
+    experiment_types={
+        "cell_1": geox.ExperimentType.GO_DARK,
+        "cell_2": geox.ExperimentType.HEAVY_UP,
+    },
+    methodology=geox.Methodology.TBR,
+    geo_assignment_rule=geox.GeoAssignmentRule.STRATIFIED_SAMPLING,
+    cell_count=2,
+    design_output_count=5,
+)
+multicell_constraints = geox.Constraints(
+    excluded_geos={"105"},
+    budget_constraint={
+        "cell_1": geox.Budget(budget_pct=-1.0),   # go dark: -100% of spend
+        "cell_2": geox.Budget(budget_pct=1.0),    # heavy-up: +100% of spend
+    },
+    max_conversions_percent=0.3,
+)
+multicell_designs = geox.run_design(multicell_data, multicell_config, multicell_constraints)</code></pre>
+                    <p>On Google's multi-cell example data, the best design put 17 regions in the go-dark cell and 15 in the heavy-up cell, with detectable effects of about 4.4% and 4.3%. Each cell needs its own share of regions, so multi-cell tests need more regions, or more time, than a single-cell test.</p>
+
+                    <h2>Calibrate your Meridian model with the result</h2>
+                    <p>This is where GeoX earns its place next to Meridian. A marketing mix model on its own struggles to separate channels that move together; an experiment gives it an anchor. Meridian's <code>CalibrationBuilder</code> reads the GeoX result directly and turns it into an ROI prior for that channel:</p>
+<pre class="wp-block-code"><code>from meridian import constants
+from meridian.model import model, prior_distribution, spec
+from meridian.model.calibration import prior_builder
+
+# `data` is your Meridian InputData (see the Meridian tutorial)
+calibration = prior_builder.CalibrationBuilder(data=data)
+calibration.with_meridian_geox_experiment_result(
+    channel_name="Channel0",
+    geox_results=result,
+    experiment_kpi_types=constants.NON_REVENUE,   # the test measured conversions
+)
+priors = calibration.build()
+
+mmm = model.Meridian(
+    input_data=data,
+    model_spec=spec.ModelSpec(
+        prior=prior_distribution.PriorDistribution(roi_m=priors.roi_m),
+        media_prior_type="roi",
+    ),
+)</code></pre>
+                    <p>The builder does more than copy the number across. It converts conversions into revenue using your model's revenue per conversion, widens the prior when the test's spend level differs from the channel's typical spend, adds uncertainty for older tests (a 52-week half-life), and adjusts for tests that were shorter than the channel's carryover. Channels without an experiment keep Meridian's default ROI prior.</p>
+                    <p>Three things to check before you calibrate:</p>
+                    <ul>
+                        <li><strong>The question has to match.</strong> Meridian's ROI compares spend with zero spend. Holdback and go-dark tests answer that question. A heavy-up test measures the return on <em>extra</em> spend, which is a different number, so don't feed it in as if it were the average ROI.</li>
+                        <li><strong>One cell at a time.</strong> The builder accepts single-cell results; split a multi-cell study into its cells first.</li>
+                        <li><strong>The result has to make sense.</strong> Meridian rejects results that are significantly negative or have no valid uncertainty, which is how I found the rerun-design problem above.</li>
+                    </ul>
+                    <p>For the full Meridian workflow, from data to budget optimisation, see my <a href="google-meridian-mmm-tutorial.html">Google Meridian MMM tutorial</a>.</p>
+
+                    <h2>Checklist</h2>
+                    <ul>
+                        <li>Daily conversion data by region from your own systems, with at least three times the test length of history.</li>
+                        <li>The right experiment type for the question: holdback or go-dark for "does it work", heavy-up for "what does the next dollar return".</li>
+                        <li>An MDE smaller than the lift you realistically expect, and a design-implied CpIC that isn't below your expected CpIC.</li>
+                        <li>The design exported to JSON before launch, and the analysis run with that file.</li>
+                        <li>Delivery checked by region; nothing else changed in only some regions.</li>
+                        <li>An interval that excludes zero before you call it a win, and observed and counterfactual tracking each other before the test.</li>
+                        <li>Only zero-spend comparisons (holdback, go-dark) used to calibrate Meridian's ROI.</li>
+                    </ul>
+                </div>
+
+<!-- book-links:start -->
+<aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:2px solid var(--border-color);border-radius:8px;"><p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, <a href="../practical-marketing-science-book/index.html">Practical Marketing Science</a></p><ul style="margin:0;padding-left:1.2rem;"><li><a href="../practical-marketing-science-book/geo.html">Geo experiments</a></li><li><a href="../practical-marketing-science-book/validation.html">Validating and calibrating MMM</a></li></ul></aside>
+<!-- book-links:end -->
+                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Christos Visvardis. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

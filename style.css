@@ -1071,3 +1071,19 @@ footer {
         display: none;
     }
 }
+
+/* Whole blog card is clickable: the "Read Article" link stretches over the card */
+.blog-card {
+    position: relative;
+    cursor: pointer;
+}
+.blog-card .read-more::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+.blog-card:has(.read-more:focus-visible) {
+    outline: 2px solid var(--accent-color, currentColor);
+    outline-offset: 2px;
+}

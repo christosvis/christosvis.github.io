@@ -29,13 +29,13 @@ SAME_AS = ["https://www.linkedin.com/in/cvis/", "https://github.com/christosvis"
 # Hand-written titles and descriptions for the main pages.
 PAGES = {
     "index.html": (
-        "Christos Visvardis | Marketing Science & Measurement Lead",
-        "Marketing scientist (ex-Facebook, Meta, TikTok) specialising in marketing mix modeling, "
+        "Christos Visvardis | Marketing Science & Measurement Expert",
+        "Marketing scientist (ex-Facebook / Meta, TikTok) specialising in marketing mix modeling, "
         "incrementality testing, attribution and causal inference. Author of Practical Marketing Science.",
     ),
     "about.html": (
         "About Christos Visvardis | Marketing Science & Measurement",
-        "Christos Visvardis: 15+ years in marketing science and analytics at Facebook, Meta, TikTok, "
+        "Christos Visvardis: 15+ years in marketing science and analytics at Facebook / Meta, TikTok, "
         "Cheapflights and MindGeek, and as an independent marketing scientist.",
     ),
     "blog.html": (
@@ -52,6 +52,8 @@ PAGES = {
 
 # Original publish / last-modified dates of the blog posts (from the WordPress export).
 POST_DATES = {
+    "google-meridian-mmm-tutorial": ("2026-11-15", "2026-11-15"),
+    "meridian-geox-geo-experiment-tutorial": ("2026-11-15", "2026-11-15"),
     "ab-tests-that-hold-up": ("2026-11-15", "2026-11-15"),
     "how-to-create-your-own-attribution-model": ("2021-07-08", "2026-11-09"),
     "how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study": ("2021-07-09", "2023-01-23"),
@@ -67,6 +69,16 @@ POST_DATES = {
 # Search titles and descriptions for blog posts, written for the queries each post
 # gets impressions for in Search Console. The on-page heading is left unchanged.
 POST_META = {
+    "google-meridian-mmm-tutorial": (
+        "Google Meridian MMM Tutorial: Build a Marketing Mix Model in Python",
+        "Step-by-step Google Meridian tutorial: load geo-level data, set ROI priors, fit the Bayesian MMM, "
+        "check convergence and fit, read ROI and response curves, and optimise the budget.",
+    ),
+    "meridian-geox-geo-experiment-tutorial": (
+        "Meridian GeoX Tutorial: How to Run a Geo Experiment in Python",
+        "How to design and analyse a geo experiment with Google's Meridian GeoX: pick treatment regions, "
+        "check the MDE and budget, measure lift and iCPD, and calibrate Meridian with the result.",
+    ),
     "ab-tests-that-hold-up": (
         "A/B Tests That Hold Up: Seven Rules for Trustworthy Experiments",
         "How to design, run and read A/B tests you can trust: a written plan, power and the MDE, "
@@ -106,6 +118,11 @@ POST_META = {
 
 # "Go deeper" links from each post to the matching book chapter.
 BOOK_LINKS = {
+    "google-meridian-mmm-tutorial": [
+        ("bayesmmm", "Bayesian MMM in practice"), ("validation", "Validating and calibrating MMM"),
+        ("curves", "Response curves and budget optimization")],
+    "meridian-geox-geo-experiment-tutorial": [
+        ("geo", "Geo experiments"), ("validation", "Validating and calibrating MMM")],
     "ab-tests-that-hold-up": [
         ("abtests", "A/B tests that hold up"), ("geo", "Geo experiments")],
     "unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing": [
@@ -221,7 +238,7 @@ PERSON = {
     "@id": f"{BASE}/#person",
     "name": AUTHOR,
     "url": BASE + "/",
-    "jobTitle": "Marketing Science & Measurement Lead",
+    "jobTitle": "Marketing Science & Measurement Expert",
     "knowsAbout": [
         "Marketing Mix Modeling",
         "Marketing Attribution",

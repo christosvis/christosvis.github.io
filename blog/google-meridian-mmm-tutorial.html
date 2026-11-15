@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ga4:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0VCH9LPNYB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0VCH9LPNYB');
+</script>
+<!-- ga4:end -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Meridian MMM Tutorial: Build a Marketing Mix Model in Python</title>
+<!-- seo:start -->
+<meta name="description" content="Step-by-step Google Meridian tutorial: load geo-level data, set ROI priors, fit the Bayesian MMM, check convergence and fit, read ROI and response curves, and optimise the budget.">
+<link rel="canonical" href="https://visvardis.com/blog/google-meridian-mmm-tutorial">
+<meta property="og:site_name" content="Christos Visvardis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Meridian MMM Tutorial: Build a Marketing Mix Model in Python">
+<meta property="og:description" content="Step-by-step Google Meridian tutorial: load geo-level data, set ROI priors, fit the Bayesian MMM, check convergence and fit, read ROI and response curves, and optimise the budget.">
+<meta property="og:url" content="https://visvardis.com/blog/google-meridian-mmm-tutorial">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google Meridian MMM Tutorial: Build a Marketing Mix Model in Python">
+<meta name="twitter:description" content="Step-by-step Google Meridian tutorial: load geo-level data, set ROI priors, fit the Bayesian MMM, check convergence and fit, read ROI and response curves, and optimise the budget.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Google Meridian MMM Tutorial: Build a Marketing Mix Model in Python", "description": "Step-by-step Google Meridian tutorial: load geo-level data, set ROI priors, fit the Bayesian MMM, check convergence and fit, read ROI and response curves, and optimise the budget.", "datePublished": "2026-11-15", "dateModified": "2026-11-15", "url": "https://visvardis.com/blog/google-meridian-mmm-tutorial", "mainEntityOfPage": "https://visvardis.com/blog/google-meridian-mmm-tutorial", "author": {"@type": "Person", "name": "Christos Visvardis", "url": "https://visvardis.com/"}}</script>
+<!-- seo:end -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">Christos Visvardis</a>
+            <nav>
+                <ul>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../blog.html" class="active">Blog</a></li>
+                    <li><a href="../practical-marketing-science-book/index.html">Book</a></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/cvis/" target="_blank" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/christosvis" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+                                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" />
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12.3 22h-.1a10.313 10.313 0 0 1-10.2-10.2a10.288 10.288 0 0 1 10.2-10.2c.2 0 .4 0 .6.1a9.843 9.843 0 0 0-8.5 12.2a9.867 9.867 0 0 0 8.6 8c-.2.1-.4.1-.6.1z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <article class="blog-post">
+                <h1>Google Meridian MMM Tutorial: Build a Marketing Mix Model in Python</h1>
+                <p class="post-meta">Published November 2026</p>
+                <div class="post-content">
+                    <p><a href="https://developers.google.com/meridian" target="_blank" rel="noreferrer noopener">Meridian</a> is Google's open-source marketing mix model. It is Bayesian, it works best with data by region (geo-level), and it lets you put what you already know about each channel's ROI into the model as a prior, including results from experiments. This guide takes you from raw data to a budget recommendation: load the data, set the priors, fit the model, check that it can be trusted, read the results, and optimise the budget.</p>
+                    <p>Everything below was run with <code>google-meridian</code> 2.2.0 (the JAX version) on Python 3.12, using Google's simulated demo dataset. The charts and numbers are the real output of that run.</p>
+
+                    <h2>What Meridian needs</h2>
+                    <p>One row per region per week, with:</p>
+                    <figure class="wp-block-table"><table><thead><tr><th>Column</th><th>What it is</th></tr></thead><tbody>
+                    <tr><td>KPI</td><td>The outcome: conversions, sign-ups or revenue</td></tr>
+                    <tr><td>Revenue per KPI</td><td>Optional, but needed to report ROI in money when the KPI is not revenue</td></tr>
+                    <tr><td>Media and spend</td><td>For each paid channel, the exposure (impressions, clicks, GRPs) and the spend</td></tr>
+                    <tr><td>Controls</td><td>Things that move the KPI but aren't marketing: competitor activity, prices, macro factors</td></tr>
+                    <tr><td>Population</td><td>Per region, so that large and small regions can share one model</td></tr>
+                    <tr><td>Optional</td><td>Organic media (unpaid exposure), non-media treatments (promotions), reach and frequency</td></tr>
+                    </tbody></table></figure>
+                    <p>Aim for two to three years of weekly data. Region-level data is what makes Meridian strong: 40 regions over three years give the model far more variation to learn from than one national series over the same period. The demo dataset has exactly that: 40 regions, 156 weeks (January 2021 to January 2024), five paid channels, one organic channel, a promotion flag and two controls.</p>
+
+                    <h2>Install</h2>
+<pre class="wp-block-code"><code>pip install --upgrade google-meridian</code></pre>
+                    <p>Meridian runs on a CPU, but sampling is much faster on a GPU. On Colab, choose a GPU runtime (the free T4 is enough for the demo), and on a Linux machine with an NVIDIA GPU install <code>google-meridian[and-cuda]</code>. For timing on a CPU, see the sampling step below.</p>
+
+                    <h2>Step 1: Load the data</h2>
+<pre class="wp-block-code"><code>import numpy as np
+import pandas as pd
+import tensorflow_probability.substrates.jax as tfp
+from meridian import constants
+from meridian.analysis import optimizer, summarizer, visualizer
+from meridian.analysis.review import reviewer
+from meridian.data import data_frame_input_data_builder
+from meridian.model import model, prior_distribution, spec
+
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/google/meridian/refs/heads/main/"
+    "meridian/data/simulated_data/csv/geo_all_channels.csv",
+    index_col=0,
+)
+
+builder = data_frame_input_data_builder.DataFrameInputDataBuilder(
+    kpi_type="non_revenue",
+    default_kpi_column="conversions",
+    default_revenue_per_kpi_column="revenue_per_conversion",
+)
+builder = (
+    builder.with_kpi(df)
+    .with_revenue_per_kpi(df)
+    .with_population(df)
+    .with_controls(df, control_cols=["sentiment_score_control", "competitor_sales_control"])
+)
+channels = ["Channel0", "Channel1", "Channel2", "Channel3", "Channel4"]
+builder = builder.with_media(
+    df,
+    media_cols=[f"{c}_impression" for c in channels],
+    media_spend_cols=[f"{c}_spend" for c in channels],
+    media_channels=channels,
+)
+builder = builder.with_non_media_treatments(df, non_media_treatment_cols=["Promo"])
+builder = builder.with_organic_media(
+    df,
+    organic_media_cols=["Organic_channel0_impression"],
+    organic_media_channels=["Organic_channel0"],
+)
+data = builder.build()</code></pre>
+                    <p>The builder checks the data as it goes: every region needs every week, spend can't be negative, and the column names have to exist. Fix anything it complains about here; it is much cheaper than finding it after a long sampling run.</p>
+
+                    <h2>Step 2: Set the priors</h2>
+                    <p>A prior is what the model believes about a channel's ROI before it sees your data. Meridian puts the prior directly on ROI, which is a quantity you can reason about ("this channel probably returns between 0.5 and 3 per dollar"), instead of on abstract model coefficients.</p>
+<pre class="wp-block-code"><code>prior = prior_distribution.PriorDistribution(
+    roi_m=tfp.distributions.LogNormal(np.float64(0.2), np.float64(0.9), name=constants.ROI_M)
+)
+model_spec = spec.ModelSpec(prior=prior, enable_aks=True)
+mmm = model.Meridian(input_data=data, model_spec=model_spec)</code></pre>
+                    <ul>
+                        <li><strong>LogNormal(0.2, 0.9)</strong> keeps ROI positive, with a median of about 1.2 and a wide range. It is Meridian's default and a reasonable starting point when you know little.</li>
+                        <li><strong>Use <code>np.float64</code>.</strong> Meridian 2.x works in 64-bit numbers, and passing plain <code>0.2</code> and <code>0.9</code> fails with a dtype error. Google's demo wraps the values for this reason.</li>
+                        <li><strong><code>enable_aks=True</code></strong> lets the model pick how flexible the time trend and seasonality need to be (automatic knot selection), instead of you choosing it by hand.</li>
+                        <li><strong>Experiments make the best priors.</strong> If you have run a lift test or a geo experiment on a channel, use it to set that channel's prior. With Meridian GeoX this is a few lines of code; see <a href="meridian-geox-geo-experiment-tutorial.html">my Meridian GeoX tutorial</a>.</li>
+                    </ul>
+
+                    <h2>Step 3: Fit the model</h2>
+<pre class="wp-block-code"><code>mmm.sample_prior(500)
+mmm.sample_posterior(n_chains=10, n_adapt=1000, n_burnin=500, n_keep=1000, seed=0)</code></pre>
+                    <p>Those are the settings in Google's demo: ten chains, each keeping 1,000 draws after warm-up. Google quotes about 25 minutes on a free Colab T4 GPU. To check the code on my laptop's CPU (an Apple M1), I used a lighter run of four chains with 500 warm-up and 500 kept draws: sampling took about 5 minutes, and the whole script, including every report and the optimiser, about 10. Use the full settings for real decisions; a light run is fine for checking that the data and code work.</p>
+
+                    <h2>Step 4: Check that the model can be trusted</h2>
+                    <p>Before reading any ROI, run Meridian's health checks:</p>
+<pre class="wp-block-code"><code>health = reviewer.ModelReviewer(mmm).run()
+health.output_model_health_card(filename="health_card.html", filepath=".")</code></pre>
+                    <p>The health card checks convergence, whether the model fits better than a baseline, whether the ROI estimates moved away from the priors (or the data had nothing to say), and whether the baseline is plausible. On the demo data the model scored 99.8 out of 100 and passed all six checks: every parameter had an R-hat below 1.2, the baseline had no chance of being negative, R² was 0.77 with a MAPE of 2.7%, and all five channels' ROI moved away from the prior, a sign that the data was informative. The card also scores which channels would benefit most from being calibrated with an experiment.</p>
+                    <p>Convergence on its own is shown by R-hat: values close to 1.0 mean the chains agree, and anything above 1.2 needs more sampling or a simpler model.</p>
+<pre class="wp-block-code"><code>visualizer.ModelDiagnostics(mmm).plot_rhat_boxplot()</code></pre>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/meridian-rhat.png" alt="Meridian R-hat convergence diagnostic by parameter, all below 1.2" loading="lazy"/><figcaption class="wp-element-caption">R-hat by parameter group. Everything is below 1.2; the trend parameters (knot_values, mu_t) are highest, and the full sampling settings would bring them closer to 1.0</figcaption></figure>
+                    <p>Then compare the model's fit with the actual KPI:</p>
+<pre class="wp-block-code"><code>visualizer.ModelFit(mmm).plot_model_fit()</code></pre>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/meridian-model-fit.png" alt="Meridian model fit: expected against actual revenue over time, with the baseline" loading="lazy"/><figcaption class="wp-element-caption">Expected (model) against actual revenue, summed across regions, with the baseline: what revenue would have been without marketing</figcaption></figure>
+                    <p>Look for the expected line tracking the actual line without lagging behind turning points, and a baseline that looks believable: if the baseline is near zero, the model is crediting marketing with almost all of your sales, which is rarely true.</p>
+
+                    <h2>Step 5: Read the results</h2>
+                    <p>The quickest overview is Meridian's two-page HTML summary:</p>
+<pre class="wp-block-code"><code>summarizer.Summarizer(mmm).output_model_results_summary(
+    "summary_output.html", ".", "2021-01-25", "2024-01-15"
+)</code></pre>
+                    <p>The individual charts come from <code>MediaSummary</code> and <code>MediaEffects</code>:</p>
+<pre class="wp-block-code"><code>media_summary = visualizer.MediaSummary(mmm)
+media_summary.plot_roi_bar_chart()
+media_summary.plot_contribution_waterfall_chart()
+visualizer.MediaEffects(mmm).plot_response_curves()</code></pre>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/meridian-roi.png" alt="Meridian ROI by channel with 90% credible intervals" loading="lazy"/><figcaption class="wp-element-caption">ROI by channel with 90% credible intervals</figcaption></figure>
+                    <p>Channel4 and Channel0 return the most per dollar (about 1.6 and 1.5), and Channel3 the least (0.75), even though Channel3 takes 40% of the budget. Notice how wide the intervals are: Channel4's ROI could plausibly be anywhere from about 0.5 to 3.2. That uncertainty is real, and it is the reason to report intervals and to calibrate with experiments rather than act on the point estimates alone. Across all channels, paid media drove about 19% of the outcome (90% interval 13% to 26%), with the rest coming from the baseline, the promotion and organic media.</p>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/meridian-contribution-waterfall.png" alt="Meridian contribution waterfall: baseline and each channel's share of the KPI" loading="lazy"/><figcaption class="wp-element-caption">How much of the KPI comes from the baseline and from each channel</figcaption></figure>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/meridian-response-curves.png" alt="Meridian response curves for each channel with current spend marked" loading="lazy"/><figcaption class="wp-element-caption">Response curves: incremental outcome as spend changes, with each channel's current spend marked</figcaption></figure>
+                    <p>The response curves are what turn an MMM into a budget tool. Where a curve is still steep at current spend, the next dollar still buys a lot; where it has flattened, extra money buys little. The shaded bands are wide on purpose: they show how uncertain the model is, and the uncertainty grows the further you move from the spend levels you have actually run.</p>
+
+                    <h2>Step 6: Optimise the budget</h2>
+<pre class="wp-block-code"><code>budget_optimizer = optimizer.BudgetOptimizer(mmm)
+results = budget_optimizer.optimize()
+results.output_optimization_summary("optimization_output.html", ".")
+results.plot_spend_delta()</code></pre>
+                    <p>By default, the optimiser keeps the total budget fixed and moves money between channels to get the most out of it, within a limit of 30% up or down for each channel so that it doesn't recommend changes far outside your data. You can also give it a different total budget, or a new period with different prices, through <code>optimize(new_data=..., budget=...)</code>.</p>
+                    <figure class="wp-block-image size-large"><img src="../assets/blog/meridian-optimizer-spend-delta.png" alt="Meridian budget optimiser: change in spend for each channel" loading="lazy"/><figcaption class="wp-element-caption">The optimiser's recommended change in spend for each channel, with the total budget unchanged</figcaption></figure>
+                    <p>On the demo data, the optimiser moved $26 million out of Channel3 (its 30% limit) and $3.6 million out of Channel1, and put it into Channel4, Channel0 and Channel2 (each up 30%). With the same $219.5 million, the predicted incremental outcome rose by about 2.5% and ROI from 1.14 to 1.17. That is a modest gain, and typical: optimisers mostly shift money from channels past their saturation point to ones that still have room. Channel3 has the lowest ROI and its next dollar returns only about 0.4, which is why it gives up the most.</p>
+
+                    <h2>Step 7: Save the model</h2>
+<pre class="wp-block-code"><code>from meridian.schema.serde import meridian_serde
+
+meridian_serde.save_meridian(mmm, "saved_mmm.binpb")
+mmm = meridian_serde.load_meridian("saved_mmm.binpb")</code></pre>
+                    <p>Save after every serious run. Loading a saved model lets you rerun the reports, the optimiser or new scenarios without sampling again.</p>
+
+                    <h2>Making the model trustworthy</h2>
+                    <p>An MMM will always produce numbers. Whether they are right depends on things the code can't check for you:</p>
+                    <ul>
+                        <li><strong>Calibrate with experiments.</strong> Channels that move together (for example, search and social both rising every December) are hard for any MMM to tell apart. A geo experiment on one of them gives the model an anchor. Meridian's <code>CalibrationBuilder</code> turns a <a href="meridian-geox-geo-experiment-tutorial.html">Meridian GeoX</a> result into that channel's ROI prior directly.</li>
+                        <li><strong>Hold out recent weeks.</strong> Fit the model without the last few months and check how well it predicts them. A model that only fits the past is describing, not explaining.</li>
+                        <li><strong>Check the results against what you know.</strong> If a channel you switched off for a month shows no dip in the baseline, or a brand-new channel shows the highest ROI, find out why before you move budget.</li>
+                        <li><strong>Treat the optimiser as a direction, not an order.</strong> Move budget in steps, measure what happens, and refit.</li>
+                    </ul>
+
+                    <h2>Checklist</h2>
+                    <ul>
+                        <li>Two to three years of weekly data, by region if you can get it, with spend and exposure for every paid channel.</li>
+                        <li>ROI priors that reflect what you know, and experiment results as priors where you have them.</li>
+                        <li>Full sampling settings for real decisions; a GPU makes that practical.</li>
+                        <li>A clean health card and R-hat below 1.2 before you look at ROI.</li>
+                        <li>A plausible baseline and a model fit that follows turning points.</li>
+                        <li>Credible intervals reported with every ROI, not just the point estimate.</li>
+                        <li>Budget changes made in steps, measured, and fed back into the next model.</li>
+                    </ul>
+                </div>
+
+<!-- book-links:start -->
+<aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:2px solid var(--border-color);border-radius:8px;"><p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, <a href="../practical-marketing-science-book/index.html">Practical Marketing Science</a></p><ul style="margin:0;padding-left:1.2rem;"><li><a href="../practical-marketing-science-book/bayesmmm.html">Bayesian MMM in practice</a></li><li><a href="../practical-marketing-science-book/validation.html">Validating and calibrating MMM</a></li><li><a href="../practical-marketing-science-book/curves.html">Response curves and budget optimization</a></li></ul></aside>
+<!-- book-links:end -->
+                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Christos Visvardis. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
