@@ -36,6 +36,7 @@
             <a href="index.html" class="logo">Christos Visvardis</a>
             <nav>
                 <ul>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="portfolio.html" class="active">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="practical-marketing-science-book/index.html">Book</a></li>
@@ -78,7 +79,32 @@
 
         <main>
             <section id="portfolio-page">
-                <h1 style="margin-bottom: 2rem;">Portfolio</h1>
+                <h1 style="margin-bottom: 1rem;">Portfolio</h1>
+                <p class="section-note" style="margin-top:0;">Case studies from client work, and live apps I built
+                    for marketing mix modeling, experiments, causal inference, forecasting and pricing. The code for
+                    several of them is on <a href="https://github.com/christosvis" target="_blank" rel="noopener">GitHub</a>.</p>
+
+                <h2 class="portfolio-group">Case studies</h2>
+                <div class="case-grid">
+                    <a href="blog/how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study.html" class="case-card">
+                        <h3>NA-KD: a custom attribution model</h3>
+                        <p>Built a custom attribution model from the brand's own data, without third-party tools, and used it to improve the fashion brand's ROI on Facebook.</p>
+                        <span class="read-more">Read the case study &rarr;</span>
+                    </a>
+                    <a href="blog/how-i-helped-unisport-increase-their-sales-with-segmentation-analysis.html" class="case-card">
+                        <h3>Unisport: segmentation analysis</h3>
+                        <p>Used customer segmentation to uncover growth opportunities and increase sales for a sports e-commerce retailer.</p>
+                        <span class="read-more">Read the case study &rarr;</span>
+                    </a>
+                    <a href="blog/how-to-use-facebook-lead-ads-to-generate-quality-low-cost-leads-a-zopto-case-study.html" class="case-card">
+                        <h3>Zopto: B2B lead generation</h3>
+                        <p>Set up Facebook Lead Ads as the main acquisition channel for a B2B company, generating quality leads at low cost.</p>
+                        <span class="read-more">Read the case study &rarr;</span>
+                    </a>
+                </div>
+
+                <h2 class="portfolio-group">Marketing mix modeling and budgeting</h2>
+                <p class="section-note">Estimate what each channel contributes and where the next dollar should go.</p>
                 <div class="portfolio-grid">
                     <a href="https://meridian-app.streamlit.app/" class="portfolio-card" target="_blank"
                         rel="noreferrer noopener">
@@ -96,12 +122,12 @@
                             <img src="assets/portfolio/pymc-mmm.png" alt="PyMC MMM App">
                         </div>
                     </a>
-                    <a href="https://meridian-geox-app.streamlit.app/" class="portfolio-card" target="_blank"
-                        rel="noreferrer noopener">
-                        <h3>Meridian GeoX App</h3>
-                        <p>Measure incrementality of a geo experiment against a counterfactual baseline.</p>
+                    <a href="https://datastudio.google.com/u/0/reporting/2265dbda-ab04-4f82-872c-a467cdeedc4d/page/Aeh7D"
+                        class="portfolio-card" target="_blank" rel="noreferrer noopener">
+                        <h3>Meridian Marketing Mix Model Dashboard and Optimizer</h3>
+                        <p>Channel contribution, budget optimizer, and scenario planning from Google Meridian.</p>
                         <div class="portfolio-card-image">
-                            <img src="assets/portfolio/geox-app.png" alt="Meridian GeoX App">
+                            <img src="assets/portfolio/meridian-1.png" alt="Meridian Marketing Mix Model Dashboard and Optimizer">
                         </div>
                     </a>
                     <a href="https://budget-optimizer-app.streamlit.app/" class="portfolio-card" target="_blank"
@@ -112,14 +138,10 @@
                             <img src="assets/portfolio/budget-optimizer-1.png" alt="Budget Optimizer">
                         </div>
                     </a>
-                    <a href="https://christosvis.shinyapps.io/shinyappcausalimpact/" class="portfolio-card"
-                        target="_blank" rel="noreferrer noopener">
-                        <h3>Causal Impact App</h3>
-                        <p>Measure incrementality when you can't run a proper experiment.</p>
-                        <div class="portfolio-card-image">
-                            <img src="assets/portfolio/causal-impact.png" alt="Causal Impact App">
-                        </div>
-                    </a>
+                </div>
+                <h2 class="portfolio-group">Experiments and causal inference</h2>
+                <p class="section-note">Measure incrementality with geo tests, or estimate it when a clean experiment isn't possible.</p>
+                <div class="portfolio-grid">
                     <a href="https://christosvis.shinyapps.io/GeoLiftPowerAnalysis/" class="portfolio-card"
                         target="_blank" rel="noreferrer noopener">
                         <h3>GeoLift Power Analysis App</h3>
@@ -136,20 +158,32 @@
                             <img src="assets/portfolio/geolift-test.png" alt="GeoLift Post-Test Analysis App">
                         </div>
                     </a>
+                    <a href="https://meridian-geox-app.streamlit.app/" class="portfolio-card" target="_blank"
+                        rel="noreferrer noopener">
+                        <h3>Meridian GeoX App</h3>
+                        <p>Measure incrementality of a geo experiment against a counterfactual baseline.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/geox-app.png" alt="Meridian GeoX App">
+                        </div>
+                    </a>
+                    <a href="https://christosvis.shinyapps.io/shinyappcausalimpact/" class="portfolio-card"
+                        target="_blank" rel="noreferrer noopener">
+                        <h3>Causal Impact App</h3>
+                        <p>Measure incrementality when you can't run a proper experiment.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/causal-impact.png" alt="Causal Impact App">
+                        </div>
+                    </a>
+                </div>
+                <h2 class="portfolio-group">Forecasting, customers and pricing</h2>
+                <p class="section-note">Forecast demand, value customers and price products.</p>
+                <div class="portfolio-grid">
                     <a href="https://prophet-app.streamlit.app/" class="portfolio-card" target="_blank"
                         rel="noreferrer noopener">
                         <h3>Forecast App</h3>
                         <p>Forecast conversions and other metrics using trend, seasonality, and holidays.</p>
                         <div class="portfolio-card-image">
                             <img src="assets/portfolio/prophet-3.png" alt="Forecast App">
-                        </div>
-                    </a>
-                    <a href="https://datastudio.google.com/u/0/reporting/2265dbda-ab04-4f82-872c-a467cdeedc4d/page/Aeh7D"
-                        class="portfolio-card" target="_blank" rel="noreferrer noopener">
-                        <h3>Meridian Marketing Mix Model Dashboard and Optimizer</h3>
-                        <p>Channel contribution, budget optimizer, and scenario planning from Google Meridian.</p>
-                        <div class="portfolio-card-image">
-                            <img src="assets/portfolio/meridian-1.png" alt="Meridian Marketing Mix Model Dashboard and Optimizer">
                         </div>
                     </a>
                     <a href="https://simpleltvapp.streamlit.app/" class="portfolio-card" target="_blank"
@@ -168,14 +202,6 @@
                             <img src="assets/portfolio/app-tools.png" alt="App Tools">
                         </div>
                     </a>
-                    <a href="https://sentiment-analysis-christos.streamlit.app/" class="portfolio-card" target="_blank"
-                        rel="noreferrer noopener">
-                        <h3>Sentiment Analysis</h3>
-                        <p>Analyze the emotional tone of product reviews.</p>
-                        <div class="portfolio-card-image">
-                            <img src="assets/portfolio/sentiment-analysis-app.png" alt="Sentiment Analysis">
-                        </div>
-                    </a>
                     <a href="https://price-sensitivity-app.streamlit.app/" class="portfolio-card" target="_blank"
                         rel="noreferrer noopener">
                         <h3>Pricing Analysis</h3>
@@ -192,12 +218,20 @@
                             <img src="assets/portfolio/price-elasticity.png" alt="Price Elasticity App">
                         </div>
                     </a>
+                    <a href="https://sentiment-analysis-christos.streamlit.app/" class="portfolio-card" target="_blank"
+                        rel="noreferrer noopener">
+                        <h3>Sentiment Analysis</h3>
+                        <p>Analyze the emotional tone of product reviews.</p>
+                        <div class="portfolio-card-image">
+                            <img src="assets/portfolio/sentiment-analysis-app.png" alt="Sentiment Analysis">
+                        </div>
+                    </a>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2025 Christos Visvardis. All rights reserved.</p>
+            <p>&copy; 2026 Christos Visvardis. All rights reserved.</p>
         </footer>
     </div>
 

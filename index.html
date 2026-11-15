@@ -13,19 +13,19 @@
 <!-- ga4:end -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christos Visvardis | Marketing Science &amp; Measurement Consultant</title>
+    <title>Christos Visvardis | Marketing Science &amp; Measurement Lead</title>
 <!-- seo:start -->
-<meta name="description" content="Marketing science consultant (ex-Meta, TikTok) specialising in marketing mix modeling, attribution, incrementality testing and causal inference.">
+<meta name="description" content="Marketing scientist (ex-Facebook, Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
 <link rel="canonical" href="https://visvardis.com/">
 <meta property="og:site_name" content="Christos Visvardis">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Christos Visvardis | Marketing Science &amp; Measurement Consultant">
-<meta property="og:description" content="Marketing science consultant (ex-Meta, TikTok) specialising in marketing mix modeling, attribution, incrementality testing and causal inference.">
+<meta property="og:title" content="Christos Visvardis | Marketing Science &amp; Measurement Lead">
+<meta property="og:description" content="Marketing scientist (ex-Facebook, Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
 <meta property="og:url" content="https://visvardis.com/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Christos Visvardis | Marketing Science &amp; Measurement Consultant">
-<meta name="twitter:description" content="Marketing science consultant (ex-Meta, TikTok) specialising in marketing mix modeling, attribution, incrementality testing and causal inference.">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://visvardis.com/#person", "name": "Christos Visvardis", "url": "https://visvardis.com/", "jobTitle": "Marketing Science, Measurement and Analytics Expert", "knowsAbout": ["Marketing Mix Modeling", "Marketing Attribution", "Incrementality Testing", "Causal Inference", "Geo Experiments"], "sameAs": ["https://www.linkedin.com/in/cvis/", "https://github.com/christosvis"]}, {"@type": "WebSite", "@id": "https://visvardis.com/#website", "url": "https://visvardis.com/", "name": "Christos Visvardis", "publisher": {"@id": "https://visvardis.com/#person"}}]}</script>
+<meta name="twitter:title" content="Christos Visvardis | Marketing Science &amp; Measurement Lead">
+<meta name="twitter:description" content="Marketing scientist (ex-Facebook, Meta, TikTok) specialising in marketing mix modeling, incrementality testing, attribution and causal inference. Author of Practical Marketing Science.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://visvardis.com/#person", "name": "Christos Visvardis", "url": "https://visvardis.com/", "jobTitle": "Marketing Science & Measurement Lead", "knowsAbout": ["Marketing Mix Modeling", "Marketing Attribution", "Incrementality Testing", "Causal Inference", "Geo Experiments"], "sameAs": ["https://www.linkedin.com/in/cvis/", "https://github.com/christosvis"]}, {"@type": "WebSite", "@id": "https://visvardis.com/#website", "url": "https://visvardis.com/", "name": "Christos Visvardis", "publisher": {"@id": "https://visvardis.com/#person"}}]}</script>
 <!-- seo:end -->
     <style>
         /* Inter Font */
@@ -838,6 +838,132 @@
             border-color: #30363d;
             color: #ff7b72;
         }
+
+        /* hero with photo */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-grid h1 {
+            font-size: clamp(2.2rem, 4.5vw, 3rem);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            border-radius: 16px;
+            display: block;
+            margin-left: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .hero p a {
+            color: inherit;
+        }
+
+        .section-note {
+            color: var(--secondary-text);
+            margin: -0.75rem 0 1.5rem;
+        }
+
+        /* results */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .stat-card {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem 1.25rem 1rem;
+        }
+
+        .stat-card p {
+            margin: 0 0 0.5rem;
+            line-height: 1.5;
+        }
+
+        .stat-card .stat-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+        }
+
+        /* book */
+        .book-feature {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.75rem 2rem;
+        }
+
+        .book-feature h2 {
+            margin-top: 0;
+        }
+
+        .book-feature p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .book-feature .btn {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 760px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-photo {
+                order: -1;
+            }
+
+            .hero-photo img {
+                max-width: 220px;
+                margin: 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .book-feature {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.25rem;
+            }
+        }
+        .card-date {
+            color: var(--secondary-text);
+            font-size: 0.85rem;
+            margin: 0 0 0.5rem;
+        }
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 0.9rem;
+            }
+
+            nav li:has(> a[aria-label="LinkedIn"]),
+            nav li:has(> a[aria-label="GitHub"]) {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -847,6 +973,7 @@
             <a href="#" class="logo">Christos Visvardis</a>
             <nav>
                 <ul>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="practical-marketing-science-book/index.html">Book</a></li>
@@ -889,25 +1016,71 @@
 
         <main>
             <section class="hero">
-                <h1>Marketing Science, Measurement and Analytics Expert</h1>
-                <p>I've worked at <strong>Meta</strong> and <strong>TikTok</strong>, where I worked with some of the
-                    biggest companies in the world, helped <strong>fast-growing startups accelerate their
-                        growth</strong>, and also was part of a startup that was <strong>acquired</strong> by Kayak.</p>
-                <p>I've helped numerous clients achieve <strong>multiple-X ROIs</strong>, hyper-<strong>growth</strong>,
-                    optimize their performance via innovative <strong>data-driven</strong> marketing strategies.</p>
-                <p>I specialize in <strong>Marketing Mix Modeling, Attribution, Incrementality, Causal
-                        Inference.</strong></p>
-                <div class="hero-buttons">
-                    <a href="portfolio.html" class="btn primary">See my portfolio</a>
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <h1>Marketing Science &amp; Measurement Lead</h1>
+                        <p>I help companies find out what their marketing actually does, and move budget to what works.
+                            I spent six years in marketing science at <strong>Facebook</strong>, <strong>Meta</strong>
+                            and <strong>TikTok</strong>, led analytics teams at <strong>Cheapflights</strong> (acquired
+                            by Kayak) and <strong>MindGeek</strong>, and since 2022 I have advised brands as an
+                            independent marketing scientist.</p>
+                        <p>I specialise in <strong>Marketing Mix Modeling, Incrementality, Attribution and Causal
+                                Inference</strong>, and I wrote <a href="practical-marketing-science-book/index.html"><em>Practical
+                                Marketing Science</em></a>, a free field guide to measuring what marketing actually does.</p>
+                        <div class="hero-buttons">
+                            <a href="about.html" class="btn primary">About me</a>
+                            <a href="portfolio.html" class="btn secondary">See my portfolio</a>
+                        </div>
+                    </div>
+                    <div class="hero-photo">
+                        <img src="assets/christos-visvardis.jpg" alt="Christos Visvardis" fetchpriority="high"
+                            width="640" height="702">
+                    </div>
                 </div>
-                <div class="hero-illustration">
-                    <img src="assets/hero-illustration.svg" alt="Hero Illustration" fetchpriority="high" width="800"
-                        height="452" style="aspect-ratio: 800/452;">
+            </section>
+
+            <section id="results">
+                <h2>Selected results</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <p class="stat-number">$10M a year</p>
+                        <p>saved for a health and wellness app spending tens of millions on marketing: measurement
+                            triangulation and budget optimization improved ROI by 20%.</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-number">Up to 8x ROI</p>
+                        <p>for Facebook advertisers, through lift testing, data analysis and data-driven marketing
+                            strategy.</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-number">$100Ms</p>
+                        <p>of annual ad spend advised on, across dozens of advertisers at Meta and TikTok and 10+
+                            consulting clients.</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-number">0 &rarr; 1</p>
+                        <p>Launched Robyn, Meta's open-source MMM, for Meta's clients, and built TikTok's measurement
+                            function for MENAT from scratch.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="book">
+                <div class="book-feature">
+                    <div>
+                        <h2>The book: Practical Marketing Science</h2>
+                        <p>A free online field guide to measuring what marketing actually does. It covers A/B and geo
+                            experiments, quasi-experiments, Bayesian marketing mix modeling, calibration, attribution,
+                            triangulation, LTV, pricing and channel playbooks, with Python examples on simulated data
+                            where the true effects are known.</p>
+                    </div>
+                    <a href="practical-marketing-science-book/index.html" class="btn primary">Read it free</a>
                 </div>
             </section>
 
             <section id="clients">
-                <h2>Some of the clients I've worked with</h2>
+                <h2>Brands I've worked with</h2>
+                <p class="section-note">Across my roles at Facebook, Meta, TikTok and as an independent advisor.</p>
                 <div class="clients-grid">
                     <img src="assets/clients/HM-Logo-4-1024x674.webp" alt="H&M" loading="lazy" width="91" height="60">
                     <img src="assets/clients/Ikea_logo-4-1024x410.webp" alt="IKEA" loading="lazy" width="105"
@@ -940,18 +1113,21 @@
                 <h2>Latest Articles</h2>
                 <div class="blog-grid">
                     <article class="blog-card">
+                        <p class="card-date">November 2026</p>
+                        <h3>A/B Tests That Hold Up: Seven Rules for Trustworthy Experiments</h3>
+                        <p>How to design, run and read A/B tests you can trust: a written plan, power and the MDE, no peeking, multiple comparisons, CUPED and the checks that catch broken tests.</p>
+                        <a href="blog/ab-tests-that-hold-up.html"
+                            class="read-more">Read Article &rarr;</a>
+                    </article>
+                    <article class="blog-card">
+                        <p class="card-date">December 2023</p>
                         <h3>PyMC-Marketing MMM Tutorial: Build a Bayesian Marketing Mix Model</h3>
                         <p>Step-by-step PyMC-Marketing tutorial: prepare data, set custom priors, fit a Bayesian marketing mix model with adstock and saturation, and check the results.</p>
                         <a href="blog/crafting-a-robust-marketing-mix-model-with-pymc-marketing.html"
                             class="read-more">Read Article &rarr;</a>
                     </article>
                     <article class="blog-card">
-                        <h3>CausalImpact for Marketing: Measure Campaign Impact in R</h3>
-                        <p>How to use Google&#x27;s CausalImpact R package to measure the incremental effect of a marketing campaign or launch when you cannot run a randomised test.</p>
-                        <a href="blog/unleashing-the-power-of-causal-impact-in-marketing-analytics.html"
-                            class="read-more">Read Article &rarr;</a>
-                    </article>
-                    <article class="blog-card">
+                        <p class="card-date">November 2023 &middot; updated November 2026</p>
                         <h3>Meta GeoLift Guide: How to Run a Geo Lift Test in R</h3>
                         <p>Step-by-step guide to Meta GeoLift: set test goals, prepare market data, run a power analysis, launch the geo lift test in R and read the incremental lift.</p>
                         <a href="blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing.html"
@@ -965,6 +1141,8 @@
 
 
             <section id="contact">
+                <h2>Get in touch</h2>
+                <p class="section-note">The best way to reach me is a message on LinkedIn.</p>
 
                 <div class="contact-links">
 
@@ -987,7 +1165,7 @@
         </main>
 
         <footer>
-            <p>&copy; 2025 Christos Visvardis. All rights reserved.</p>
+            <p>&copy; 2026 Christos Visvardis. All rights reserved.</p>
         </footer>
     </div>
 

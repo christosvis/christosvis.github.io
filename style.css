@@ -896,3 +896,178 @@ footer {
 .blog-post .post-content th {
     font-weight: 700;
 }
+
+
+/* shared notes */
+.section-note {
+    color: var(--secondary-text);
+    margin: -0.75rem 0 1.5rem;
+}
+
+.card-date {
+    color: var(--secondary-text);
+    font-size: 0.85rem;
+    margin: 0 0 0.5rem;
+}
+
+.blog-post .post-meta {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+/* about page */
+.about-page h2 {
+    margin-top: 3rem;
+}
+
+.about-intro {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.about-intro img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.about-intro h1 {
+    margin-top: 0;
+}
+
+.about-intro p {
+    margin: 0 0 1rem;
+}
+
+.about-intro p,
+.about-page > p,
+.about-list li {
+    line-height: 1.7;
+}
+
+.about-list {
+    padding-left: 1.2rem;
+}
+
+.about-list li {
+    margin-bottom: 0.5rem;
+}
+
+.about-page a {
+    color: inherit;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 2px solid var(--border-color);
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 0 0 2rem 1.5rem;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 0.35rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-color);
+}
+
+.timeline-date {
+    margin: 0;
+    font-weight: 700;
+    color: var(--secondary-text);
+    white-space: nowrap;
+}
+
+.timeline-item h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.timeline-place {
+    margin: 0.15rem 0 0.5rem;
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.timeline-item p:last-child {
+    margin: 0;
+    line-height: 1.65;
+}
+
+/* portfolio groups and case studies */
+.portfolio-group {
+    margin-top: 3rem;
+}
+
+.case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.case-card {
+    display: block;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    color: inherit;
+    text-decoration: none;
+    transition: transform var(--transition-speed, 0.3s);
+}
+
+.case-card:hover {
+    transform: translateY(-3px);
+}
+
+.case-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+}
+
+.case-card p {
+    margin: 0 0 0.75rem;
+    line-height: 1.55;
+    color: var(--secondary-text);
+}
+
+@media (max-width: 760px) {
+    .about-intro {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .about-intro img {
+        max-width: 200px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        gap: 0.9rem;
+    }
+
+    nav li:has(> a[aria-label="LinkedIn"]),
+    nav li:has(> a[aria-label="GitHub"]) {
+        display: none;
+    }
+}

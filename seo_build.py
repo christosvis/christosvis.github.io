@@ -29,9 +29,14 @@ SAME_AS = ["https://www.linkedin.com/in/cvis/", "https://github.com/christosvis"
 # Hand-written titles and descriptions for the main pages.
 PAGES = {
     "index.html": (
-        "Christos Visvardis | Marketing Science & Measurement Consultant",
-        "Marketing science consultant (ex-Meta, TikTok) specialising in marketing mix "
-        "modeling, attribution, incrementality testing and causal inference.",
+        "Christos Visvardis | Marketing Science & Measurement Lead",
+        "Marketing scientist (ex-Facebook, Meta, TikTok) specialising in marketing mix modeling, "
+        "incrementality testing, attribution and causal inference. Author of Practical Marketing Science.",
+    ),
+    "about.html": (
+        "About Christos Visvardis | Marketing Science & Measurement",
+        "Christos Visvardis: 15+ years in marketing science and analytics at Facebook, Meta, TikTok, "
+        "Cheapflights and MindGeek, and as an independent marketing scientist.",
     ),
     "blog.html": (
         "Blog: Marketing Mix Modeling, Attribution & Causal Inference | Christos Visvardis",
@@ -47,6 +52,7 @@ PAGES = {
 
 # Original publish / last-modified dates of the blog posts (from the WordPress export).
 POST_DATES = {
+    "ab-tests-that-hold-up": ("2026-11-15", "2026-11-15"),
     "how-to-create-your-own-attribution-model": ("2021-07-08", "2026-11-09"),
     "how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study": ("2021-07-09", "2023-01-23"),
     "how-i-helped-unisport-increase-their-sales-with-segmentation-analysis": ("2021-07-09", "2021-07-09"),
@@ -61,6 +67,11 @@ POST_DATES = {
 # Search titles and descriptions for blog posts, written for the queries each post
 # gets impressions for in Search Console. The on-page heading is left unchanged.
 POST_META = {
+    "ab-tests-that-hold-up": (
+        "A/B Tests That Hold Up: Seven Rules for Trustworthy Experiments",
+        "How to design, run and read A/B tests you can trust: a written plan, power and the MDE, "
+        "no peeking, multiple comparisons, CUPED and the checks that catch broken tests.",
+    ),
     "unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing": (
         "Meta GeoLift Guide: How to Run a Geo Lift Test in R",
         "Step-by-step guide to Meta GeoLift: set test goals, prepare market data, run a power "
@@ -95,6 +106,8 @@ POST_META = {
 
 # "Go deeper" links from each post to the matching book chapter.
 BOOK_LINKS = {
+    "ab-tests-that-hold-up": [
+        ("abtests", "A/B tests that hold up"), ("geo", "Geo experiments")],
     "unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing": [
         ("geo", "Geo experiments"), ("lift", "Reading platform lift studies")],
     "how-to-create-your-own-attribution-model": [
@@ -208,7 +221,7 @@ PERSON = {
     "@id": f"{BASE}/#person",
     "name": AUTHOR,
     "url": BASE + "/",
-    "jobTitle": "Marketing Science, Measurement and Analytics Expert",
+    "jobTitle": "Marketing Science & Measurement Lead",
     "knowsAbout": [
         "Marketing Mix Modeling",
         "Marketing Attribution",

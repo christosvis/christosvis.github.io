@@ -46,6 +46,7 @@ def create_blog_post_html(post):
             <a href="../index.html" class="logo">Christos Visvardis</a>
             <nav>
                 <ul>
+                    <li><a href="../about.html">About</a></li>
                     <li><a href="../portfolio.html">Portfolio</a></li>
                     <li><a href="../blog.html" class="active">Blog</a></li>
                     <li><a href="../practical-marketing-science-book/index.html">Book</a></li>
@@ -93,7 +94,7 @@ def create_blog_post_html(post):
         </main>
 
         <footer>
-            <p>&copy; 2025 Christos Visvardis. All rights reserved.</p>
+            <p>&copy; 2026 Christos Visvardis. All rights reserved.</p>
         </footer>
     </div>
 
