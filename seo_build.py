@@ -13,7 +13,9 @@ from __future__ import annotations
 
 import html
 import json
+import posixpath
 import re
+import subprocess
 from datetime import date
 from pathlib import Path
 
@@ -164,11 +166,10 @@ def add_book_links(path: Path) -> None:
             f'<ul style="margin:0;padding-left:1.2rem;">{items}</ul></aside>\n'
             "<!-- book-links:end -->"
         )
-        marker = '<a href="../blog.html" class="back-link"'
-        i = s.find(marker)
-        if i < 0:
+        marker = re.search(r'<a href="(?:\.\./blog\.html|/blog)" class="back-link"', s)
+        if not marker:
             raise ValueError(f"{path}: no back-link to anchor book links")
-        line_start = s.rfind("\n", 0, i)
+        line_start = s.rfind("\n", 0, marker.start())
         s = s[:line_start] + box + s[line_start:]
     path.write_text(s, encoding="utf-8")
 
@@ -382,7 +383,9 @@ def fix_blog_media(path: Path) -> None:
     path.write_text(s, encoding="utf-8")
 
 
-CARD = re.compile(r'(<article class="blog-card">\s*<h3>)(.*?)(</h3>\s*<p>)(.*?)(</p>\s*<a href="blog/([^"]+)\.html")', re.S)
+# Card links are "blog/<slug>.html" straight out of generate_blog_pages.py and
+# "/blog/<slug>" once clean_links() has run, so accept both.
+CARD = re.compile(r'(<article class="blog-card">\s*<h3>)(.*?)(</h3>\s*<p>)(.*?)(</p>\s*<a href="/?blog/([^"#.]+)(?:\.html)?")', re.S)
 
 
 def update_cards(path: Path) -> None:
@@ -418,7 +421,7 @@ def tag_cards(path: Path) -> None:
     """Put one topic tag at the top of each article card (replacing any old one)."""
     def repl(m: re.Match) -> str:
         card = re.sub(r'\s*<span class="card-tag">[^<]*</span>', "", m.group(0))
-        slug = re.search(r'href="blog/([^"]+)\.html"', card)
+        slug = re.search(r'href="/?blog/([^"#.]+)(?:\.html)?"', card)
         tag = CARD_TAGS.get(slug.group(1)) if slug else None
         if not tag:
             return card
@@ -503,6 +506,58 @@ def add_theme_and_footer() -> int:
     return n
 
 
+# Cloudflare Pages answers "/about.html" with a 308 to "/about". Linking to the
+# ".html" files makes Google crawl a redirect for every internal link, so it
+# reports them as "Page with redirect" and spreads signals across two URLs.
+# This rewrites every internal link to the final URL that the canonical uses.
+HREF = re.compile(r'(\shref=")([^"]*?\.html)(#[^"]*)?"')
+
+
+def clean_url(page_rel: str, target: str) -> str | None:
+    if re.match(r"^[a-z][a-z0-9+.-]*:|^//", target, re.I):
+        return None  # external, mailto:, protocol-relative
+    if target.startswith("/"):
+        rel = posixpath.normpath(target.lstrip("/"))
+    else:
+        rel = posixpath.normpath(posixpath.join(posixpath.dirname(page_rel), target))
+    if rel.startswith("..") or not (ROOT / rel).is_file():
+        return None  # leave anything we can't resolve to a real page alone
+    return url_for(rel)[len(BASE):]
+
+
+def clean_links() -> int:
+    changed = 0
+    for path in sorted(ROOT.rglob("*.html")):
+        if ".git" in path.parts:
+            continue
+        page_rel = path.relative_to(ROOT).as_posix()
+        s = path.read_text(encoding="utf-8")
+
+        def repl(m: re.Match) -> str:
+            new = clean_url(page_rel, m.group(2))
+            if new is None:
+                return m.group(0)
+            return f'{m.group(1)}{new}{m.group(3) or ""}"'
+
+        out = HREF.sub(repl, s)
+        if out != s:
+            path.write_text(out, encoding="utf-8")
+            changed += 1
+    return changed
+
+
+def last_changed(path: Path) -> str:
+    """Date of the last commit touching the file, so lastmod only moves when the page does."""
+    try:
+        out = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", str(path.relative_to(ROOT))],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        out = ""
+    return out or TODAY
+
+
 def main() -> None:
     sitemap: list[tuple[str, str]] = []
     update_cards(ROOT / "blog.html")
@@ -522,7 +577,7 @@ def main() -> None:
                      "name": SITE_NAME, "publisher": {"@id": f"{BASE}/#person"}},
                 ],
             }]
-        sitemap.append((apply(ROOT / rel, title, desc, "website", ld), TODAY))
+        sitemap.append((apply(ROOT / rel, title, desc, "website", ld), last_changed(ROOT / rel)))
 
     # Blog posts
     for path in sorted((ROOT / "blog").glob("*.html")):
@@ -581,7 +636,7 @@ def main() -> None:
         else:
             desc = clip(book_description(s) or existing_description(s))
         url = apply(path, None, desc, "book" if path.name == "index.html" else "article", ld)
-        sitemap.append((url, TODAY))
+        sitemap.append((url, last_changed(path)))
 
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -592,7 +647,9 @@ def main() -> None:
     tagged = add_analytics()
     add_theme_and_footer()  # runs after analytics so the theme script is the first thing in <head>
     add_icons()
-    print(f"Updated {len(sitemap)} pages and sitemap.xml; GA4 tag on {tagged} pages")
+    relinked = clean_links()  # last, so links added by the steps above are cleaned too
+    print(f"Updated {len(sitemap)} pages and sitemap.xml; GA4 tag on {tagged} pages; "
+          f"clean internal links on {relinked} pages")
 
 
 # Google Analytics 4. Every HTML page gets this block straight after <head>.

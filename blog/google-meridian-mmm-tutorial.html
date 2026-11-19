@@ -41,13 +41,13 @@
 <body>
     <div class="container">
         <header>
-            <a href="../index.html" class="logo">Christos Visvardis</a>
+            <a href="/" class="logo">Christos Visvardis</a>
             <nav>
                 <ul>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../portfolio.html">Portfolio</a></li>
-                    <li><a href="../blog.html" class="active">Blog</a></li>
-                    <li><a href="../practical-marketing-science-book/index.html">Book</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/portfolio">Portfolio</a></li>
+                    <li><a href="/blog" class="active">Blog</a></li>
+                    <li><a href="/practical-marketing-science-book/">Book</a></li>
                     <li>
                         <a href="https://www.linkedin.com/in/cvis/" target="_blank" aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -158,7 +158,7 @@ mmm = model.Meridian(input_data=data, model_spec=model_spec)</code></pre>
                         <li><strong>LogNormal(0.2, 0.9)</strong> keeps ROI positive, with a median of about 1.2 and a wide range. It is Meridian's default and a reasonable starting point when you know little.</li>
                         <li><strong>Use <code>np.float64</code>.</strong> Meridian 2.x works in 64-bit numbers, and passing plain <code>0.2</code> and <code>0.9</code> fails with a dtype error. Google's demo wraps the values for this reason.</li>
                         <li><strong><code>enable_aks=True</code></strong> lets the model pick how flexible the time trend and seasonality need to be (automatic knot selection), instead of you choosing it by hand.</li>
-                        <li><strong>Experiments make the best priors.</strong> If you have run a lift test or a geo experiment on a channel, use it to set that channel's prior. With Meridian GeoX this is a few lines of code; see <a href="meridian-geox-geo-experiment-tutorial.html">my Meridian GeoX tutorial</a>.</li>
+                        <li><strong>Experiments make the best priors.</strong> If you have run a lift test or a geo experiment on a channel, use it to set that channel's prior. With Meridian GeoX this is a few lines of code; see <a href="/blog/meridian-geox-geo-experiment-tutorial">my Meridian GeoX tutorial</a>.</li>
                     </ul>
 
                     <h2>Step 3: Fit the model</h2>
@@ -214,7 +214,7 @@ mmm = meridian_serde.load_meridian("saved_mmm.binpb")</code></pre>
                     <h2>Making the model trustworthy</h2>
                     <p>An MMM will always produce numbers. Whether they are right depends on things the code can't check for you:</p>
                     <ul>
-                        <li><strong>Calibrate with experiments.</strong> Channels that move together (for example, search and social both rising every December) are hard for any MMM to tell apart. A geo experiment on one of them gives the model an anchor. Meridian's <code>CalibrationBuilder</code> turns a <a href="meridian-geox-geo-experiment-tutorial.html">Meridian GeoX</a> result into that channel's ROI prior directly.</li>
+                        <li><strong>Calibrate with experiments.</strong> Channels that move together (for example, search and social both rising every December) are hard for any MMM to tell apart. A geo experiment on one of them gives the model an anchor. Meridian's <code>CalibrationBuilder</code> turns a <a href="/blog/meridian-geox-geo-experiment-tutorial">Meridian GeoX</a> result into that channel's ROI prior directly.</li>
                         <li><strong>Hold out recent weeks.</strong> Fit the model without the last few months and check how well it predicts them. A model that only fits the past is describing, not explaining.</li>
                         <li><strong>Check the results against what you know.</strong> If a channel you switched off for a month shows no dip in the baseline, or a brand-new channel shows the highest ROI, find out why before you move budget.</li>
                         <li><strong>Treat the optimiser as a direction, not an order.</strong> Move budget in steps, measure what happens, and refit.</li>
@@ -232,16 +232,16 @@ mmm = meridian_serde.load_meridian("saved_mmm.binpb")</code></pre>
                     </ul>
                 </div>
 <!-- book-links:start -->
-<aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:2px solid var(--border-color);border-radius:8px;"><p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, <a href="../practical-marketing-science-book/index.html">Practical Marketing Science</a></p><ul style="margin:0;padding-left:1.2rem;"><li><a href="../practical-marketing-science-book/bayesmmm.html">Bayesian MMM in practice</a></li><li><a href="../practical-marketing-science-book/validation.html">Validating and calibrating MMM</a></li><li><a href="../practical-marketing-science-book/curves.html">Response curves and budget optimization</a></li></ul></aside>
+<aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:2px solid var(--border-color);border-radius:8px;"><p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, <a href="/practical-marketing-science-book/">Practical Marketing Science</a></p><ul style="margin:0;padding-left:1.2rem;"><li><a href="/practical-marketing-science-book/bayesmmm">Bayesian MMM in practice</a></li><li><a href="/practical-marketing-science-book/validation">Validating and calibrating MMM</a></li><li><a href="/practical-marketing-science-book/curves">Response curves and budget optimization</a></li></ul></aside>
 <!-- book-links:end -->
-                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+                <a href="/blog" class="back-link">&larr; Back to Blog</a>
             </article>
         </main>
 
         <footer>
             <div class="footer-grid">
                 <p>&copy; 2026 Christos Visvardis</p>
-                <nav class="footer-links" aria-label="Footer"><a href="../about.html">About</a><a href="../portfolio.html">Portfolio</a><a href="../blog.html">Blog</a><a href="../practical-marketing-science-book/index.html">Book</a><a href="https://www.linkedin.com/in/cvis/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/christosvis" target="_blank" rel="noopener">GitHub</a></nav>
+                <nav class="footer-links" aria-label="Footer"><a href="/about">About</a><a href="/portfolio">Portfolio</a><a href="/blog">Blog</a><a href="/practical-marketing-science-book/">Book</a><a href="https://www.linkedin.com/in/cvis/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/christosvis" target="_blank" rel="noopener">GitHub</a></nav>
             </div>
         </footer>
     </div>

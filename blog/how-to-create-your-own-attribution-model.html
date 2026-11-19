@@ -41,13 +41,13 @@
 <body>
     <div class="container">
         <header>
-            <a href="../index.html" class="logo">Christos Visvardis</a>
+            <a href="/" class="logo">Christos Visvardis</a>
             <nav>
                 <ul>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../portfolio.html">Portfolio</a></li>
-                    <li><a href="../blog.html" class="active">Blog</a></li>
-                    <li><a href="../practical-marketing-science-book/index.html">Book</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/portfolio">Portfolio</a></li>
+                    <li><a href="/blog" class="active">Blog</a></li>
+                    <li><a href="/practical-marketing-science-book/">Book</a></li>
                     <li>
                         <a href="https://www.linkedin.com/in/cvis/" target="_blank" aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -152,7 +152,7 @@
 </tbody></table></figure>
 <p>The weights in these models are arbitrary: someone decided them, rather than learning them from your data. Data-driven models learn the weights from your converting and non-converting paths.</p>
 <h2 class="wp-block-heading"><strong>Building your Attribution Model</strong></h2>
-<p>For a real-world example, see <a href="how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study.html">how I built a custom attribution model for NA-KD</a>. There are two widely accepted data-driven models for attribution:&nbsp;</p>
+<p>For a real-world example, see <a href="/blog/how-i-helped-na-kd-create-a-custom-attribution-model-facebook-case-study">how I built a custom attribution model for NA-KD</a>. There are two widely accepted data-driven models for attribution:&nbsp;</p>
 <ol class="wp-block-list">
 <li>Shapley Value</li>
 <li>Markov Chains.</li>
@@ -216,8 +216,8 @@ print(results, digits = 3)</code></pre>
 <p><strong>A lift test</strong>&nbsp;is a randomized control test where we randomize an audience into a test and control group. We only show ads to the test group.&nbsp;</p>
 <p>The difference in conversions between the two groups is known as lift or incrementality and represents the real impact of a channel’s ads on the audience. Moreover, since this is based on the concept of randomized control trials, it also incorporates the concept of causality, meaning that we know that it was the ads that caused the extra conversions.</p>
 <figure class="wp-block-image aligncenter"><img src="https://assets-global.website-files.com/5a1eb87c9afe1000014a4c7d/5e8e3f0802fdad038cf05bff_cL50hQ8PE3o0WarsWbqHHVmKg2C2tAjtF91mFqHi45_Y5MgFpknlAFYcd8lT0zKdQvEHTIK4h88CrYK5gEmuK-2O0RtqLcKiAZ6xMZxM0AvVq8bJmePLjV-XvGpwt9bpbCB0ibha.png" alt=""/><figcaption class="wp-element-caption"><a href="https://www.facebook.com/business/m/one-sheeters/conversion-lift" target="_blank" rel="noreferrer noopener">Source</a></figcaption></figure>
-<p>A good practice is to run lift tests regularly, so that you can see the effect of Facebook, Instagram and other impression-heavy channels and calibrate your attribution model accordingly. Retest when spend, strategy or season change materially; otherwise, once or twice a year for your largest channels is a reasonable default. The same logic applies to geo tests; see <a href="unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing.html#retest">how often to retest a geo lift test</a>.</p>
-<p>For more on what attribution can and cannot tell you, and how to combine it with experiments and MMM, see the <a href="../practical-marketing-science-book/attribution.html">Attribution and its limits</a> and <a href="../practical-marketing-science-book/triangulation.html">Triangulation</a> chapters of my free book.</p>
+<p>A good practice is to run lift tests regularly, so that you can see the effect of Facebook, Instagram and other impression-heavy channels and calibrate your attribution model accordingly. Retest when spend, strategy or season change materially; otherwise, once or twice a year for your largest channels is a reasonable default. The same logic applies to geo tests; see <a href="/blog/unveiling-the-power-of-meta-geolift-a-guide-to-geolift-experiments-in-marketing#retest">how often to retest a geo lift test</a>.</p>
+<p>For more on what attribution can and cannot tell you, and how to combine it with experiments and MMM, see the <a href="/practical-marketing-science-book/attribution">Attribution and its limits</a> and <a href="/practical-marketing-science-book/triangulation">Triangulation</a> chapters of my free book.</p>
 <h2 class="wp-block-heading">Lift test vs attribution model</h2>
 <p>Both attribution models and lift tests are useful and should work in conjunction to give the best possible results. They both have their advantages and limitations, as you can see in the table below:</p>
 <figure class="is-style-regular wp-block-table"><table class="has-fixed-layout"><thead><tr><th><strong>Lift Test</strong></th><th><strong>Attribution Model</strong></th></tr></thead><tbody><tr><td><strong>Accurate results</strong></td><td>Approximation based on model</td></tr><tr><td>One data point in time</td><td><strong>Tool that can be used on a daily basis</strong></td></tr><tr><td>Holdout</td><td><strong>No holdout</strong></td></tr><tr><td><strong>Based on results, not on arbitrary rules</strong></td><td>Rule-based unless you build a&nbsp;<strong>data-driven</strong>&nbsp;model</td></tr><tr><td><strong>Causality</strong></td><td>Correlation</td></tr><tr><td><strong>Baseline (organic, brand effect) is taken into account</strong></td><td>Gives little to no credit to organic</td></tr><tr><td><strong>Impressions are taken into account&nbsp;</strong>(but not segregated)</td><td>Impressions hard to track (depends on channel)</td></tr><tr><td>Not all channels have lift tests (imperfect alternatives like matched market test, before-after etc exist)</td><td><strong>Models all digital channels</strong>. Offline is problematic</td></tr></tbody></table></figure>
@@ -228,16 +228,16 @@ print(results, digits = 3)</code></pre>
 <p>A rule of thumb is that tests should last for at least one week (and ideally 4 weeks or more), since there might be fluctuations of conversions for different days (e.g. a lot more conversions on weekends compared to weekdays). Moreover, you should avoid periods during which you experience big increases or decreases (e.g. Christmas, Black Friday).</p>
                 </div>
 <!-- book-links:start -->
-<aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:2px solid var(--border-color);border-radius:8px;"><p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, <a href="../practical-marketing-science-book/index.html">Practical Marketing Science</a></p><ul style="margin:0;padding-left:1.2rem;"><li><a href="../practical-marketing-science-book/attribution.html">Attribution and its limits</a></li><li><a href="../practical-marketing-science-book/triangulation.html">Triangulation: deciding under contradictory evidence</a></li></ul></aside>
+<aside class="book-links" style="margin-top:2.5rem;padding:1.25rem 1.5rem;border:2px solid var(--border-color);border-radius:8px;"><p style="margin:0 0 .5rem;font-weight:700;">Go deeper in my free book, <a href="/practical-marketing-science-book/">Practical Marketing Science</a></p><ul style="margin:0;padding-left:1.2rem;"><li><a href="/practical-marketing-science-book/attribution">Attribution and its limits</a></li><li><a href="/practical-marketing-science-book/triangulation">Triangulation: deciding under contradictory evidence</a></li></ul></aside>
 <!-- book-links:end -->
-                <a href="../blog.html" class="back-link">&larr; Back to Blog</a>
+                <a href="/blog" class="back-link">&larr; Back to Blog</a>
             </article>
         </main>
 
         <footer>
             <div class="footer-grid">
                 <p>&copy; 2026 Christos Visvardis</p>
-                <nav class="footer-links" aria-label="Footer"><a href="../about.html">About</a><a href="../portfolio.html">Portfolio</a><a href="../blog.html">Blog</a><a href="../practical-marketing-science-book/index.html">Book</a><a href="https://www.linkedin.com/in/cvis/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/christosvis" target="_blank" rel="noopener">GitHub</a></nav>
+                <nav class="footer-links" aria-label="Footer"><a href="/about">About</a><a href="/portfolio">Portfolio</a><a href="/blog">Blog</a><a href="/practical-marketing-science-book/">Book</a><a href="https://www.linkedin.com/in/cvis/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/christosvis" target="_blank" rel="noopener">GitHub</a></nav>
             </div>
         </footer>
     </div>
