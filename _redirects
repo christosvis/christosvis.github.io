@@ -27,3 +27,23 @@
 /front-page / 301
 /front-page/ / 301
 /blog/feed/ /blog 301
+
+# Old WordPress posts that were unpublished: send them to the closest book chapter
+/how-to-measure-attention-an-attention-currency-for-the-attention-economy /practical-marketing-science-book/brand 301
+/how-to-measure-attention-an-attention-currency-for-the-attention-economy/ /practical-marketing-science-book/brand 301
+/how-does-creative-experience-move-incremental-brand-outcomes-learnings-from-a-facebook-marketing-science-project /practical-marketing-science-book/brand 301
+/how-does-creative-experience-move-incremental-brand-outcomes-learnings-from-a-facebook-marketing-science-project/ /practical-marketing-science-book/brand 301
+/how-to-measure-lifetime-value-a-comprehensive-guide-for-marketers-and-data-analysts /practical-marketing-science-book/ltv 301
+/how-to-measure-lifetime-value-a-comprehensive-guide-for-marketers-and-data-analysts/ /practical-marketing-science-book/ltv 301
+/proxies-in-measurement /practical-marketing-science-book/validation 301
+/proxies-in-measurement/ /practical-marketing-science-book/validation 301
+/budget-allocation-attribution-and-lift-conundrums /practical-marketing-science-book/triangulation 301
+/budget-allocation-attribution-and-lift-conundrums/ /practical-marketing-science-book/triangulation 301
+/marketing-analytics-dos-and-donts /practical-marketing-science-book/checklists 301
+/marketing-analytics-dos-and-donts/ /practical-marketing-science-book/checklists 301
+/mastering-google-ads-bids-a-simple-guide-based-on-marginal-roas-and-marginal-cpa /practical-marketing-science-book/curves 301
+/mastering-google-ads-bids-a-simple-guide-based-on-marginal-roas-and-marginal-cpa/ /practical-marketing-science-book/curves 301
+/a-framework-for-growth-analytics-from-descriptive-to-predictive-and-prescriptive-analytics /practical-marketing-science-book/ 301
+/a-framework-for-growth-analytics-from-descriptive-to-predictive-and-prescriptive-analytics/ /practical-marketing-science-book/ 301
+/books /practical-marketing-science-book/ 301
+/books/ /practical-marketing-science-book/ 301
