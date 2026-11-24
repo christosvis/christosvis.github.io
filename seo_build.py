@@ -483,6 +483,51 @@ def add_icons() -> int:
     return n
 
 
+# Always-visible bar at the top of every book page naming the author and linking home.
+# The gitbook layout pins the sidebar and body to the top of the window, so both are
+# pushed down by the bar's height.
+AUTHOR_BAR_BLOCK = re.compile(r"\s*<!-- author-bar:start -->.*?<!-- author-bar:end -->", re.S)
+AUTHOR_BAR = (
+    "\n<!-- author-bar:start -->\n"
+    "<style>\n"
+    ":root{--author-bar-h:36px}\n"
+    ".author-bar{position:fixed;top:0;left:0;right:0;height:var(--author-bar-h);z-index:1000;"
+    "display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;"
+    "background:#1F4E79;color:#fff;font:14px/1 \"Helvetica Neue\",Helvetica,Arial,sans-serif;"
+    "letter-spacing:.2px;box-shadow:0 1px 3px rgba(0,0,0,.15)}\n"
+    ".author-bar a{color:#fff;text-decoration:none;white-space:nowrap}\n"
+    ".author-bar a:hover,.author-bar a:focus{text-decoration:underline}\n"
+    ".author-bar .author-bar-name{font-weight:700}\n"
+    ".author-bar .author-bar-site{opacity:.9}\n"
+    ".book .book-summary,.book .book-body,.book .book-header.fixed{top:var(--author-bar-h)}\n"
+    "@media (max-width:1240px){.book .book-body.fixed{top:calc(var(--author-bar-h) + 50px)}}\n"
+    "@media (max-width:600px){.book .book-body.fixed{top:var(--author-bar-h)}}\n"
+    "@media (max-width:420px){.author-bar .author-bar-by{display:none}}\n"
+    "@media print{.author-bar{display:none}.book .book-summary,.book .book-body,"
+    ".book .book-body.fixed,.book .book-header.fixed{top:0}}\n"
+    "</style>\n"
+    '<div class="author-bar" role="banner">\n'
+    f'  <span><span class="author-bar-by">A free book by </span>'
+    f'<a class="author-bar-name" href="/" rel="author">{AUTHOR}</a></span>\n'
+    '  <a class="author-bar-site" href="/">visvardis.com &rarr;</a>\n'
+    "</div>\n"
+    "<!-- author-bar:end -->"
+)
+
+
+def add_author_bar() -> int:
+    n = 0
+    for path in sorted((ROOT / BOOK_DIR).glob("*.html")):
+        s = AUTHOR_BAR_BLOCK.sub("", path.read_text(encoding="utf-8"))
+        m = re.search(r"<body[^>]*>", s)
+        if not m:
+            continue
+        s = s[:m.end()] + AUTHOR_BAR + s[m.end():]
+        path.write_text(s, encoding="utf-8")
+        n += 1
+    return n
+
+
 def site_pages() -> list[Path]:
     return [p for p in sorted(ROOT.rglob("*.html"))
             if ".git" not in p.parts and BOOK_DIR not in p.parts]
@@ -647,6 +692,7 @@ def main() -> None:
     tagged = add_analytics()
     add_theme_and_footer()  # runs after analytics so the theme script is the first thing in <head>
     add_icons()
+    add_author_bar()
     relinked = clean_links()  # last, so links added by the steps above are cleaned too
     print(f"Updated {len(sitemap)} pages and sitemap.xml; GA4 tag on {tagged} pages; "
           f"clean internal links on {relinked} pages")
